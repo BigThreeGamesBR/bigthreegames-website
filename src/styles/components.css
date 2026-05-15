@@ -225,6 +225,7 @@
   inset: 0;
   transform-origin: center top;
   will-change: transform;
+  overflow: hidden;
 }
 
 .hero__media img {
@@ -599,9 +600,13 @@
 }
 
 .site-footer .brand__official-mark {
-  width: clamp(7rem, 14vw, 9rem);
-  max-height: 2.2rem;
-  height: auto;
+  width: clamp(2.2rem, 5.2vw, 2.6rem);
+  height: clamp(2.2rem, 5.2vw, 2.6rem);
+  max-height: none;
+}
+
+.site-footer .brand {
+  gap: clamp(0.22rem, 0.7vw, 0.4rem);
 }
 
 .site-footer .brand__title {

@@ -1,12 +1,12 @@
 {
   "seo": {
     "title": "Heritage | Big Three Games",
-    "description": "Discover Heritage, a strategic auto-battler roguelike from Big Three Games where each run builds a lasting legacy."
+    "description": "Discover Heritage, a strategic auto-battler roguelike from Big Three Games where each run helps you to build a lasting legacy."
   },
   "hero": {
-    "eyebrow": "Game Focus",
+    "eyebrow": "Our Legacy",
     "title": "Heritage",
-    "summary": "Build your legacy across decades, survive pivotal battles, and grow stronger through the Hall of the Ancestors.",
+    "summary": "Build your legacy across decades, survive battles, and grow stronger through the Hall of the Ancestors.",
     "image": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
     "imageAlt": "Wide Heritage key art scene",
     "logo": "/assets/heritage/logo/Heritage%20Logo.png",
@@ -14,6 +14,7 @@
     "panelAriaLabel": "Heritage release status",
     "panelStatLabels": [
       "Release",
+      "Mode",
       "Platform"
     ],
     "parallaxSpeed": 0.09

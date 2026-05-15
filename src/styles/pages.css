@@ -12,13 +12,17 @@
 }
 
 .page-home .hero__media {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .page-home .hero__media iframe {
-    top: 26%;
-    transform: translate(-50%, -26%) scale(1.18);
-    opacity: 0.84;
+  top: 26%;
+  width: calc(100vw + 8px);
+  height: calc(56.25vw + 8px);
+  min-width: calc(177.78vh + 8px);
+  min-height: calc(100vh + 8px);
+  transform: translate(-50%, -26%) scale(1.18);
+  opacity: 0.84;
 }
 
 .page-home .hero__media img {
@@ -376,11 +380,17 @@
   padding: var(--space-md);
 }
 
+.member-card__body h3 {
+  font-size: clamp(1.7rem, 4.4vw, 2.05rem);
+  white-space: nowrap;
+}
+
 .member-card__role {
   color: var(--color-brand-peach);
   font-size: var(--font-size-small);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .timeline {

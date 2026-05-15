@@ -14,8 +14,7 @@
   "storyTitle": "Small Team, Long Vision",
   "storySection": {
     "kicker": "Studio Story",
-    "title": "A tale of three friends",
-    "lede": "Member Spotlight"
+    "title": "A tale of three friends"
   },
   "memberCardAriaLabelPrefix": "Team member",
   "storyCards": [
@@ -38,23 +37,23 @@
   ],
   "members": [
     {
-      "name": "Breno",
-      "role": "Founder & Content Manager",
+      "name": "Breno Fontenelle",
+      "role": "Founder\nContent Manager",
       "bio": "Leads communication beats, community-facing updates, and content planning for Heritage.",
       "image": "/assets/studio/members/breno.jpg",
       "imageAlt": "Breno from Big Three Games"
     },
     {
-      "name": "Matheus",
-      "role": "Founder & Developer",
-      "bio": "Focused on gameplay systems, balancing, and long-term iteration for Heritage.",
+      "name": "Matheus Assis",
+      "role": "Founder\nDeveloper",
+      "bio": "Focused on gameplay systems, particle and shaders FX, and long-term iteration for Heritage.",
       "image": "/assets/studio/members/matheus.jpg",
       "imageAlt": "Matheus from Big Three Games"
     },
     {
-      "name": "Guilherme",
-      "role": "Founder & Game Designer",
-      "bio": "Shapes core game direction, combat structure, and progression design for Heritage.",
+      "name": "Guilherme Carvalho",
+      "role": "Founder\nGame Designer",
+      "bio": "Shapes core game direction, combat and balancing structure, and progression design for Heritage.",
       "image": "/assets/studio/members/guilherme.jpg",
       "imageAlt": "Guilherme from Big Three Games"
     }

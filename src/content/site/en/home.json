@@ -42,14 +42,14 @@
     "statusAriaLabel": "Heritage status"
   },
   "games": {
-    "kicker": "Games",
-    "title": "Currently In Development",
-    "lede": "Starting our legacy: Heritage.",
+    "kicker": "Our Games",
+    "title": "The Start of our Legacy: Heritage",
+    "lede": "Based on our favorites manwhas and roguelikes, Heritage was born to build our Legacy",
     "keyArt": "/assets/heritage/key/VerticalNoLogo_1080x1920.png",
     "keyArtAlt": "Vertical key art featuring Oro from Heritage",
     "cardAriaLabel": "Heritage key art and highlights",
     "logoAlt": "Heritage game logo",
-    "intro": "Your run is your life story. Build over decades, survive battles, unlock improvements in the Ancestor's Hall, and return stronger.",
+    "intro": "Animount has been seized by Drammul, the Lizard King, and his army. The only one capable of stopping them is Oro, the serpent. Trapped in a cycle of reincarnation, choose Scrolls, skills and equipments, and join powerful Sects in this Auto-Battler Roguelike to defeat Drammul and save Animount.",
     "details": [
       {
         "label": "Genre",
@@ -99,20 +99,20 @@
   "studioSection": {
     "kicker": "Studio",
     "title": "Who We Are",
-    "lede": "We are a small independent team building long-term game worlds with player feedback at the center of development."
+    "lede": "We are a small independent team building games that challenge players to think strategically in order to win. From loving games to making them, our journey is driven by a passion for creating."
   },
   "values": [
     {
       "title": "Player-Driven Iteration",
-      "body": "We ship updates, gather real feedback, and evolve systems until the game feels sharp and rewarding."
+      "body": "We value player feedback and use it to guide our development process. We love to engage with your ideas, and explore them directly into the game."
     },
     {
       "title": "Systemic Depth",
-      "body": "We build mechanics that interact in interesting ways so each build and each run can tell a different story."
+      "body": "We build mechanics from scratch. Our motto is 'Make it as simple, but not simpler'. We want systems that are easy to learn but hard to master."
     },
     {
-      "title": "Memorable Character",
-      "body": "We want each world to have personality, visual identity, and stakes that players can feel."
+      "title": "Memorable Worlds",
+      "body": "We want each world to have personality, visual identity, and stakes that players can feel. You should be able to appreciate any game fully, the way you want."
     }
   ],
   "contactCta": {
