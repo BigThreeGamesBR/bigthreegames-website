@@ -12,6 +12,12 @@
     "parallaxSpeed": 0.1
   },
   "storyTitle": "Small Team, Long Vision",
+  "storySection": {
+    "kicker": "Studio Story",
+    "title": "A tale of three friends",
+    "lede": "Member Spotlight"
+  },
+  "memberCardAriaLabelPrefix": "Team member",
   "storyCards": [
     {
       "title": "Independent by Design",
@@ -33,7 +39,7 @@
   "members": [
     {
       "name": "Breno",
-      "role": "Content Manager",
+      "role": "Founder & Content Manager",
       "bio": "Leads communication beats, community-facing updates, and content planning for Heritage.",
       "image": "/assets/studio/members/breno.jpg",
       "imageAlt": "Breno from Big Three Games"

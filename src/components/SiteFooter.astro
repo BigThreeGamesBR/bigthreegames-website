@@ -8,7 +8,7 @@ const currentYear = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="stack">
-      <a class="brand" href="/" aria-label={`${global.siteName} home`}>
+      <a class="brand" href="/" aria-label={global.ui.brandHomeAriaLabel}>
         <img
           class="brand__mark brand__official-mark"
           src="/assets/studio/logo/b3g_official_logo.png"
@@ -21,10 +21,10 @@ const currentYear = new Date().getFullYear();
           <span class="brand__title">{global.siteName}</span>
         </span>
       </a>
-      <p class="copyright">Copyright {currentYear} {global.siteName}. {global.tagline}</p>
+      <p class="copyright">{global.ui.footerCopyrightPrefix} {currentYear} {global.siteName}. {global.tagline}</p>
     </div>
 
-    <ul class="footer-links" aria-label="Footer links">
+    <ul class="footer-links" aria-label={global.ui.footerLinksAriaLabel}>
       {
         global.footerLinks.map((link) => (
           <li>

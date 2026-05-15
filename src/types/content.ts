@@ -22,6 +22,18 @@ export interface GlobalContent {
   wishlistUrl: string;
   steamUrl: string;
   steamDemoUrl: string;
+  ui: {
+    skipLinkLabel: string;
+    brandHomeAriaLabel: string;
+    primaryNavAriaLabel: string;
+    menuButtonLabel: string;
+    wishlistButtonLabel: string;
+    footerLinksAriaLabel: string;
+    footerCopyrightPrefix: string;
+    pressKitLabel: string;
+    pressKitUrl: string;
+    adminPageTitle: string;
+  };
   navigation: NavigationItem[];
   footerLinks: LinkItem[];
 }
@@ -36,10 +48,13 @@ export interface HomeContent {
     title: string;
     summary: string;
     videoMp4: string;
+    videoTitle: string;
     parallaxSpeed: number;
     tags: string[];
+    tagsAriaLabel: string;
     actions: Array<LinkItem & { variant: ButtonVariant }>;
     status: Array<{ label: string; value: string }>;
+    statusAriaLabel: string;
   };
   games: {
     kicker: string;
@@ -47,9 +62,19 @@ export interface HomeContent {
     lede: string;
     keyArt: string;
     keyArtAlt: string;
+    cardAriaLabel: string;
+    logoAlt: string;
     intro: string;
     details: Array<{ label: string; value: string }>;
+    detailsAriaLabel: string;
     tags: string[];
+    tagsAriaLabel: string;
+    actions: Array<LinkItem & { variant: ButtonVariant }>;
+  };
+  studioSection: {
+    kicker: string;
+    title: string;
+    lede: string;
   };
   values: Array<{ title: string; body: string }>;
   contactCta: {
@@ -74,6 +99,12 @@ export interface AboutContent {
     parallaxSpeed: number;
   };
   storyTitle: string;
+  storySection: {
+    kicker: string;
+    title: string;
+    lede: string;
+  };
+  memberCardAriaLabelPrefix: string;
   storyCards: Array<{ title: string; body: string }>;
   members: Array<{ name: string; role: string; bio: string; image: string; imageAlt: string }>;
   cta: {
@@ -105,8 +136,10 @@ export interface ContactContent {
     privacyNote: string;
   };
   aside: {
+    kicker: string;
     heading: string;
     body: string;
+    emailLabel: string;
     servicesNote: string;
   };
 }
@@ -123,12 +156,26 @@ export interface HeritageContent {
     image: string;
     imageAlt: string;
     logo: string;
+    logoAlt: string;
+    panelAriaLabel: string;
+    panelStatLabels: string[];
     parallaxSpeed: number;
   };
   stats: Array<{ label: string; value: string }>;
   features: Array<{ title: string; body: string; tag?: string }>;
   media: {
     trailerMp4: string;
+    sectionKicker: string;
+    sectionTitle: string;
+    galleryAriaLabel: string;
+    trailerFrameTitle: string;
+    trailerCaption: string;
+    previousMediaAriaLabel: string;
+    nextMediaAriaLabel: string;
+    thumbnailsAriaLabel: string;
+    trailerThumbAriaLabel: string;
+    trailerThumbText: string;
+    screenshotThumbAriaLabelPrefix: string;
     screenshots: Array<{ image: string; alt: string; caption: string }>;
   };
   cta: {

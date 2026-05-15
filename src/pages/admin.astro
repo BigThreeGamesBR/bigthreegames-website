@@ -1,12 +1,15 @@
 ---
+import { getSiteContent } from '../lib/content';
+
+const { global } = getSiteContent();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={global.locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Big Three Games | Content Admin</title>
+    <title>{global.ui.adminPageTitle}</title>
     <style>
       html,
       body {

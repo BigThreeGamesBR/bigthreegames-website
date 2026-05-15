@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteContent } from '../../lib/content';
 
-const { heritage, global } = getSiteContent();
-const heroStatus = heritage.stats.filter((stat) => stat.label === 'Release' || stat.label === 'Platform');
+const { heritage } = getSiteContent();
+const heroStatus = heritage.stats.filter((stat) => heritage.hero.panelStatLabels.includes(stat.label));
 const mediaSlideCount = heritage.media.screenshots.length + 1;
 const isYoutubeEmbed = (url: string) => /(?:youtube(?:-nocookie)?\.com\/embed|youtu\.be\/)/i.test(url);
 const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
@@ -28,7 +28,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
         <p class="hero__summary">{heritage.hero.summary}</p>
       </div>
 
-      <aside class="hero__panel reveal" aria-label="Heritage release status">
+      <aside class="hero__panel reveal" aria-label={heritage.hero.panelAriaLabel}>
         <dl>
           {
             heroStatus.map((stat) => (
@@ -48,16 +48,16 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
       <img
         class="heritage-main-logo reveal"
         src={heritage.hero.logo}
-        alt="Heritage logo"
+        alt={heritage.hero.logoAlt}
         loading="eager"
       />
 
       <header class="section__head reveal">
-        <p class="section__kicker">Media</p>
-        <h2 class="section__title" id="heritage-media-title">Trailer and Screenshots</h2>
+        <p class="section__kicker">{heritage.media.sectionKicker}</p>
+        <h2 class="section__title" id="heritage-media-title">{heritage.media.sectionTitle}</h2>
       </header>
 
-      <aside class="gallery gallery--thumbs reveal" data-gallery aria-label="Heritage trailer and screenshots">
+      <aside class="gallery gallery--thumbs reveal" data-gallery aria-label={heritage.media.galleryAriaLabel}>
         <div class="gallery__viewport">
           <figure class="gallery__slide gallery__slide--video">
             <div class="gallery__video-frame">
@@ -65,7 +65,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
                 useTrailerEmbed ? (
                   <iframe
                     src={heritage.media.trailerMp4}
-                    title="Heritage official reveal trailer"
+                    title={heritage.media.trailerFrameTitle}
                     data-gallery-embed
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -79,7 +79,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
                 )
               }
             </div>
-            <figcaption class="gallery__caption">Heritage official reveal trailer.</figcaption>
+            <figcaption class="gallery__caption">{heritage.media.trailerCaption}</figcaption>
           </figure>
 
           {
@@ -91,10 +91,10 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
             ))
           }
 
-          <button class="gallery__nav gallery__nav--prev" type="button" data-gallery-prev aria-label="Previous media item">
+          <button class="gallery__nav gallery__nav--prev" type="button" data-gallery-prev aria-label={heritage.media.previousMediaAriaLabel}>
             &#10094;
           </button>
-          <button class="gallery__nav gallery__nav--next" type="button" data-gallery-next aria-label="Next media item">
+          <button class="gallery__nav gallery__nav--next" type="button" data-gallery-next aria-label={heritage.media.nextMediaAriaLabel}>
             &#10095;
           </button>
           <p class="gallery__status" data-gallery-status>
@@ -102,16 +102,16 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
           </p>
         </div>
 
-        <div class="gallery__thumbs" aria-label="Media carousel thumbnails">
+        <div class="gallery__thumbs" aria-label={heritage.media.thumbnailsAriaLabel}>
           <button
             class="gallery__thumb gallery__thumb--trailer is-active"
             type="button"
             data-gallery-thumb="0"
-            aria-label="Show trailer"
+            aria-label={heritage.media.trailerThumbAriaLabel}
             aria-pressed="true"
           >
             <img src="/assets/heritage/trailer/Heritage-Thumbnail.png" alt="" loading="lazy" />
-            <span>Trailer</span>
+            <span>{heritage.media.trailerThumbText}</span>
           </button>
 
           {
@@ -120,7 +120,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
                 class="gallery__thumb"
                 type="button"
                 data-gallery-thumb={(index + 1).toString()}
-                aria-label={`Show screenshot ${index + 1}`}
+                aria-label={`${heritage.media.screenshotThumbAriaLabelPrefix} ${index + 1}`}
                 aria-pressed="false"
               >
                 <img src={shot.image} alt="" loading="lazy" />
@@ -142,10 +142,18 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
         </div>
 
         <div class="cluster">
-          <a class="button button--primary" href={global.steamUrl} target="_blank" rel="noopener noreferrer">
-            Open Steam Page
-          </a>
-          <a class="button button--ghost" href={`mailto:${global.contactEmail}?subject=Heritage%20Press%20Kit`}>Press Kit</a>
+          {
+            heritage.cta.actions.map((action) => (
+              <a
+                class={`button button--${action.variant}`}
+                href={action.href}
+                target={action.external ? '_blank' : undefined}
+                rel={action.external ? 'noopener noreferrer' : undefined}
+              >
+                {action.label}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>

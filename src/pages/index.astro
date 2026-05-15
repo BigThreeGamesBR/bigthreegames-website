@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteContent } from '../lib/content';
 import type { ButtonVariant } from '../types/content';
 
-const { global, home, heritage } = getSiteContent();
+const { home, heritage } = getSiteContent();
 
 const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
 const isYoutubeEmbed = (url: string) => /(?:youtube(?:-nocookie)?\.com\/embed|youtu\.be\/)/i.test(url);
@@ -22,7 +22,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
         useHeroEmbed ? (
           <iframe
             src={home.hero.videoMp4}
-            title="Heritage teaser background video"
+            title={home.hero.videoTitle}
             aria-hidden="true"
             tabindex="-1"
             loading="eager"
@@ -44,7 +44,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
         <h1 class="hero__title" id="home-hero-title">{home.hero.title}</h1>
         <p class="hero__summary">{home.hero.summary}</p>
 
-        <ul class="chip-list" aria-label="Heritage genres">
+        <ul class="chip-list" aria-label={home.hero.tagsAriaLabel}>
           {home.hero.tags.map((tag) => <li class="chip">{tag}</li>)}
         </ul>
 
@@ -59,7 +59,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
         </div>
       </div>
 
-      <aside class="hero__panel reveal" aria-label="Heritage status">
+      <aside class="hero__panel reveal" aria-label={home.hero.statusAriaLabel}>
         <dl>
           {
             home.hero.status.map((item) => (
@@ -83,7 +83,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
       </header>
 
       <div class="home-game-layout">
-        <article class="home-development-card surface reveal" aria-label="Heritage key art and highlights">
+        <article class="home-development-card surface reveal" aria-label={home.games.cardAriaLabel}>
           <figure class="home-development-card__art">
             <img src={home.games.keyArt} alt={home.games.keyArtAlt} loading="lazy" />
           </figure>
@@ -92,12 +92,12 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
             <img
               class="home-game-logo"
               src={heritage.hero.logo}
-              alt="Heritage game logo"
+              alt={home.games.logoAlt}
               loading="lazy"
             />
             <p class="home-game-info__intro">{home.games.intro}</p>
 
-            <ul class="meta-list" aria-label="Heritage key details">
+            <ul class="meta-list" aria-label={home.games.detailsAriaLabel}>
               {
                 home.games.details.map((detail) => (
                   <li>
@@ -108,26 +108,23 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
               }
             </ul>
 
-            <ul class="chip-list" aria-label="Heritage tags">
+            <ul class="chip-list" aria-label={home.games.tagsAriaLabel}>
               {home.games.tags.map((tag) => <li class="chip">{tag}</li>)}
             </ul>
 
             <div class="cluster home-development-card__actions">
-              <a class="button button--primary" href="/games/heritage">Game Details</a>
-              <a
-                class="button button--soft"
-                href={global.steamUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Steam Page
-              </a>
-              <a
-                class="button button--ghost"
-                href={`mailto:${global.contactEmail}?subject=Heritage%20Press%20Kit`}
-              >
-                Press Kit
-              </a>
+              {
+                home.games.actions.map((action) => (
+                  <a
+                    class={buttonClass(action.variant)}
+                    href={action.href}
+                    target={action.external ? '_blank' : undefined}
+                    rel={action.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {action.label}
+                  </a>
+                ))
+              }
             </div>
           </div>
         </article>
@@ -138,11 +135,9 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
   <section class="section section--tight" id="studio" aria-labelledby="studio-title">
     <div class="container">
       <header class="section__head reveal">
-        <p class="section__kicker">Studio</p>
-        <h2 class="section__title" id="studio-title">Who We Are</h2>
-        <p class="section__lede">
-          We are a small independent team building long-term game worlds with player feedback at the center of development.
-        </p>
+        <p class="section__kicker">{home.studioSection.kicker}</p>
+        <h2 class="section__title" id="studio-title">{home.studioSection.title}</h2>
+        <p class="section__lede">{home.studioSection.lede}</p>
       </header>
 
       <div class="grid grid--3 home-studio-values">

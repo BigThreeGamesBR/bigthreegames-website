@@ -10,6 +10,12 @@
     "image": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
     "imageAlt": "Wide Heritage key art scene",
     "logo": "/assets/heritage/logo/Heritage%20Logo.png",
+    "logoAlt": "Heritage logo",
+    "panelAriaLabel": "Heritage release status",
+    "panelStatLabels": [
+      "Release",
+      "Platform"
+    ],
     "parallaxSpeed": 0.09
   },
   "stats": [
@@ -54,6 +60,17 @@
   ],
   "media": {
     "trailerMp4": "https://www.youtube-nocookie.com/embed/DcnyV2G0ggM?controls=1&modestbranding=1&rel=0&playsinline=1",
+    "sectionKicker": "Media",
+    "sectionTitle": "Trailer and Screenshots",
+    "galleryAriaLabel": "Heritage trailer and screenshots",
+    "trailerFrameTitle": "Heritage official reveal trailer",
+    "trailerCaption": "Heritage official reveal trailer.",
+    "previousMediaAriaLabel": "Previous media item",
+    "nextMediaAriaLabel": "Next media item",
+    "thumbnailsAriaLabel": "Media carousel thumbnails",
+    "trailerThumbAriaLabel": "Show trailer",
+    "trailerThumbText": "Trailer",
+    "screenshotThumbAriaLabelPrefix": "Show screenshot",
     "screenshots": [
       {
         "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110149.png",
@@ -119,9 +136,10 @@
         "external": true
       },
       {
-        "label": "Contact the Team",
-        "href": "/contact",
-        "variant": "ghost"
+        "label": "Press Kit",
+        "href": "https://drive.google.com/drive/u/1/folders/1JkQ1hTTZv64hTSwHMljGjbhEhhqp6Sfy",
+        "variant": "ghost",
+        "external": true
       }
     ]
   }

@@ -29,19 +29,15 @@ const { about } = getSiteContent();
   <section class="section section--tight" id="members" aria-labelledby="members-title">
     <div class="container">
       <header class="section__head reveal">
-        <p class="section__kicker">Studio Story</p>
-        <h2 class="section__title" id="members-title">
-          Big Three Games was created by three childhood friends united by games.
-        </h2>
-        <p class="section__lede">
-          Member Spotlight
-        </p>
+        <p class="section__kicker">{about.storySection.kicker}</p>
+        <h2 class="section__title" id="members-title">{about.storySection.title}</h2>
+        <p class="section__lede">{about.storySection.lede}</p>
       </header>
 
       <div class="member-grid">
         {
           about.members.map((member) => (
-            <article class="member-card surface reveal" aria-label={`Team member ${member.name}`}>
+            <article class="member-card surface reveal" aria-label={`${about.memberCardAriaLabelPrefix} ${member.name}`}>
               <figure class="member-card__media">
                 <img src={member.image} alt={member.imageAlt} loading="lazy" />
               </figure>

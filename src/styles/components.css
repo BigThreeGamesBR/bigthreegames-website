@@ -36,8 +36,13 @@
 }
 
 .site-header .brand__official-mark {
-  width: clamp(7.25rem, 16vw, 9.75rem);
-  max-height: 2.45rem;
+  width: clamp(2.2rem, 5.2vw, 2.6rem);
+  height: clamp(2.2rem, 5.2vw, 2.6rem);
+  max-height: none;
+}
+
+.site-header .brand {
+  gap: clamp(0.22rem, 0.7vw, 0.4rem);
 }
 
 .brand__type {
@@ -488,6 +493,11 @@
   gap: var(--space-lg);
 }
 
+.contact-layout--single {
+  max-width: min(100%, 44rem);
+  margin-inline: auto;
+}
+
 .contact-card {
   padding: var(--space-md);
 }
@@ -650,6 +660,10 @@
 
   .contact-layout {
     grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .contact-layout--single {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .footer-inner {

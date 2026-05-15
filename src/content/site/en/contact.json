@@ -40,8 +40,10 @@
     "privacyNote": "Privacy note: submitted details are used only to respond to your inquiry."
   },
   "aside": {
-    "heading": "Other Ways to Reach Us",
-    "body": "If your request is urgent or you prefer email, contact us directly.",
-    "servicesNote": "We only create and improve our own games. We are not offering external development services."
+    "kicker": "Contact",
+    "heading": "Get in Contact with us",
+    "body": "For press requests, creator collaborations, or community messages, contact us directly by email.",
+    "emailLabel": "Email:",
+    "servicesNote": "We usually respond within two business days."
   }
 }

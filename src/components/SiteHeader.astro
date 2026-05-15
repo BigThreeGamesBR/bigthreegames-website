@@ -12,7 +12,7 @@ const { global } = getSiteContent();
 
 <header class="site-header" data-site-header>
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label={`${global.siteName} home`}>
+    <a class="brand" href="/" aria-label={global.ui.brandHomeAriaLabel}>
       <img
         class="brand__mark brand__official-mark"
         src="/assets/studio/logo/b3g_official_logo.png"
@@ -33,10 +33,10 @@ const { global } = getSiteContent();
       aria-expanded="false"
       aria-controls="site-navigation"
     >
-      Menu
+      {global.ui.menuButtonLabel}
     </button>
 
-    <nav class="site-nav" aria-label="Primary">
+    <nav class="site-nav" aria-label={global.ui.primaryNavAriaLabel}>
       <ul id="site-navigation" data-nav-list>
         {
           global.navigation.map((item) => (
@@ -59,7 +59,7 @@ const { global } = getSiteContent();
             target="_blank"
             rel="noopener noreferrer"
           >
-            Wishlist
+            {global.ui.wishlistButtonLabel}
           </a>
         </li>
       </ul>

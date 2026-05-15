@@ -1,6 +1,7 @@
 ---
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import { getSiteContent } from '../lib/content';
 import type { NavId } from '../types/content';
 
 import '../styles/tokens.css';
@@ -24,10 +25,11 @@ const {
   activePage,
   includeTurnstile = false
 } = Astro.props;
+const { global } = getSiteContent();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={global.locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +54,7 @@ const {
     }
   </head>
   <body class={pageClass} data-page={activePage}>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main-content">{global.ui.skipLinkLabel}</a>
 
     <SiteHeader activePage={activePage} />
 

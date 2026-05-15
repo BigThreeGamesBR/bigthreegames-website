@@ -5,9 +5,10 @@
   },
   "hero": {
     "eyebrow": "Crafted in Brazil. Played worldwide.",
-    "title": "Legends are born from hard choices.",
+    "title": "A Tale of Three Friends",
     "summary": "Big Three Games creates strategic and challenging worlds. Our first title, Heritage, blends roguelike decision-making with auto-battler combat and RPG elements.",
     "videoMp4": "https://www.youtube-nocookie.com/embed/DcnyV2G0ggM?autoplay=1&mute=1&controls=0&loop=1&playlist=DcnyV2G0ggM&modestbranding=1&rel=0&playsinline=1",
+    "videoTitle": "Heritage teaser background video",
     "parallaxSpeed": 0.14,
     "tags": [
       "Roguelike",
@@ -15,6 +16,7 @@
       "Strategy RPG",
       "Single Player"
     ],
+    "tagsAriaLabel": "Heritage genres",
     "actions": [
       {
         "label": "Explore Heritage",
@@ -36,7 +38,8 @@
         "label": "Platform",
         "value": "Steam"
       }
-    ]
+    ],
+    "statusAriaLabel": "Heritage status"
   },
   "games": {
     "kicker": "Games",
@@ -44,6 +47,8 @@
     "lede": "Starting our legacy: Heritage.",
     "keyArt": "/assets/heritage/key/VerticalNoLogo_1080x1920.png",
     "keyArtAlt": "Vertical key art featuring Oro from Heritage",
+    "cardAriaLabel": "Heritage key art and highlights",
+    "logoAlt": "Heritage game logo",
     "intro": "Your run is your life story. Build over decades, survive battles, unlock improvements in the Ancestor's Hall, and return stronger.",
     "details": [
       {
@@ -68,7 +73,33 @@
       "Auto Battler",
       "RPG",
       "Strategy"
+    ],
+    "detailsAriaLabel": "Heritage key details",
+    "tagsAriaLabel": "Heritage tags",
+    "actions": [
+      {
+        "label": "Game Details",
+        "href": "/games/heritage",
+        "variant": "primary"
+      },
+      {
+        "label": "Steam Page",
+        "href": "https://store.steampowered.com/app/4308560/Heritage/",
+        "variant": "soft",
+        "external": true
+      },
+      {
+        "label": "Press Kit",
+        "href": "https://drive.google.com/drive/u/1/folders/1JkQ1hTTZv64hTSwHMljGjbhEhhqp6Sfy",
+        "variant": "ghost",
+        "external": true
+      }
     ]
+  },
+  "studioSection": {
+    "kicker": "Studio",
+    "title": "Who We Are",
+    "lede": "We are a small independent team building long-term game worlds with player feedback at the center of development."
   },
   "values": [
     {
