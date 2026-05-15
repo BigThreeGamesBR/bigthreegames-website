@@ -10,10 +10,16 @@
     "deps:blocklist": "powershell -ExecutionPolicy Bypass -File ./scripts/check-blocklist.ps1",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "check": "astro check"
+    "preview": "pnpm run build && wrangler dev",
+    "check": "astro check",
+    "deploy": "pnpm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.13",
     "astro": "^5.5.5"
+  },
+  "devDependencies": {
+    "wrangler": "4.92.0"
   }
 }
