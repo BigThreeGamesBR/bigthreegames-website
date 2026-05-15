@@ -118,6 +118,14 @@ function setupGallery() {
         if (video instanceof HTMLVideoElement && index !== currentIndex) {
           video.pause();
         }
+
+        const embedFrame = slide.querySelector('iframe[data-gallery-embed]');
+        if (embedFrame instanceof HTMLIFrameElement && index !== currentIndex) {
+          const src = embedFrame.getAttribute('src');
+          if (src) {
+            embedFrame.setAttribute('src', src);
+          }
+        }
       });
 
       thumbButtons.forEach((thumb, index) => {

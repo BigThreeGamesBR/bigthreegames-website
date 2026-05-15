@@ -102,7 +102,7 @@ collections:
               - label: Summary
                 name: summary
                 widget: text
-              - label: Video MP4 URL
+              - label: Hero Video URL (MP4 or YouTube Embed)
                 name: videoMp4
                 widget: string
               - label: Parallax Speed
@@ -468,7 +468,7 @@ collections:
             name: media
             widget: object
             fields:
-              - label: Trailer MP4
+              - label: Trailer URL (MP4 or YouTube Embed)
                 name: trailerMp4
                 widget: string
               - label: Screenshots

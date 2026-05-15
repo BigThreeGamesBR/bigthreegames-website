@@ -213,6 +213,7 @@
 }
 
 .page-heritage .gallery__video-frame video,
+.page-heritage .gallery__video-frame iframe,
 .page-heritage .gallery__slide img {
   width: 100%;
   display: block;
@@ -221,6 +222,10 @@
   object-fit: cover;
   background: #000;
   border-radius: 0;
+}
+
+.page-heritage .gallery__video-frame iframe {
+  border: 0;
 }
 
 .page-heritage .gallery__caption {

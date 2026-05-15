@@ -240,6 +240,21 @@
   filter: saturate(1.06) contrast(1.03);
 }
 
+.hero__media iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  transform: translate(-50%, -50%);
+  border: 0;
+  opacity: 0.62;
+  pointer-events: none;
+  filter: saturate(1.06) contrast(1.03);
+}
+
 .hero__veil {
   position: absolute;
   inset: 0;

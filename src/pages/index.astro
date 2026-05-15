@@ -6,6 +6,8 @@ import type { ButtonVariant } from '../types/content';
 const { global, home, heritage } = getSiteContent();
 
 const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
+const isYoutubeEmbed = (url: string) => /(?:youtube(?:-nocookie)?\.com\/embed|youtu\.be\/)/i.test(url);
+const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
 ---
 
 <BaseLayout
@@ -16,9 +18,23 @@ const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
 >
   <section class="hero hero--home" aria-labelledby="home-hero-title">
     <div class="hero__media" data-parallax-speed={home.hero.parallaxSpeed.toString()}>
-      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src={home.hero.videoMp4} type="video/mp4" />
-      </video>
+      {
+        useHeroEmbed ? (
+          <iframe
+            src={home.hero.videoMp4}
+            title="Heritage teaser background video"
+            aria-hidden="true"
+            tabindex="-1"
+            loading="eager"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src={home.hero.videoMp4} type="video/mp4" />
+          </video>
+        )
+      }
     </div>
     <div class="hero__veil"></div>
 

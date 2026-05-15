@@ -5,3 +5,4 @@ dist/
 .env.*
 !.env.example
 assets/heritage/trailer/*.mp4
+/public/assets/heritage/trailer/*.mp4

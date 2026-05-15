@@ -5,6 +5,8 @@ import { getSiteContent } from '../../lib/content';
 const { heritage, global } = getSiteContent();
 const heroStatus = heritage.stats.filter((stat) => stat.label === 'Release' || stat.label === 'Platform');
 const mediaSlideCount = heritage.media.screenshots.length + 1;
+const isYoutubeEmbed = (url: string) => /(?:youtube(?:-nocookie)?\.com\/embed|youtu\.be\/)/i.test(url);
+const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
 ---
 
 <BaseLayout
@@ -59,9 +61,23 @@ const mediaSlideCount = heritage.media.screenshots.length + 1;
         <div class="gallery__viewport">
           <figure class="gallery__slide gallery__slide--video">
             <div class="gallery__video-frame">
-              <video controls preload="metadata" playsinline poster="/assets/heritage/trailer/Heritage-Thumbnail.png">
-                <source src={heritage.media.trailerMp4} type="video/mp4" />
-              </video>
+              {
+                useTrailerEmbed ? (
+                  <iframe
+                    src={heritage.media.trailerMp4}
+                    title="Heritage official reveal trailer"
+                    data-gallery-embed
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  />
+                ) : (
+                  <video controls preload="metadata" playsinline poster="/assets/heritage/trailer/Heritage-Thumbnail.png">
+                    <source src={heritage.media.trailerMp4} type="video/mp4" />
+                  </video>
+                )
+              }
             </div>
             <figcaption class="gallery__caption">Heritage official reveal trailer.</figcaption>
           </figure>
