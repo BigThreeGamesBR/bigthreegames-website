@@ -6,3 +6,8 @@ dist/
 !.env.example
 assets/heritage/trailer/*.mp4
 /public/assets/heritage/trailer/*.mp4
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
