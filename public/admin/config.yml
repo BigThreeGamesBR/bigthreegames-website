@@ -36,12 +36,6 @@ collections:
           - label: Wishlist URL
             name: wishlistUrl
             widget: string
-          - label: Steam URL
-            name: steamUrl
-            widget: string
-          - label: Steam Demo URL
-            name: steamDemoUrl
-            widget: string
           - label: Navigation
             name: navigation
             widget: list
@@ -105,10 +99,6 @@ collections:
               - label: Hero Video URL (MP4 or YouTube Embed)
                 name: videoMp4
                 widget: string
-              - label: Parallax Speed
-                name: parallaxSpeed
-                widget: number
-                value_type: float
               - label: Hero Tags
                 name: tags
                 widget: list
@@ -256,23 +246,6 @@ collections:
               - label: Image Alt
                 name: imageAlt
                 widget: string
-              - label: Parallax Speed
-                name: parallaxSpeed
-                widget: number
-                value_type: float
-          - label: Story Title
-            name: storyTitle
-            widget: string
-          - label: Story Cards
-            name: storyCards
-            widget: list
-            fields:
-              - label: Title
-                name: title
-                widget: string
-              - label: Body
-                name: body
-                widget: text
           - label: Members
             name: members
             widget: list
@@ -292,36 +265,6 @@ collections:
               - label: Image Alt
                 name: imageAlt
                 widget: string
-          - label: CTA
-            name: cta
-            widget: object
-            fields:
-              - label: Kicker
-                name: kicker
-                widget: string
-              - label: Title
-                name: title
-                widget: string
-              - label: Body
-                name: body
-                widget: text
-              - label: Actions
-                name: actions
-                widget: list
-                fields:
-                  - label: Label
-                    name: label
-                    widget: string
-                  - label: Href
-                    name: href
-                    widget: string
-                  - label: Variant
-                    name: variant
-                    widget: select
-                    options:
-                      - primary
-                      - ghost
-                      - soft
       - name: contact
         label: Contact Page
         file: src/content/site/en/contact.json
@@ -356,36 +299,6 @@ collections:
               - label: Image Alt
                 name: imageAlt
                 widget: string
-              - label: Parallax Speed
-                name: parallaxSpeed
-                widget: number
-                value_type: float
-          - label: Form
-            name: form
-            widget: object
-            fields:
-              - label: Heading
-                name: heading
-                widget: string
-              - label: Purpose
-                name: purpose
-                widget: text
-              - label: Response Time
-                name: responseTime
-                widget: string
-              - label: Topics
-                name: topics
-                widget: list
-                fields:
-                  - label: Value
-                    name: value
-                    widget: string
-                  - label: Label
-                    name: label
-                    widget: string
-              - label: Privacy Note
-                name: privacyNote
-                widget: text
           - label: Aside
             name: aside
             widget: object
@@ -436,10 +349,6 @@ collections:
               - label: Logo
                 name: logo
                 widget: string
-              - label: Parallax Speed
-                name: parallaxSpeed
-                widget: number
-                value_type: float
           - label: Stats
             name: stats
             widget: list
@@ -450,20 +359,6 @@ collections:
               - label: Value
                 name: value
                 widget: string
-          - label: Features
-            name: features
-            widget: list
-            fields:
-              - label: Title
-                name: title
-                widget: string
-              - label: Body
-                name: body
-                widget: text
-              - label: Tag
-                name: tag
-                widget: string
-                required: false
           - label: Media
             name: media
             widget: object

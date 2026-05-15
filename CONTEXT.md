@@ -137,15 +137,15 @@ The protection layer that reduces automated abuse of contact form submissions.
 _Avoid_: Unprotected public form endpoints
 
 **Turnstile Protection**:
-The selected Cloudflare Turnstile challenge used to validate contact submissions before processing.
+The reserved Cloudflare Turnstile challenge to validate contact submissions if a form endpoint is reintroduced.
 _Avoid_: CAPTCHA solutions that conflict with tracker-free goals
 
 **Delivery Channel**:
-The transport path used by the Edge Submission Handler to deliver validated contact messages to the inbox.
+The transport path used by an optional submission handler to deliver validated contact messages to the inbox.
 _Avoid_: Unreliable direct SMTP implementations in v1
 
 **Transactional Email Relay**:
-The selected API-based email delivery service used by the edge handler to send contact submissions.
+The reserved API-based email delivery service for form submissions if endpoint-based contact is restored.
 _Avoid_: Maintaining custom mail transport infrastructure in v1
 
 ## Relationships
@@ -174,8 +174,8 @@ _Avoid_: Maintaining custom mail transport infrastructure in v1
 - The content architecture must remain a **Localization-Ready Content Model**.
 - The selected **Environment Model** for v1 is a **Two-Environment Model** with PR preview deployments.
 - The selected **Branch Protection** policy is a **Single-Reviewer Gate** for main branch merges.
-- The selected **Spam Defense** for the contact flow is **Turnstile Protection**.
-- The selected **Delivery Channel** for contact messages is a free-tier **Transactional Email Relay** compatible with the **Cost Guardrail**.
+- If form submissions are reintroduced, the selected **Spam Defense** for the contact flow is **Turnstile Protection**.
+- If endpoint-based contact is reintroduced, the selected **Delivery Channel** is a free-tier **Transactional Email Relay** compatible with the **Cost Guardrail**.
 
 ## Example dialogue
 

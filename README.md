@@ -1,13 +1,12 @@
 # Big Three Games Website
 
-Production-ready website structure rebuilt from scratch using the existing `reference/` pages as visual and content baseline.
+Production-ready studio website built with Astro, tokenized styles, and content-driven page data.
 
 ## Stack
 
 - Astro (static-first)
 - Tokenized CSS architecture (`src/styles/`)
 - Vanilla JS for interaction (`public/js/site.js`)
-- Cloudflare Pages Functions for contact handling (`functions/api/contact.ts`)
 - Decap CMS entrypoint for non-technical publishing (`public/admin/`)
 
 ## Project Structure
@@ -17,8 +16,7 @@ Production-ready website structure rebuilt from scratch using the existing `refe
 - `src/pages/` route pages (`/`, `/about`, `/contact`, `/games/heritage`)
 - `src/content/site/en/*.json` English-first content files (i18n-ready)
 - `src/styles/` tokens, base, layout, component, and page styles
-- `public/js/site.js` navigation, reveal motion, parallax, gallery, contact form logic
-- `functions/api/contact.ts` edge endpoint with Turnstile + Resend integration
+- `public/js/site.js` navigation, reveal motion, and gallery logic
 - `public/admin/` Decap CMS admin UI and config
 
 ## Local Development
@@ -56,10 +54,6 @@ npm run deps:blocklist
 ```
 
 Current blocklist includes `@tanstack/` to guard against the risk profile you raised.
-
-## Environment Variables
-
-Copy `.env.example` into your secret management workflow and set real values in Cloudflare Pages.
 
 ## Content Editing
 

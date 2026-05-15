@@ -16,8 +16,7 @@
       "Release",
       "Mode",
       "Platform"
-    ],
-    "parallaxSpeed": 0.09
+    ]
   },
   "stats": [
     {
@@ -35,28 +34,6 @@
     {
       "label": "Platform",
       "value": "Steam"
-    }
-  ],
-  "features": [
-    {
-      "title": "Legacy Progression",
-      "body": "Unlock permanent upgrades through the Hall of the Ancestors and push each new run further.",
-      "tag": "Long Arc"
-    },
-    {
-      "title": "Mandatory Battle Beats",
-      "body": "Critical encounters force adaptation and make every strategic choice matter.",
-      "tag": "Pressure"
-    },
-    {
-      "title": "Expressive Build Paths",
-      "body": "Create your own style through unit synergies, tactical positioning, and progression choices.",
-      "tag": "Identity"
-    },
-    {
-      "title": "Replayable World State",
-      "body": "Runs evolve based on decisions, producing fresh tactical situations and stories.",
-      "tag": "Replayability"
     }
   ],
   "media": {

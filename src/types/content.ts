@@ -20,8 +20,6 @@ export interface GlobalContent {
   tagline: string;
   contactEmail: string;
   wishlistUrl: string;
-  steamUrl: string;
-  steamDemoUrl: string;
   ui: {
     skipLinkLabel: string;
     brandHomeAriaLabel: string;
@@ -30,8 +28,6 @@ export interface GlobalContent {
     wishlistButtonLabel: string;
     footerLinksAriaLabel: string;
     footerCopyrightPrefix: string;
-    pressKitLabel: string;
-    pressKitUrl: string;
     adminPageTitle: string;
   };
   navigation: NavigationItem[];
@@ -49,7 +45,6 @@ export interface HomeContent {
     summary: string;
     videoMp4: string;
     videoTitle: string;
-    parallaxSpeed: number;
     tags: string[];
     tagsAriaLabel: string;
     actions: Array<LinkItem & { variant: ButtonVariant }>;
@@ -96,23 +91,14 @@ export interface AboutContent {
     summary: string;
     image: string;
     imageAlt: string;
-    parallaxSpeed: number;
   };
-  storyTitle: string;
   storySection: {
     kicker: string;
     title: string;
     lede: string;
   };
   memberCardAriaLabelPrefix: string;
-  storyCards: Array<{ title: string; body: string }>;
   members: Array<{ name: string; role: string; bio: string; image: string; imageAlt: string }>;
-  cta: {
-    kicker: string;
-    title: string;
-    body: string;
-    actions: Array<LinkItem & { variant: ButtonVariant }>;
-  };
 }
 
 export interface ContactContent {
@@ -126,14 +112,6 @@ export interface ContactContent {
     summary: string;
     image: string;
     imageAlt: string;
-    parallaxSpeed: number;
-  };
-  form: {
-    heading: string;
-    purpose: string;
-    responseTime: string;
-    topics: Array<{ value: string; label: string }>;
-    privacyNote: string;
   };
   aside: {
     kicker: string;
@@ -159,10 +137,8 @@ export interface HeritageContent {
     logoAlt: string;
     panelAriaLabel: string;
     panelStatLabels: string[];
-    parallaxSpeed: number;
   };
   stats: Array<{ label: string; value: string }>;
-  features: Array<{ title: string; body: string; tag?: string }>;
   media: {
     trailerMp4: string;
     sectionKicker: string;

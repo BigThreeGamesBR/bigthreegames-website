@@ -17,7 +17,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
   activePage="home"
 >
   <section class="hero hero--home" aria-labelledby="home-hero-title">
-    <div class="hero__media" data-parallax-speed={home.hero.parallaxSpeed.toString()}>
+    <div class="hero__media">
       {
         useHeroEmbed ? (
           <iframe

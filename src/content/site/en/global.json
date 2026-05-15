@@ -4,8 +4,6 @@
   "tagline": "Building worlds one system at a time.",
   "contactEmail": "bigthreegamesbr@gmail.com",
   "wishlistUrl": "https://store.steampowered.com/app/4308560/Heritage/",
-  "steamUrl": "https://store.steampowered.com/app/4308560/Heritage/",
-  "steamDemoUrl": "https://store.steampowered.com/app/4500250/Heritage_Demo/",
   "ui": {
     "skipLinkLabel": "Skip to main content",
     "brandHomeAriaLabel": "Big Three Games home",
@@ -14,8 +12,6 @@
     "wishlistButtonLabel": "Wishlist",
     "footerLinksAriaLabel": "Footer links",
     "footerCopyrightPrefix": "Copyright",
-    "pressKitLabel": "Press Kit",
-    "pressKitUrl": "https://drive.google.com/drive/u/1/folders/1JkQ1hTTZv64hTSwHMljGjbhEhhqp6Sfy",
     "adminPageTitle": "Big Three Games | Content Admin"
   },
   "navigation": [

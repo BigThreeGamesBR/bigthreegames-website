@@ -15,15 +15,13 @@ interface Props {
   description: string;
   pageClass: string;
   activePage: NavId;
-  includeTurnstile?: boolean;
 }
 
 const {
   title,
   description,
   pageClass,
-  activePage,
-  includeTurnstile = false
+  activePage
 } = Astro.props;
 const { global } = getSiteContent();
 ---
@@ -43,15 +41,6 @@ const { global } = getSiteContent();
       rel="stylesheet"
     />
     <script src="/js/site.js" defer></script>
-    {
-      includeTurnstile && (
-        <script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          async
-          defer
-        ></script>
-      )
-    }
   </head>
   <body class={pageClass} data-page={activePage}>
     <a class="skip-link" href="#main-content">{global.ui.skipLinkLabel}</a>

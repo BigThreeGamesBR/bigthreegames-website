@@ -8,36 +8,7 @@
     "title": "Contact Us",
     "summary": "Reach our team for press coverage, creator collaborations, player feedback, and support questions about Heritage. We do not offer external development services.",
     "image": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
-    "imageAlt": "Heritage header artwork",
-    "parallaxSpeed": 0.08
-  },
-  "form": {
-    "heading": "Send a Message",
-    "purpose": "Use this form for press requests, creator coverage, player feedback, and gameplay questions.",
-    "responseTime": "We usually respond within two business days.",
-    "topics": [
-      {
-        "value": "press",
-        "label": "Press / Creator Coverage"
-      },
-      {
-        "value": "community",
-        "label": "Community / Feedback"
-      },
-      {
-        "value": "gameplay",
-        "label": "Heritage Gameplay Question"
-      },
-      {
-        "value": "bug",
-        "label": "Heritage Bug Report"
-      },
-      {
-        "value": "other",
-        "label": "Other"
-      }
-    ],
-    "privacyNote": "Privacy note: submitted details are used only to respond to your inquiry."
+    "imageAlt": "Heritage header artwork"
   },
   "aside": {
     "kicker": "Contact",

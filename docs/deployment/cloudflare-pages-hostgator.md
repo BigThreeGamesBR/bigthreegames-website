@@ -12,40 +12,22 @@ This setup keeps domain registration at HostGator while running DNS and hosting 
 
 ## 2. Configure Environment Variables
 
-In Cloudflare Pages project settings, set:
+No runtime environment variables are required for the current static website and direct-email contact flow.
 
-- `PUBLIC_TURNSTILE_SITE_KEY`
-- `TURNSTILE_SECRET_KEY`
-- `RESEND_API_KEY`
-- `CONTACT_FROM_EMAIL`
-- `CONTACT_RECIPIENT_EMAIL`
-
-## 3. Turnstile
-
-1. Create a Turnstile site in Cloudflare dashboard.
-2. Set allowed domain(s).
-3. Use generated site key and secret in Pages variables.
-
-## 4. Resend
-
-1. Create a Resend account and API key (free tier).
-2. Verify sender domain/email.
-3. Set `CONTACT_FROM_EMAIL` and `RESEND_API_KEY` in Pages.
-
-## 5. Keep Domain at HostGator, Move DNS to Cloudflare
+## 3. Keep Domain at HostGator, Move DNS to Cloudflare
 
 1. Add your domain to Cloudflare.
 2. Cloudflare gives two nameservers.
 3. In HostGator domain settings, replace existing nameservers with the Cloudflare nameservers.
 4. Wait for propagation.
 
-## 6. Attach Custom Domain in Cloudflare Pages
+## 4. Attach Custom Domain in Cloudflare Pages
 
 1. In Pages project, open Custom Domains.
 2. Add your root domain and `www` as needed.
 3. Cloudflare will create DNS records automatically and issue SSL certificates.
 
-## 7. Branch Workflow
+## 5. Branch Workflow
 
 Recommended GitHub branch protections:
 
@@ -53,11 +35,10 @@ Recommended GitHub branch protections:
 - Require at least one approving review
 - Keep Cloudflare preview deployments enabled for all PRs
 
-## 8. Verify Contact Endpoint
+## 6. Verify Contact Route
 
 After deployment:
 
 1. Open `/contact`.
-2. Submit a test message.
-3. Confirm Turnstile challenge passes.
-4. Confirm message arrives at `CONTACT_RECIPIENT_EMAIL`.
+2. Verify the direct contact email link opens your email client correctly.
+3. Confirm all primary routes render without 404s.

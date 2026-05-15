@@ -8,33 +8,13 @@
     "title": "Our Studio",
     "summary": "Three childhood friends founded Big Three Games to build strategic worlds with strong identity, replayable systems, and community-driven iteration.",
     "image": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
-    "imageAlt": "Panoramic Heritage world art",
-    "parallaxSpeed": 0.1
+    "imageAlt": "Panoramic Heritage world art"
   },
-  "storyTitle": "Small Team, Long Vision",
   "storySection": {
     "kicker": "Studio Story",
     "title": "A tale of three friends"
   },
   "memberCardAriaLabelPrefix": "Team member",
-  "storyCards": [
-    {
-      "title": "Independent by Design",
-      "body": "We are a self-driven studio. That means we can move fast, test ideas, and stay close to the players who care about our games."
-    },
-    {
-      "title": "Systems With Character",
-      "body": "We do not separate mechanics from mood. Every system should carry personality, visual clarity, and meaningful player decisions."
-    },
-    {
-      "title": "Community Feedback Loop",
-      "body": "We release updates, read feedback, and iterate openly. Better balance and stronger progression come from that ongoing dialogue."
-    },
-    {
-      "title": "Built for the Long Run",
-      "body": "Our roadmap focuses on durability: systems that remain interesting, content that expands, and worlds players want to return to."
-    }
-  ],
   "members": [
     {
       "name": "Breno Fontenelle",
@@ -57,22 +37,5 @@
       "image": "/assets/studio/members/guilherme.jpg",
       "imageAlt": "Guilherme from Big Three Games"
     }
-  ],
-  "cta": {
-    "kicker": "Next Step",
-    "title": "Discover Heritage or Reach Out",
-    "body": "See how our philosophy translates into gameplay, or contact us for press and community communication.",
-    "actions": [
-      {
-        "label": "Explore Heritage",
-        "href": "/games/heritage",
-        "variant": "primary"
-      },
-      {
-        "label": "Contact Us",
-        "href": "/contact",
-        "variant": "ghost"
-      }
-    ]
-  }
+  ]
 }
