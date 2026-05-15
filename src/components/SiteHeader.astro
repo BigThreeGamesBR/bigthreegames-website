@@ -1,0 +1,68 @@
+---
+import { getSiteContent } from '../lib/content';
+import type { NavId } from '../types/content';
+
+interface Props {
+  activePage: NavId;
+}
+
+const { activePage } = Astro.props;
+const { global } = getSiteContent();
+---
+
+<header class="site-header" data-site-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${global.siteName} home`}>
+      <img
+        class="brand__mark brand__official-mark"
+        src="/assets/studio/logo/b3g_official_logo.png"
+        alt=""
+        width="1024"
+        height="1024"
+        aria-hidden="true"
+      />
+      <span class="brand__type">
+        <span class="brand__title">{global.siteName}</span>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="site-navigation"
+    >
+      Menu
+    </button>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul id="site-navigation" data-nav-list>
+        {
+          global.navigation.map((item) => (
+            <li>
+              <a
+                class={`nav-link ${item.id === activePage ? 'is-active' : ''}`}
+                data-nav-link
+                data-nav-page={item.id}
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            class="button button--sm button--primary"
+            href={global.wishlistUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wishlist
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

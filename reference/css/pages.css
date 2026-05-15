@@ -1,0 +1,340 @@
+.page-home .hero__title {
+  max-width: 12ch;
+}
+
+.page-home .hero__summary {
+  font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+}
+
+.page-home .hero__media video {
+  object-position: center 26%;
+  opacity: 0.84;
+}
+
+.page-home .hero__media img {
+  opacity: 0;
+}
+
+.page-home .hero__veil {
+  background: transparent;
+}
+
+.page-home .hero .chip-list {
+  margin-top: var(--space-sm);
+  gap: 0.8rem;
+}
+
+.page-home .hero__actions .button {
+  min-height: 3.15rem;
+  padding: 0.82rem 1.55rem;
+  font-size: 0.96rem;
+}
+
+.home-game-layout {
+  display: grid;
+  gap: var(--space-lg);
+  justify-items: center;
+}
+
+.home-keyart-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.home-keyart-figure {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  flex: 1;
+}
+
+.home-keyart-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-keyart-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+}
+
+.home-game-logo {
+  width: min(26rem, 100%);
+  display: block;
+  margin-inline: auto;
+  margin-bottom: var(--space-sm);
+}
+
+.home-game-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-lg);
+  width: 100%;
+  max-width: 34rem;
+  text-align: center;
+}
+
+.home-game-info__intro {
+  margin-inline: auto;
+  color: var(--color-ink-strong);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.home-game-info .meta-list {
+  margin-top: var(--space-sm);
+  justify-items: center;
+}
+
+.home-game-info .meta-list li {
+  grid-template-columns: auto auto;
+  justify-content: center;
+}
+
+.home-game-info .chip-list,
+.home-game-info .cluster {
+  justify-content: center;
+}
+
+.home-studio-values {
+  grid-template-columns: 1fr;
+}
+
+.page-home #contact .cta-band__inner {
+  background:
+    linear-gradient(120deg, rgba(19, 13, 11, 0.82), rgba(127, 27, 0, 0.5)),
+    radial-gradient(circle at 55% 42%, rgba(217, 44, 40, 0.44), rgba(14, 11, 10, 0.9) 65%),
+    url("../assets/heritage/key/Horizontal_NoLogo_1920x1080.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.page-home #contact .cta-band__inner .cluster {
+  justify-content: center;
+  align-items: center;
+}
+
+.page-home #contact .cta-band__inner .button {
+  min-width: 11.5rem;
+}
+
+.feature-grid {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.feature-card {
+  padding: var(--space-md);
+}
+
+.feature-card h3 {
+  margin-bottom: 0.35rem;
+}
+
+.feature-card p {
+  color: var(--color-ink-muted);
+}
+
+.highlight-pill {
+  display: inline-flex;
+  margin-top: var(--space-xs);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.7rem;
+  border: var(--border-thin) solid rgba(28, 224, 207, 0.35);
+  color: var(--color-heritage-glow);
+  font-size: var(--font-size-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.page-heritage .hero__media img {
+  object-position: center 20%;
+}
+
+.heritage-pitch {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.hero-logo {
+  width: clamp(9.5rem, 24vw, 14rem);
+  margin-bottom: var(--space-xs);
+}
+
+.stats-grid {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.heritage-media-layout {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.trailer-card {
+  padding: var(--space-md);
+}
+
+.trailer-card__media {
+  margin-top: var(--space-sm);
+}
+
+.trailer-card video {
+  width: 100%;
+  max-height: min(62vh, 34rem);
+  border-radius: var(--radius-md);
+  border: var(--border-thin) solid var(--color-border-bright);
+  background-color: #000;
+}
+
+.stat-card {
+  padding: var(--space-sm);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.stat-card strong {
+  display: block;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.05em;
+}
+
+.stat-card span {
+  color: var(--color-ink-subtle);
+  font-size: var(--font-size-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.page-about .hero__media img {
+  object-position: center 32%;
+}
+
+.story-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.member-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 17.5rem));
+  justify-content: center;
+}
+
+.member-card {
+  overflow: hidden;
+  max-width: 17.5rem;
+  margin-inline: auto;
+}
+
+.member-card__media {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.member-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.member-card__body {
+  padding: var(--space-md);
+}
+
+.member-card__role {
+  color: var(--color-brand-peach);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.timeline {
+  list-style: none;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.timeline li {
+  padding: var(--space-md);
+}
+
+.timeline strong {
+  color: var(--color-brand-peach);
+  font-family: var(--font-family-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.page-contact .hero {
+  min-height: min(78vh, 36rem);
+}
+
+.page-contact .hero__media img {
+  object-position: center top;
+}
+
+.contact-note {
+  margin-top: var(--space-sm);
+  color: var(--color-ink-subtle);
+  font-size: var(--font-size-small);
+}
+
+@media (min-width: 48rem) {
+  .home-keyart-figure {
+    aspect-ratio: 5 / 4;
+  }
+
+  .home-game-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .home-studio-values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-home #contact .cta-band__inner .cluster {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 68rem) {
+  .heritage-media-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: start;
+  }
+
+  .page-home #contact .cta-band__inner .cluster {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Big Three Games</title>
+    <meta
+      name="description"
+      content="Contact Big Three Games for Heritage press coverage, community feedback, and general studio inquiries."
+    />
+    <link rel="icon" type="image/png" href="assets/heritage/icon/game_icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body class="page-contact" data-page="contact">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" data-site-header>
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Big Three Games home">
+          <img
+            class="brand__official-mark"
+            src="assets/studio/logo/b3g_official_logo.png"
+            alt="Big Three Games"
+            width="2048"
+            height="1024"
+          />
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" aria-label="Primary">
+          <ul id="site-navigation" data-nav-list>
+            <li><a class="nav-link" data-nav-link href="index.html">Home</a></li>
+            <li><a class="nav-link" data-nav-link href="games/heritage.html">Heritage</a></li>
+            <li><a class="nav-link" data-nav-link href="about.html">Studio</a></li>
+            <li><a class="nav-link" data-nav-link href="contact.html">Contact</a></li>
+            <li>
+              <a
+                class="button button--sm button--primary"
+                href="https://store.steampowered.com/app/4308560/Heritage/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Wishlist</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="contact-hero-title">
+        <div class="hero__media" data-parallax-speed="0.08">
+          <img
+            src="assets/heritage/key/Horizontal_NoLogo_1500x220.png"
+            alt="Heritage header artwork"
+            loading="eager"
+          />
+        </div>
+        <div class="hero__veil"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content reveal">
+            <p class="hero__eyebrow">Contact</p>
+            <h1 class="hero__title" id="contact-hero-title">
+              Talk To The Heritage Team.
+            </h1>
+            <p class="hero__summary">
+              Big Three Games is a game development studio focused on creating our
+              own original titles. We are not accepting publishing offers or external
+              game development work-for-hire requests.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="contact-form-title">
+        <div class="container contact-layout">
+          <article class="contact-card surface reveal" aria-labelledby="contact-form-title">
+            <header class="section__head">
+              <p class="section__kicker">Form</p>
+              <h2 class="section__title" id="contact-form-title">Send A Message</h2>
+            </header>
+
+            <form class="stack" data-contact-form data-endpoint="">
+              <div class="field-group">
+                <label class="field-label" for="name">Name *</label>
+                <input
+                  class="field-input"
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  aria-describedby="error-name"
+                  required
+                />
+                <p class="field-help field-error" id="error-name" data-error-for="name"></p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="email">Email *</label>
+                <input
+                  class="field-input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  aria-describedby="error-email"
+                  required
+                />
+                <p class="field-help field-error" id="error-email" data-error-for="email"></p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="company">Channel / Organization (optional)</label>
+                <input class="field-input" id="company" name="company" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="topic">Topic *</label>
+                <select
+                  class="field-select"
+                  id="topic"
+                  name="topic"
+                  aria-describedby="error-topic"
+                  required
+                >
+                  <option value="" selected disabled>Select one topic</option>
+                  <option value="press">Press / Creator Coverage</option>
+                  <option value="community">Community / Feedback</option>
+                  <option value="gameplay">Heritage Gameplay Question</option>
+                  <option value="bug">Heritage Bug Report</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="field-help field-error" id="error-topic" data-error-for="topic"></p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="message">Message *</label>
+                <textarea
+                  class="field-textarea"
+                  id="message"
+                  name="message"
+                  aria-describedby="help-message error-message"
+                  required
+                ></textarea>
+                <p class="field-help" id="help-message">
+                  Please include context and a clear ask so we can route your message quickly.
+                </p>
+                <p class="field-help field-error" id="error-message" data-error-for="message"></p>
+              </div>
+
+              <div class="cluster">
+                <button class="button button--primary" type="submit">Send Message</button>
+                <a class="button button--ghost" href="mailto:hello@bigthreegames.com">Email Instead</a>
+              </div>
+
+              <p class="form-status" data-form-status aria-live="polite"></p>
+              <p class="contact-note">
+                Privacy note: submitted details are used only to respond to your inquiry.
+              </p>
+            </form>
+          </article>
+
+          <aside class="contact-card surface reveal stack" aria-label="Contact alternatives">
+            <h2 class="section__title">Other Ways To Reach Us</h2>
+            <p>
+              If your request is urgent or you prefer email, contact us directly at
+              <a href="mailto:hello@bigthreegames.com">hello@bigthreegames.com</a>.
+            </p>
+            <p>
+              We only create and improve our own games. We are not offering external
+              development services.
+            </p>
+
+            <div class="cluster">
+              <a
+                class="button button--soft"
+                href="https://store.steampowered.com/app/4308560/Heritage/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Heritage On Steam</a
+              >
+              <a class="button button--ghost" href="games/heritage.html">Game Page</a>
+            </div>
+
+            <p class="field-help">
+              Integration note: to activate form submission, set your endpoint URL in
+              the <code>data-endpoint</code> attribute in this page.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="stack">
+          <a class="brand" href="index.html" aria-label="Big Three Games home">
+            <img
+              class="brand__official-mark"
+              src="assets/studio/logo/b3g_official_logo.png"
+              alt="Big Three Games"
+              width="2048"
+              height="1024"
+            />
+          </a>
+          <p class="copyright">Big Three Games. Contact route for press, players, and community.</p>
+        </div>
+
+        <ul class="footer-links" aria-label="Footer links">
+          <li><a href="games/heritage.html">Heritage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@bigthreegames.com">Email</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </body>
+</html>

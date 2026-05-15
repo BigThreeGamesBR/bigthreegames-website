@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteContent } from '../lib/content';
+
+const { about } = getSiteContent();
+---
+
+<BaseLayout
+  title={about.seo.title}
+  description={about.seo.description}
+  pageClass="page-about"
+  activePage="about"
+>
+  <section class="hero" aria-labelledby="about-hero-title">
+    <div class="hero__media" data-parallax-speed={about.hero.parallaxSpeed.toString()}>
+      <img src={about.hero.image} alt={about.hero.imageAlt} loading="eager" />
+    </div>
+    <div class="hero__veil"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <p class="hero__eyebrow">{about.hero.eyebrow}</p>
+        <h1 class="hero__title" id="about-hero-title">{about.hero.title}</h1>
+        <p class="hero__summary">{about.hero.summary}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="members" aria-labelledby="members-title">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="section__kicker">Studio Story</p>
+        <h2 class="section__title" id="members-title">
+          Big Three Games was created by three childhood friends united by games.
+        </h2>
+        <p class="section__lede">
+          Member Spotlight
+        </p>
+      </header>
+
+      <div class="member-grid">
+        {
+          about.members.map((member) => (
+            <article class="member-card surface reveal" aria-label={`Team member ${member.name}`}>
+              <figure class="member-card__media">
+                <img src={member.image} alt={member.imageAlt} loading="lazy" />
+              </figure>
+              <div class="member-card__body stack">
+                <h3>{member.name}</h3>
+                <p class="member-card__role">{member.role}</p>
+                <p>{member.bio}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

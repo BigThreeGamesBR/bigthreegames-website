@@ -1,0 +1,65 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import type { NavId } from '../types/content';
+
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/pages.css';
+
+interface Props {
+  title: string;
+  description: string;
+  pageClass: string;
+  activePage: NavId;
+  includeTurnstile?: boolean;
+}
+
+const {
+  title,
+  description,
+  pageClass,
+  activePage,
+  includeTurnstile = false
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/assets/heritage/icon/game_icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/js/site.js" defer></script>
+    {
+      includeTurnstile && (
+        <script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        ></script>
+      )
+    }
+  </head>
+  <body class={pageClass} data-page={activePage}>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <SiteHeader activePage={activePage} />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <SiteFooter />
+  </body>
+</html>

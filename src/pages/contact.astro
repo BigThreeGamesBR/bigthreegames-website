@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteContent } from '../lib/content';
+
+const { contact, global } = getSiteContent();
+const turnstileSiteKey =
+  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
+---
+
+<BaseLayout
+  title={contact.seo.title}
+  description={contact.seo.description}
+  pageClass="page-contact"
+  activePage="contact"
+  includeTurnstile
+>
+  <section class="hero" aria-labelledby="contact-hero-title">
+    <div class="hero__media" data-parallax-speed={contact.hero.parallaxSpeed.toString()}>
+      <img src={contact.hero.image} alt={contact.hero.imageAlt} loading="eager" />
+    </div>
+    <div class="hero__veil"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <p class="hero__eyebrow">{contact.hero.eyebrow}</p>
+        <h1 class="hero__title" id="contact-hero-title">{contact.hero.title}</h1>
+        <p class="hero__summary">{contact.hero.summary}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="contact-form-title">
+    <div class="container contact-layout">
+      <article class="contact-card surface reveal" aria-labelledby="contact-form-title">
+        <header class="section__head">
+          <p class="section__kicker">Form</p>
+          <h2 class="section__title" id="contact-form-title">{contact.form.heading}</h2>
+          <p class="section__lede">{contact.form.purpose}</p>
+        </header>
+
+        <form class="stack" data-contact-form data-endpoint="/api/contact" novalidate>
+          <div class="field-group">
+            <label class="field-label" for="name">Name *</label>
+            <input
+              class="field-input"
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              aria-describedby="error-name"
+              required
+            />
+            <p class="field-help field-error" id="error-name" data-error-for="name"></p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="email">Email *</label>
+            <input
+              class="field-input"
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              aria-describedby="error-email"
+              required
+            />
+            <p class="field-help field-error" id="error-email" data-error-for="email"></p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="company">Channel / Organization (optional)</label>
+            <input
+              class="field-input"
+              id="company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="topic">Topic *</label>
+            <select class="field-select" id="topic" name="topic" aria-describedby="error-topic" required>
+              <option value="" selected disabled>Select one topic</option>
+              {
+                contact.form.topics.map((topic) => (
+                  <option value={topic.value}>{topic.label}</option>
+                ))
+              }
+            </select>
+            <p class="field-help field-error" id="error-topic" data-error-for="topic"></p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="message">Message *</label>
+            <textarea
+              class="field-textarea"
+              id="message"
+              name="message"
+              aria-describedby="help-message error-message"
+              required
+            ></textarea>
+            <p class="field-help" id="help-message">
+              Please include context and a clear ask so we can route your message quickly.
+            </p>
+            <p class="field-help field-error" id="error-message" data-error-for="message"></p>
+          </div>
+
+          <div class="field-group field-honeypot" aria-hidden="true">
+            <label class="field-label" for="website">Leave this field blank</label>
+            <input class="field-input" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Verification *</label>
+            <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+            <p class="field-help field-error" data-error-for="turnstile"></p>
+          </div>
+
+          <div class="cluster">
+            <button class="button button--primary" type="submit">Send Message</button>
+            <a class="button button--ghost" href={`mailto:${global.contactEmail}`}>Email Instead</a>
+          </div>
+
+          <p class="form-status" data-form-status aria-live="polite"></p>
+          <p class="field-help">{contact.form.responseTime}</p>
+          <p class="contact-note">{contact.form.privacyNote}</p>
+        </form>
+      </article>
+
+      <aside class="contact-card surface reveal stack" aria-label="Contact alternatives">
+        <h2 class="section__title">{contact.aside.heading}</h2>
+        <p>
+          {contact.aside.body}
+          <a href={`mailto:${global.contactEmail}`}> {global.contactEmail}</a>.
+        </p>
+        <p>{contact.aside.servicesNote}</p>
+
+        <div class="cluster">
+          <a
+            class="button button--soft"
+            href={global.steamUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Heritage on Steam
+          </a>
+          <a class="button button--ghost" href="/games/heritage">Game Page</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

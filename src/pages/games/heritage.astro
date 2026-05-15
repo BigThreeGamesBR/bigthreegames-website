@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteContent } from '../../lib/content';
+
+const { heritage, global } = getSiteContent();
+const heroStatus = heritage.stats.filter((stat) => stat.label === 'Release' || stat.label === 'Platform');
+const mediaSlideCount = heritage.media.screenshots.length + 1;
+---
+
+<BaseLayout
+  title={heritage.seo.title}
+  description={heritage.seo.description}
+  pageClass="page-heritage"
+  activePage="heritage"
+>
+  <section class="hero" aria-labelledby="heritage-hero-title">
+    <div class="hero__media" data-parallax-speed={heritage.hero.parallaxSpeed.toString()}>
+      <img src={heritage.hero.image} alt={heritage.hero.imageAlt} loading="eager" />
+    </div>
+    <div class="hero__veil"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content heritage-pitch reveal">
+        <p class="hero__eyebrow">{heritage.hero.eyebrow}</p>
+        <h1 class="hero__title" id="heritage-hero-title">{heritage.hero.title}</h1>
+        <p class="hero__summary">{heritage.hero.summary}</p>
+      </div>
+
+      <aside class="hero__panel reveal" aria-label="Heritage release status">
+        <dl>
+          {
+            heroStatus.map((stat) => (
+              <>
+                <dt>{stat.label}</dt>
+                <dd>{stat.value}</dd>
+              </>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="media" aria-labelledby="heritage-media-title">
+    <div class="container heritage-media-layout">
+      <img
+        class="heritage-main-logo reveal"
+        src={heritage.hero.logo}
+        alt="Heritage logo"
+        loading="eager"
+      />
+
+      <header class="section__head reveal">
+        <p class="section__kicker">Media</p>
+        <h2 class="section__title" id="heritage-media-title">Trailer and Screenshots</h2>
+      </header>
+
+      <aside class="gallery gallery--thumbs reveal" data-gallery aria-label="Heritage trailer and screenshots">
+        <div class="gallery__viewport">
+          <figure class="gallery__slide gallery__slide--video">
+            <div class="gallery__video-frame">
+              <video controls preload="metadata" playsinline poster="/assets/heritage/trailer/Heritage-Thumbnail.png">
+                <source src={heritage.media.trailerMp4} type="video/mp4" />
+              </video>
+            </div>
+            <figcaption class="gallery__caption">Heritage official reveal trailer.</figcaption>
+          </figure>
+
+          {
+            heritage.media.screenshots.map((shot, index) => (
+              <figure class="gallery__slide" hidden>
+                <img src={shot.image} alt={shot.alt} loading="lazy" />
+                <figcaption class="gallery__caption">{shot.caption}</figcaption>
+              </figure>
+            ))
+          }
+
+          <button class="gallery__nav gallery__nav--prev" type="button" data-gallery-prev aria-label="Previous media item">
+            &#10094;
+          </button>
+          <button class="gallery__nav gallery__nav--next" type="button" data-gallery-next aria-label="Next media item">
+            &#10095;
+          </button>
+          <p class="gallery__status" data-gallery-status>
+            1 / {mediaSlideCount}
+          </p>
+        </div>
+
+        <div class="gallery__thumbs" aria-label="Media carousel thumbnails">
+          <button
+            class="gallery__thumb gallery__thumb--trailer is-active"
+            type="button"
+            data-gallery-thumb="0"
+            aria-label="Show trailer"
+            aria-pressed="true"
+          >
+            <img src="/assets/heritage/trailer/Heritage-Thumbnail.png" alt="" loading="lazy" />
+            <span>Trailer</span>
+          </button>
+
+          {
+            heritage.media.screenshots.map((shot, index) => (
+              <button
+                class="gallery__thumb"
+                type="button"
+                data-gallery-thumb={(index + 1).toString()}
+                aria-label={`Show screenshot ${index + 1}`}
+                aria-pressed="false"
+              >
+                <img src={shot.image} alt="" loading="lazy" />
+              </button>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band cta-band--keyart" aria-labelledby="heritage-cta-title">
+    <div class="container">
+      <div class="cta-band__inner reveal split split--equal">
+        <div class="stack">
+          <p class="section__kicker">{heritage.cta.kicker}</p>
+          <h2 class="cta-band__title" id="heritage-cta-title">{heritage.cta.title}</h2>
+          <p>{heritage.cta.body}</p>
+        </div>
+
+        <div class="cluster">
+          <a class="button button--primary" href={global.steamUrl} target="_blank" rel="noopener noreferrer">
+            Open Steam Page
+          </a>
+          <a class="button button--ghost" href={`mailto:${global.contactEmail}?subject=Heritage%20Press%20Kit`}>Press Kit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

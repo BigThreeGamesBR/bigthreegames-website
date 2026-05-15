@@ -1,0 +1,128 @@
+{
+  "seo": {
+    "title": "Heritage | Big Three Games",
+    "description": "Discover Heritage, a strategic auto-battler roguelike from Big Three Games where each run builds a lasting legacy."
+  },
+  "hero": {
+    "eyebrow": "Game Focus",
+    "title": "Heritage",
+    "summary": "Build your legacy across decades, survive pivotal battles, and grow stronger through the Hall of the Ancestors.",
+    "image": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
+    "imageAlt": "Wide Heritage key art scene",
+    "logo": "/assets/heritage/logo/Heritage%20Logo.png",
+    "parallaxSpeed": 0.09
+  },
+  "stats": [
+    {
+      "label": "Genre",
+      "value": "Auto-Battler Roguelike"
+    },
+    {
+      "label": "Mode",
+      "value": "Single Player"
+    },
+    {
+      "label": "Release",
+      "value": "Q3 2026"
+    },
+    {
+      "label": "Platform",
+      "value": "Steam"
+    }
+  ],
+  "features": [
+    {
+      "title": "Legacy Progression",
+      "body": "Unlock permanent upgrades through the Hall of the Ancestors and push each new run further.",
+      "tag": "Long Arc"
+    },
+    {
+      "title": "Mandatory Battle Beats",
+      "body": "Critical encounters force adaptation and make every strategic choice matter.",
+      "tag": "Pressure"
+    },
+    {
+      "title": "Expressive Build Paths",
+      "body": "Create your own style through unit synergies, tactical positioning, and progression choices.",
+      "tag": "Identity"
+    },
+    {
+      "title": "Replayable World State",
+      "body": "Runs evolve based on decisions, producing fresh tactical situations and stories.",
+      "tag": "Replayability"
+    }
+  ],
+  "media": {
+    "trailerMp4": "/assets/heritage/trailer/Heritage%20Trailer.mp4",
+    "screenshots": [
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110149.png",
+        "alt": "Heritage combat screen with units positioned across lanes",
+        "caption": "Opening encounter with frontline pressure and clear unit lanes."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110157.png",
+        "alt": "Heritage roster planning screen during a run",
+        "caption": "Early roster setup before the next mandatory combat."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110210.png",
+        "alt": "Heritage shop and economy interface",
+        "caption": "Shop and economy screen used to prepare a new build."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110230.png",
+        "alt": "Heritage tactical board with active synergies",
+        "caption": "Mid-run board state highlighting synergy positioning."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110320.png",
+        "alt": "Heritage progression menu with run milestones",
+        "caption": "Progression menu showing long-arc upgrades."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110352.png",
+        "alt": "Heritage combat wave with multiple enemy paths",
+        "caption": "Combat wave with multiple threats entering at once."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110419.png",
+        "alt": "Heritage character and trait details panel",
+        "caption": "Character and trait overview for tactical planning."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20110526.png",
+        "alt": "Heritage build customization and upgrade options",
+        "caption": "Build customization screen with upgrade decisions."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20111001.png",
+        "alt": "Heritage post-battle report and rewards",
+        "caption": "Post-battle summary for adapting the next strategy."
+      },
+      {
+        "image": "/assets/heritage/screenshots/Captura%20de%20tela%202026-04-29%20111703.png",
+        "alt": "Heritage late-run strategic setup screen",
+        "caption": "Advanced run setup with late-game strategic choices."
+      }
+    ]
+  },
+  "cta": {
+    "kicker": "Play and Follow",
+    "title": "Wishlist Heritage and Follow Development",
+    "body": "Track updates, try the demo, and help shape balance through community feedback.",
+    "actions": [
+      {
+        "label": "Open Steam Page",
+        "href": "https://store.steampowered.com/app/4308560/Heritage/",
+        "variant": "primary",
+        "external": true
+      },
+      {
+        "label": "Contact the Team",
+        "href": "/contact",
+        "variant": "ghost"
+      }
+    ]
+  }
+}

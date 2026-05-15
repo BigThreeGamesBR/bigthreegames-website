@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Big Three Games | Independent Studio</title>
+    <meta
+      name="description"
+      content="Learn about Big Three Games, our studio values, and how we build long-term strategic game worlds like Heritage."
+    />
+    <link rel="icon" type="image/png" href="assets/heritage/icon/game_icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body class="page-about" data-page="about">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" data-site-header>
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Big Three Games home">
+          <img
+            class="brand__official-mark"
+            src="assets/studio/logo/b3g_official_logo.png"
+            alt="Big Three Games"
+            width="2048"
+            height="1024"
+          />
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-navigation"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" aria-label="Primary">
+          <ul id="site-navigation" data-nav-list>
+            <li><a class="nav-link" data-nav-link href="index.html">Home</a></li>
+            <li><a class="nav-link" data-nav-link href="games/heritage.html">Heritage</a></li>
+            <li><a class="nav-link" data-nav-link href="about.html">Studio</a></li>
+            <li><a class="nav-link" data-nav-link href="contact.html">Contact</a></li>
+            <li>
+              <a
+                class="button button--sm button--primary"
+                href="https://store.steampowered.com/app/4308560/Heritage/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Wishlist</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="about-hero-title">
+        <div class="hero__media" data-parallax-speed="0.1">
+          <img
+            src="assets/heritage/key/Horizontal_NoLogo_1920x1080.png"
+            alt="Panoramic Heritage world art"
+            loading="eager"
+          />
+        </div>
+        <div class="hero__veil"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content reveal">
+            <p class="hero__eyebrow">About The Studio</p>
+            <h1 class="hero__title" id="about-hero-title">
+              We build strategic games with identity and staying power.
+            </h1>
+            <p class="hero__summary">
+              Big Three Games is an independent team focused on expressive worlds,
+              replayable systems, and communities that help shape each release over
+              time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="story-title">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="section__kicker">Our Story</p>
+            <h2 class="section__title" id="story-title">Small Team, Long Vision</h2>
+          </header>
+
+          <div class="story-grid">
+            <article class="surface value-card reveal stack">
+              <h3>Independent By Design</h3>
+              <p>
+                We are a self-driven studio. That means we can move fast, test ideas,
+                and stay close to the players who care about our games.
+              </p>
+            </article>
+
+            <article class="surface value-card reveal stack">
+              <h3>Systems With Character</h3>
+              <p>
+                We do not separate mechanics from mood. Every system should carry
+                personality, visual clarity, and meaningful player decisions.
+              </p>
+            </article>
+
+            <article class="surface value-card reveal stack">
+              <h3>Community Feedback Loop</h3>
+              <p>
+                We release updates, read feedback, and iterate openly. Better balance
+                and stronger progression come from that ongoing dialogue.
+              </p>
+            </article>
+
+            <article class="surface value-card reveal stack">
+              <h3>Built For The Long Run</h3>
+              <p>
+                Our roadmap focuses on durability: systems that remain interesting,
+                content that expands, and worlds players want to return to.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight" id="members" aria-labelledby="members-title">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="section__kicker">Team</p>
+            <h2 class="section__title" id="members-title">Member Spotlight</h2>
+            <p class="section__lede">
+              We are a focused indie team building and iterating on our own original
+              games.
+            </p>
+          </header>
+
+          <div class="member-grid">
+            <article class="member-card surface reveal" aria-label="Team member Matheus">
+              <figure class="member-card__media">
+                <img
+                  src="assets/studio/members/matheus.jpg"
+                  alt="Matheus from Big Three Games"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="member-card__body stack">
+                <h3>Matheus</h3>
+                <p class="member-card__role">Big Three Games Team Member</p>
+                <p>
+                  Focused on gameplay systems, balancing, and long-term iteration for
+                  Heritage.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band" aria-labelledby="about-cta-title">
+        <div class="container">
+          <div class="cta-band__inner reveal split split--equal">
+            <div class="stack">
+              <p class="section__kicker">Next Step</p>
+              <h2 class="cta-band__title" id="about-cta-title">Discover Heritage Or Reach Out</h2>
+              <p>
+                See how our philosophy translates into gameplay, or contact us for
+                press and community communication.
+              </p>
+            </div>
+
+            <div class="cluster">
+              <a class="button button--primary" href="games/heritage.html">Explore Heritage</a>
+              <a class="button button--ghost" href="contact.html">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="stack">
+          <a class="brand" href="index.html" aria-label="Big Three Games home">
+            <img
+              class="brand__official-mark"
+              src="assets/studio/logo/b3g_official_logo.png"
+              alt="Big Three Games"
+              width="2048"
+              height="1024"
+            />
+          </a>
+          <p class="copyright">Big Three Games. Building worlds one system at a time.</p>
+        </div>
+
+        <ul class="footer-links" aria-label="Footer links">
+          <li><a href="games/heritage.html">Heritage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="https://store.steampowered.com/app/4308560/Heritage/" target="_blank" rel="noopener noreferrer">Steam</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+  </body>
+</html>

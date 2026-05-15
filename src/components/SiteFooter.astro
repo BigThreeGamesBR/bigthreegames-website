@@ -1,0 +1,39 @@
+---
+import { getSiteContent } from '../lib/content';
+
+const { global } = getSiteContent();
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="stack">
+      <a class="brand" href="/" aria-label={`${global.siteName} home`}>
+        <img
+          class="brand__mark brand__official-mark"
+          src="/assets/studio/logo/b3g_official_logo.png"
+          alt=""
+          width="1024"
+          height="1024"
+          aria-hidden="true"
+        />
+        <span class="brand__type">
+          <span class="brand__title">{global.siteName}</span>
+        </span>
+      </a>
+      <p class="copyright">Copyright {currentYear} {global.siteName}. {global.tagline}</p>
+    </div>
+
+    <ul class="footer-links" aria-label="Footer links">
+      {
+        global.footerLinks.map((link) => (
+          <li>
+            <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,104 @@
+{
+  "seo": {
+    "title": "Big Three Games | Heritage and Future Worlds",
+    "description": "Big Three Games is an independent studio creating strategic worlds with expressive characters. Explore Heritage and get in touch with the team."
+  },
+  "hero": {
+    "eyebrow": "Crafted in Brazil. Played worldwide.",
+    "title": "Legends are born from hard choices.",
+    "summary": "Big Three Games creates strategic and challenging worlds. Our first title, Heritage, blends roguelike decision-making with auto-battler combat and RPG elements.",
+    "videoMp4": "/assets/heritage/trailer/Heritage%20Trailer.mp4",
+    "parallaxSpeed": 0.14,
+    "tags": [
+      "Roguelike",
+      "Auto Battler",
+      "Strategy RPG",
+      "Single Player"
+    ],
+    "actions": [
+      {
+        "label": "Explore Heritage",
+        "href": "/games/heritage",
+        "variant": "primary"
+      },
+      {
+        "label": "Meet the Studio",
+        "href": "/about",
+        "variant": "ghost"
+      }
+    ],
+    "status": [
+      {
+        "label": "Release",
+        "value": "Q3 2026"
+      },
+      {
+        "label": "Platform",
+        "value": "Steam"
+      }
+    ]
+  },
+  "games": {
+    "kicker": "Games",
+    "title": "Currently In Development",
+    "lede": "Starting our legacy: Heritage.",
+    "keyArt": "/assets/heritage/key/VerticalNoLogo_1080x1920.png",
+    "keyArtAlt": "Vertical key art featuring Oro from Heritage",
+    "intro": "Your run is your life story. Build over decades, survive battles, unlock improvements in the Ancestor's Hall, and return stronger.",
+    "details": [
+      {
+        "label": "Genre",
+        "value": "Auto-Battler Roguelike"
+      },
+      {
+        "label": "Status",
+        "value": "In Development"
+      },
+      {
+        "label": "Release",
+        "value": "Q3 2026"
+      },
+      {
+        "label": "Demo",
+        "value": "Available on Steam"
+      }
+    ],
+    "tags": [
+      "Roguelike",
+      "Auto Battler",
+      "RPG",
+      "Strategy"
+    ]
+  },
+  "values": [
+    {
+      "title": "Player-Driven Iteration",
+      "body": "We ship updates, gather real feedback, and evolve systems until the game feels sharp and rewarding."
+    },
+    {
+      "title": "Systemic Depth",
+      "body": "We build mechanics that interact in interesting ways so each build and each run can tell a different story."
+    },
+    {
+      "title": "Memorable Character",
+      "body": "We want each world to have personality, visual identity, and stakes that players can feel."
+    }
+  ],
+  "contactCta": {
+    "kicker": "Contact",
+    "title": "Want to cover Heritage or contact the team?",
+    "body": "We are a game development studio focused on our own titles. Reach out for press, creator coverage, and community messages.",
+    "actions": [
+      {
+        "label": "Open Contact Form",
+        "href": "/contact",
+        "variant": "primary"
+      },
+      {
+        "label": "Studio Story",
+        "href": "/about",
+        "variant": "ghost"
+      }
+    ]
+  }
+}

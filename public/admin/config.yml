@@ -1,0 +1,520 @@
+backend:
+  name: github
+  repo: your-org/your-repo
+  branch: main
+
+publish_mode: editorial_workflow
+site_url: https://yourdomain.com
+logo_url: /assets/studio/logo/b3g_official_logo.png
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: site_content
+    label: Site Content
+    editor:
+      preview: false
+    files:
+      - name: global
+        label: Global Content
+        file: src/content/site/en/global.json
+        format: json
+        fields:
+          - label: Locale
+            name: locale
+            widget: string
+          - label: Site Name
+            name: siteName
+            widget: string
+          - label: Tagline
+            name: tagline
+            widget: string
+          - label: Contact Email
+            name: contactEmail
+            widget: string
+          - label: Wishlist URL
+            name: wishlistUrl
+            widget: string
+          - label: Steam URL
+            name: steamUrl
+            widget: string
+          - label: Steam Demo URL
+            name: steamDemoUrl
+            widget: string
+          - label: Navigation
+            name: navigation
+            widget: list
+            fields:
+              - label: ID
+                name: id
+                widget: select
+                options:
+                  - home
+                  - heritage
+                  - about
+                  - contact
+              - label: Label
+                name: label
+                widget: string
+              - label: Href
+                name: href
+                widget: string
+          - label: Footer Links
+            name: footerLinks
+            widget: list
+            fields:
+              - label: Label
+                name: label
+                widget: string
+              - label: Href
+                name: href
+                widget: string
+              - label: External Link
+                name: external
+                widget: boolean
+                required: false
+      - name: home
+        label: Home Page
+        file: src/content/site/en/home.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Eyebrow
+                name: eyebrow
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Summary
+                name: summary
+                widget: text
+              - label: Video MP4 URL
+                name: videoMp4
+                widget: string
+              - label: Parallax Speed
+                name: parallaxSpeed
+                widget: number
+                value_type: float
+              - label: Hero Tags
+                name: tags
+                widget: list
+                field:
+                  label: Tag
+                  name: tag
+                  widget: string
+              - label: Hero Actions
+                name: actions
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Href
+                    name: href
+                    widget: string
+                  - label: Variant
+                    name: variant
+                    widget: select
+                    options:
+                      - primary
+                      - ghost
+                      - soft
+              - label: Hero Status
+                name: status
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Value
+                    name: value
+                    widget: string
+          - label: Games Section
+            name: games
+            widget: object
+            fields:
+              - label: Kicker
+                name: kicker
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Lede
+                name: lede
+                widget: text
+              - label: Key Art Image
+                name: keyArt
+                widget: string
+              - label: Key Art Alt
+                name: keyArtAlt
+                widget: string
+              - label: Intro
+                name: intro
+                widget: text
+              - label: Details
+                name: details
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Value
+                    name: value
+                    widget: string
+              - label: Tags
+                name: tags
+                widget: list
+                field:
+                  label: Tag
+                  name: tag
+                  widget: string
+          - label: Studio Values
+            name: values
+            widget: list
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+          - label: Contact CTA
+            name: contactCta
+            widget: object
+            fields:
+              - label: Kicker
+                name: kicker
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+              - label: Actions
+                name: actions
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Href
+                    name: href
+                    widget: string
+                  - label: Variant
+                    name: variant
+                    widget: select
+                    options:
+                      - primary
+                      - ghost
+                      - soft
+      - name: about
+        label: About Page
+        file: src/content/site/en/about.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Eyebrow
+                name: eyebrow
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Summary
+                name: summary
+                widget: text
+              - label: Image
+                name: image
+                widget: string
+              - label: Image Alt
+                name: imageAlt
+                widget: string
+              - label: Parallax Speed
+                name: parallaxSpeed
+                widget: number
+                value_type: float
+          - label: Story Title
+            name: storyTitle
+            widget: string
+          - label: Story Cards
+            name: storyCards
+            widget: list
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+          - label: Members
+            name: members
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Role
+                name: role
+                widget: string
+              - label: Bio
+                name: bio
+                widget: text
+              - label: Image
+                name: image
+                widget: string
+              - label: Image Alt
+                name: imageAlt
+                widget: string
+          - label: CTA
+            name: cta
+            widget: object
+            fields:
+              - label: Kicker
+                name: kicker
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+              - label: Actions
+                name: actions
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Href
+                    name: href
+                    widget: string
+                  - label: Variant
+                    name: variant
+                    widget: select
+                    options:
+                      - primary
+                      - ghost
+                      - soft
+      - name: contact
+        label: Contact Page
+        file: src/content/site/en/contact.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Eyebrow
+                name: eyebrow
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Summary
+                name: summary
+                widget: text
+              - label: Image
+                name: image
+                widget: string
+              - label: Image Alt
+                name: imageAlt
+                widget: string
+              - label: Parallax Speed
+                name: parallaxSpeed
+                widget: number
+                value_type: float
+          - label: Form
+            name: form
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Purpose
+                name: purpose
+                widget: text
+              - label: Response Time
+                name: responseTime
+                widget: string
+              - label: Topics
+                name: topics
+                widget: list
+                fields:
+                  - label: Value
+                    name: value
+                    widget: string
+                  - label: Label
+                    name: label
+                    widget: string
+              - label: Privacy Note
+                name: privacyNote
+                widget: text
+          - label: Aside
+            name: aside
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+              - label: Services Note
+                name: servicesNote
+                widget: text
+      - name: heritage
+        label: Heritage Page
+        file: src/content/site/en/heritage.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Eyebrow
+                name: eyebrow
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Summary
+                name: summary
+                widget: text
+              - label: Image
+                name: image
+                widget: string
+              - label: Image Alt
+                name: imageAlt
+                widget: string
+              - label: Logo
+                name: logo
+                widget: string
+              - label: Parallax Speed
+                name: parallaxSpeed
+                widget: number
+                value_type: float
+          - label: Stats
+            name: stats
+            widget: list
+            fields:
+              - label: Label
+                name: label
+                widget: string
+              - label: Value
+                name: value
+                widget: string
+          - label: Features
+            name: features
+            widget: list
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+              - label: Tag
+                name: tag
+                widget: string
+                required: false
+          - label: Media
+            name: media
+            widget: object
+            fields:
+              - label: Trailer MP4
+                name: trailerMp4
+                widget: string
+              - label: Screenshots
+                name: screenshots
+                widget: list
+                fields:
+                  - label: Image
+                    name: image
+                    widget: string
+                  - label: Alt
+                    name: alt
+                    widget: string
+                  - label: Caption
+                    name: caption
+                    widget: text
+          - label: CTA
+            name: cta
+            widget: object
+            fields:
+              - label: Kicker
+                name: kicker
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+              - label: Actions
+                name: actions
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: Href
+                    name: href
+                    widget: string
+                  - label: Variant
+                    name: variant
+                    widget: select
+                    options:
+                      - primary
+                      - ghost
+                      - soft
+                  - label: External Link
+                    name: external
+                    widget: boolean
+                    required: false

@@ -1,0 +1,34 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Three Games | Content Admin</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Manrope", sans-serif;
+        background: #13100f;
+        color: #f6f2ee;
+      }
+    </style>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@3.5.0/dist/decap-cms.js"></script>
+    <script>
+      if (window.CMS && typeof window.CMS.init === 'function') {
+        window.CMS.init({
+          config: '/admin/config.yml'
+        });
+      }
+    </script>
+  </body>
+</html>

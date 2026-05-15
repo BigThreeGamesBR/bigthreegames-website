@@ -1,0 +1,19 @@
+{
+  "name": "bigthreegames-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.11.0",
+  "scripts": {
+    "install:safe": "powershell -ExecutionPolicy Bypass -File ./scripts/setup-isolated-env.ps1",
+    "install:safe:npm": "powershell -ExecutionPolicy Bypass -File ./scripts/setup-isolated-env.ps1 -UseNpm",
+    "deps:blocklist": "powershell -ExecutionPolicy Bypass -File ./scripts/check-blocklist.ps1",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.5.5"
+  }
+}

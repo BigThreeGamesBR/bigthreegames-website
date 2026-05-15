@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteContent } from '../lib/content';
+import type { ButtonVariant } from '../types/content';
+
+const { global, home, heritage } = getSiteContent();
+
+const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
+---
+
+<BaseLayout
+  title={home.seo.title}
+  description={home.seo.description}
+  pageClass="page-home"
+  activePage="home"
+>
+  <section class="hero hero--home" aria-labelledby="home-hero-title">
+    <div class="hero__media" data-parallax-speed={home.hero.parallaxSpeed.toString()}>
+      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src={home.hero.videoMp4} type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero__veil"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <p class="hero__eyebrow">{home.hero.eyebrow}</p>
+        <h1 class="hero__title" id="home-hero-title">{home.hero.title}</h1>
+        <p class="hero__summary">{home.hero.summary}</p>
+
+        <ul class="chip-list" aria-label="Heritage genres">
+          {home.hero.tags.map((tag) => <li class="chip">{tag}</li>)}
+        </ul>
+
+        <div class="hero__actions">
+          {
+            home.hero.actions.map((action) => (
+              <a class={buttonClass(action.variant)} href={action.href}>
+                {action.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="hero__panel reveal" aria-label="Heritage status">
+        <dl>
+          {
+            home.hero.status.map((item) => (
+              <>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="games" aria-labelledby="games-title">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="section__kicker">{home.games.kicker}</p>
+        <h2 class="section__title" id="games-title">{home.games.title}</h2>
+        <p class="section__lede">{home.games.lede}</p>
+      </header>
+
+      <div class="home-game-layout">
+        <article class="home-development-card surface reveal" aria-label="Heritage key art and highlights">
+          <figure class="home-development-card__art">
+            <img src={home.games.keyArt} alt={home.games.keyArtAlt} loading="lazy" />
+          </figure>
+
+          <div class="home-development-card__body">
+            <img
+              class="home-game-logo"
+              src={heritage.hero.logo}
+              alt="Heritage game logo"
+              loading="lazy"
+            />
+            <p class="home-game-info__intro">{home.games.intro}</p>
+
+            <ul class="meta-list" aria-label="Heritage key details">
+              {
+                home.games.details.map((detail) => (
+                  <li>
+                    <span>{detail.label}</span>
+                    <span>{detail.value}</span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <ul class="chip-list" aria-label="Heritage tags">
+              {home.games.tags.map((tag) => <li class="chip">{tag}</li>)}
+            </ul>
+
+            <div class="cluster home-development-card__actions">
+              <a class="button button--primary" href="/games/heritage">Game Details</a>
+              <a
+                class="button button--soft"
+                href={global.steamUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Steam Page
+              </a>
+              <a
+                class="button button--ghost"
+                href={`mailto:${global.contactEmail}?subject=Heritage%20Press%20Kit`}
+              >
+                Press Kit
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="studio" aria-labelledby="studio-title">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="section__kicker">Studio</p>
+        <h2 class="section__title" id="studio-title">Who We Are</h2>
+        <p class="section__lede">
+          We are a small independent team building long-term game worlds with player feedback at the center of development.
+        </p>
+      </header>
+
+      <div class="grid grid--3 home-studio-values">
+        {
+          home.values.map((value) => (
+            <article class="value-card surface reveal">
+              <h3>{value.title}</h3>
+              <p>{value.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band cta-band--keyart" id="contact" aria-labelledby="contact-cta-title">
+    <div class="container">
+      <div class="cta-band__inner reveal split split--equal">
+        <div class="stack">
+          <p class="section__kicker">{home.contactCta.kicker}</p>
+          <h2 class="cta-band__title" id="contact-cta-title">{home.contactCta.title}</h2>
+          <p>{home.contactCta.body}</p>
+        </div>
+
+        <div class="cluster">
+          {
+            home.contactCta.actions.map((action) => (
+              <a class={buttonClass(action.variant)} href={action.href}>
+                {action.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

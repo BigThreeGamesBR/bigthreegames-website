@@ -1,0 +1,50 @@
+{
+  "locale": "en",
+  "siteName": "Big Three Games",
+  "tagline": "Building worlds one system at a time.",
+  "contactEmail": "hello@bigthreegames.com",
+  "wishlistUrl": "https://store.steampowered.com/app/4308560/Heritage/",
+  "steamUrl": "https://store.steampowered.com/app/4308560/Heritage/",
+  "steamDemoUrl": "https://store.steampowered.com/app/4500250/Heritage_Demo/",
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "id": "heritage",
+      "label": "Heritage",
+      "href": "/games/heritage"
+    },
+    {
+      "id": "about",
+      "label": "Studio",
+      "href": "/about"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "footerLinks": [
+    {
+      "label": "Heritage",
+      "href": "/games/heritage"
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    },
+    {
+      "label": "Steam",
+      "href": "https://store.steampowered.com/app/4308560/Heritage/",
+      "external": true
+    }
+  ]
+}
