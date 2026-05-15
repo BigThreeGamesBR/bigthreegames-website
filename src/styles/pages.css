@@ -11,6 +11,16 @@
   opacity: 0.84;
 }
 
+.page-home .hero__media {
+    overflow: hidden;
+}
+
+.page-home .hero__media iframe {
+    top: 26%;
+    transform: translate(-50%, -26%) scale(1.18);
+    opacity: 0.84;
+}
+
 .page-home .hero__media img {
   opacity: 0;
 }
