@@ -219,13 +219,13 @@
   border: var(--border-thin) solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.28);
+  background: var(--color-overlay-soft);
 }
 
 .page-heritage .gallery__media-frame {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #000;
+  background: var(--color-bg-raised);
   overflow: hidden;
 }
 
@@ -240,7 +240,7 @@
   height: 100%;
   display: block;
   object-fit: contain;
-  background: #000;
+  background: var(--color-bg-raised);
   border-radius: 0;
 }
 
@@ -260,7 +260,7 @@
   height: 2.8rem;
   border: var(--border-thin) solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-pill);
-  background: rgba(0, 0, 0, 0.58);
+  background: var(--color-overlay-strong);
   color: var(--color-ink-strong);
   font-size: 1.1rem;
   line-height: 1;
@@ -289,7 +289,7 @@
   margin: 0;
   border-radius: var(--radius-pill);
   padding: 0.14rem 0.55rem;
-  background: rgba(0, 0, 0, 0.68);
+  background: var(--color-overlay-solid);
   color: var(--color-ink-strong);
 }
 
@@ -307,7 +307,7 @@
 .page-heritage .gallery__thumb {
   border: var(--border-thin) solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius-sm);
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--color-overlay-soft);
   padding: 0;
   overflow: hidden;
   cursor: pointer;
@@ -344,7 +344,7 @@
   bottom: 0.4rem;
   border-radius: var(--radius-pill);
   padding: 0.12rem 0.5rem;
-  background: rgba(0, 0, 0, 0.66);
+  background: var(--color-overlay-solid);
   color: var(--color-ink-strong);
   font-size: 0.68rem;
   letter-spacing: 0.06em;

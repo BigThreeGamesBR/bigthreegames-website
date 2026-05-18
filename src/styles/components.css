@@ -3,7 +3,7 @@
   top: 0;
   z-index: 30;
   border-bottom: var(--border-thin) solid rgba(255, 255, 255, 0.06);
-  background: rgba(19, 16, 15, 0.75);
+  background: var(--color-overlay-soft);
   backdrop-filter: blur(10px);
 }
 
@@ -94,7 +94,7 @@
   min-width: 12.5rem;
   border: var(--border-thin) solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(18, 16, 15, 0.97);
+  background: var(--color-overlay-solid);
   box-shadow: var(--shadow-lift);
 }
 
@@ -173,29 +173,32 @@
 
 .button--primary {
   color: var(--color-ink-strong);
-  border-color: var(--color-brand-rust);
-  background: linear-gradient(120deg, var(--color-brand-deep), var(--color-brand-rust));
-  box-shadow: 0 10px 26px rgba(189, 40, 0, 0.36);
+  border-color: var(--color-brand-coral);
+  background: linear-gradient(120deg, var(--color-brand-coral), var(--color-brand-rust));
+  box-shadow: 0 10px 26px rgba(189, 40, 0, 0.32);
 }
 
 .button--primary:hover {
   border-color: var(--color-brand-peach);
+  background: linear-gradient(120deg, var(--color-brand-peach), var(--color-brand-coral));
+  box-shadow: 0 12px 28px rgba(242, 90, 31, 0.32);
 }
 
 .button--ghost {
   border-color: var(--color-border-bright);
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--color-surface-tint);
   color: var(--color-ink-strong);
 }
 
 .button--ghost:hover {
   border-color: var(--color-brand-peach);
+  background-color: var(--color-surface-tint-strong);
   color: var(--color-brand-peach);
 }
 
 .button--soft {
-  border-color: rgba(28, 224, 207, 0.45);
-  background-color: rgba(28, 224, 207, 0.09);
+  border-color: rgba(28, 224, 207, 0.52);
+  background-color: rgba(28, 224, 207, 0.14);
   color: var(--color-ink-strong);
 }
 
@@ -310,8 +313,9 @@
   position: absolute;
   inset: -2px;
   background:
-    linear-gradient(180deg, rgba(13, 11, 11, 0.18), rgba(14, 11, 10, 0.86) 72%),
-    radial-gradient(circle at 24% 12%, rgba(242, 90, 31, 0.2), transparent 42%);
+    linear-gradient(180deg, rgba(28, 22, 20, 0.16), rgba(31, 24, 22, 0.72) 72%),
+    radial-gradient(circle at 24% 12%, rgba(242, 90, 31, 0.24), transparent 42%),
+    radial-gradient(circle at 76% 14%, rgba(28, 224, 207, 0.14), transparent 45%);
 }
 
 .hero__inner {
@@ -463,7 +467,7 @@
   border: var(--border-thin) solid rgba(255, 255, 255, 0.14);
   background:
     radial-gradient(circle at 12% 0%, rgba(28, 224, 207, 0.2), transparent 40%),
-    linear-gradient(130deg, rgba(127, 27, 0, 0.48), rgba(18, 14, 13, 0.92));
+    linear-gradient(130deg, rgba(127, 27, 0, 0.45), rgba(37, 29, 26, 0.82));
 }
 
 .cta-band__title {
@@ -564,7 +568,7 @@
 .field-textarea {
   border: var(--border-thin) solid var(--color-border-bright);
   border-radius: var(--radius-sm);
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--color-surface-tint);
   min-height: 2.8rem;
   padding: 0.65rem 0.8rem;
 }
@@ -610,7 +614,7 @@
 .site-footer {
   margin-top: var(--space-2xl);
   border-top: var(--border-thin) solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--color-overlay-strong);
 }
 
 .footer-inner {
