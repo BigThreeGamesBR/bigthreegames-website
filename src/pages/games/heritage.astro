@@ -99,7 +99,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
           <button class="gallery__nav gallery__nav--next" type="button" data-gallery-next aria-label={heritage.media.nextMediaAriaLabel}>
             &#10095;
           </button>
-          <p class="gallery__status" data-gallery-status>
+          <p class="gallery__status" data-gallery-status role="status" aria-live="polite" aria-atomic="true">
             1 / {mediaSlideCount}
           </p>
         </div>
@@ -151,6 +151,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
                 href={action.href}
                 target={action.external ? '_blank' : undefined}
                 rel={action.external ? 'noopener noreferrer' : undefined}
+                aria-label={action.external ? `${action.label} (opens in new tab)` : undefined}
               >
                 {action.label}
               </a>

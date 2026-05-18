@@ -28,7 +28,12 @@ const currentYear = new Date().getFullYear();
       {
         global.footerLinks.map((link) => (
           <li>
-            <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
+            >
               {link.label}
             </a>
           </li>

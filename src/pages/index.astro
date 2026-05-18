@@ -107,6 +107,7 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
                     href={action.href}
                     target={action.external ? '_blank' : undefined}
                     rel={action.external ? 'noopener noreferrer' : undefined}
+                    aria-label={action.external ? `${action.label} (opens in new tab)` : undefined}
                   >
                     {action.label}
                   </a>

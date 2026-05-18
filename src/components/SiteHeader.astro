@@ -45,6 +45,7 @@ const { global } = getSiteContent();
                 class={`nav-link ${item.id === activePage ? 'is-active' : ''}`}
                 data-nav-link
                 data-nav-page={item.id}
+                aria-current={item.id === activePage ? 'page' : undefined}
                 href={item.href}
               >
                 {item.label}
@@ -58,6 +59,7 @@ const { global } = getSiteContent();
             href={global.wishlistUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${global.ui.wishlistButtonLabel} (opens in new tab)`}
           >
             {global.ui.wishlistButtonLabel}
           </a>

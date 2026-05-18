@@ -31,6 +31,9 @@ const { global } = getSiteContent();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/assets/studio/logo/b3g_official_logo.png" />
@@ -40,7 +43,7 @@ const { global } = getSiteContent();
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="/js/site.js" defer></script>
+    <script is:inline src="/js/site.js" defer></script>
   </head>
   <body class={pageClass} data-page={activePage}>
     <a class="skip-link" href="#main-content">{global.ui.skipLinkLabel}</a>
