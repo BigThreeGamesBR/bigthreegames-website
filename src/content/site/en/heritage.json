@@ -37,7 +37,7 @@
     }
   ],
   "media": {
-    "trailerMp4": "https://www.youtube-nocookie.com/embed/DcnyV2G0ggM?controls=1&modestbranding=1&rel=0&playsinline=1",
+    "trailerMp4": "/assets/heritage/trailer/hls/master.m3u8",
     "sectionKicker": "Media",
     "sectionTitle": "Trailer and Screenshots",
     "galleryAriaLabel": "Heritage trailer and screenshots",

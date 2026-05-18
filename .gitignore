@@ -5,6 +5,7 @@ dist/
 .env.*
 assets/heritage/trailer/*.mp4
 /public/assets/heritage/trailer/*.mp4
+!/public/assets/heritage/trailer/hero-loop.mp4
 
 # wrangler files
 .wrangler

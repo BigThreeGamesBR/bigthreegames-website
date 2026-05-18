@@ -66,3 +66,7 @@ Update `backend.repo` and `site_url` in `public/admin/config.yml` before product
 ## Hosting
 
 Deployment and DNS flow is documented in `docs/deployment/cloudflare-pages-hostgator.md`.
+
+## Video Delivery
+
+For trailers that exceed Cloudflare's 25 MB file limit, use the HLS workflow documented in `docs/video-delivery-cloudflare-hls.md`.

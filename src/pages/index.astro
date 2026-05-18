@@ -7,7 +7,9 @@ const { home, heritage } = getSiteContent();
 
 const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
 const isYoutubeEmbed = (url: string) => /(?:youtube(?:-nocookie)?\.com\/embed|youtu\.be\/)/i.test(url);
+const isHlsStream = (url: string) => /\.m3u8(?:$|\?)/i.test(url);
 const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
+const useHeroHls = isHlsStream(home.hero.videoMp4);
 ---
 
 <BaseLayout
@@ -29,6 +31,9 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
             allow="autoplay; encrypted-media; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"
           />
+        ) : useHeroHls ? (
+          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-hls-src={home.hero.videoMp4}>
+          </video>
         ) : (
           <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src={home.hero.videoMp4} type="video/mp4" />

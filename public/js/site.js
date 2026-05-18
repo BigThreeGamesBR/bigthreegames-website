@@ -1,10 +1,100 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let hlsConstructorPromise;
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupAdaptiveStreams();
   setupNav();
   setupReveal();
   setupGallery();
 });
+
+function setupAdaptiveStreams() {
+  const hlsVideos = Array.from(document.querySelectorAll('video[data-hls-src]')).filter(
+    (element) => element instanceof HTMLVideoElement
+  );
+
+  if (hlsVideos.length === 0) {
+    return;
+  }
+
+  const videosRequiringLibrary = [];
+
+  hlsVideos.forEach((video) => {
+    const streamSrc = video.dataset.hlsSrc;
+    if (!streamSrc) {
+      return;
+    }
+
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamSrc;
+      return;
+    }
+
+    videosRequiringLibrary.push({ video, streamSrc });
+  });
+
+  if (videosRequiringLibrary.length === 0) {
+    return;
+  }
+
+  loadHlsConstructor()
+    .then((Hls) => {
+      if (!Hls || typeof Hls.isSupported !== 'function' || !Hls.isSupported()) {
+        videosRequiringLibrary.forEach(({ video, streamSrc }) => {
+          video.src = streamSrc;
+        });
+        return;
+      }
+
+      videosRequiringLibrary.forEach(({ video, streamSrc }) => {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: false
+        });
+        hls.loadSource(streamSrc);
+        hls.attachMedia(video);
+      });
+    })
+    .catch(() => {
+      videosRequiringLibrary.forEach(({ video, streamSrc }) => {
+        video.src = streamSrc;
+      });
+    });
+}
+
+function loadHlsConstructor() {
+  if (window.Hls) {
+    return Promise.resolve(window.Hls);
+  }
+
+  if (!hlsConstructorPromise) {
+    hlsConstructorPromise = new Promise((resolve, reject) => {
+      const existingLoader = document.querySelector('script[data-hls-loader]');
+
+      if (existingLoader instanceof HTMLScriptElement) {
+        if (window.Hls) {
+          resolve(window.Hls);
+          return;
+        }
+
+        existingLoader.addEventListener('load', () => resolve(window.Hls));
+        existingLoader.addEventListener('error', () => reject(new Error('Failed to load hls.js')));
+        return;
+      }
+
+      const loaderScript = document.createElement('script');
+      loaderScript.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js';
+      loaderScript.async = true;
+      loaderScript.defer = true;
+      loaderScript.dataset.hlsLoader = 'true';
+      loaderScript.onload = () => resolve(window.Hls);
+      loaderScript.onerror = () => reject(new Error('Failed to load hls.js'));
+      document.head.appendChild(loaderScript);
+    });
+  }
+
+  return hlsConstructorPromise;
+}
 
 function setupNav() {
   const navToggle = document.querySelector('[data-nav-toggle]');
