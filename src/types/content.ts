@@ -120,6 +120,12 @@ export interface ContactContent {
     emailLabel: string;
     servicesNote: string;
   };
+  socialCta: {
+    kicker: string;
+    title: string;
+    body: string;
+    actions: Array<LinkItem & { variant: ButtonVariant }>;
+  };
 }
 
 export interface HeritageContent {

@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Big Three Games | Heritage and Future Worlds",
+    "title": "Big Three Games",
     "description": "Big Three Games is an independent studio creating strategic worlds with expressive characters. Explore Heritage and get in touch with the team."
   },
   "hero": {
@@ -120,7 +120,7 @@
     "body": "We are a game development studio focused on our own titles. Reach out for press, creator coverage, and community messages.",
     "actions": [
       {
-        "label": "Open Contact Form",
+        "label": "Talk with Us",
         "href": "/contact",
         "variant": "primary"
       },

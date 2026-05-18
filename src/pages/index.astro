@@ -58,19 +58,6 @@ const useHeroEmbed = isYoutubeEmbed(home.hero.videoMp4);
           }
         </div>
       </div>
-
-      <aside class="hero__panel reveal" aria-label={home.hero.statusAriaLabel}>
-        <dl>
-          {
-            home.hero.status.map((item) => (
-              <>
-                <dt>{item.label}</dt>
-                <dd>{item.value}</dd>
-              </>
-            ))
-          }
-        </dl>
-      </aside>
     </div>
   </section>
 

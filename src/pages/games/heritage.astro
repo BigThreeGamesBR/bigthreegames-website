@@ -60,7 +60,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
       <aside class="gallery gallery--thumbs reveal" data-gallery aria-label={heritage.media.galleryAriaLabel}>
         <div class="gallery__viewport">
           <figure class="gallery__slide gallery__slide--video">
-            <div class="gallery__video-frame">
+            <div class="gallery__video-frame gallery__media-frame">
               {
                 useTrailerEmbed ? (
                   <iframe
@@ -85,7 +85,9 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
           {
             heritage.media.screenshots.map((shot, index) => (
               <figure class="gallery__slide" hidden>
-                <img src={shot.image} alt={shot.alt} loading="lazy" />
+                <div class="gallery__media-frame">
+                  <img src={shot.image} alt={shot.alt} loading="lazy" />
+                </div>
                 <figcaption class="gallery__caption">{shot.caption}</figcaption>
               </figure>
             ))
