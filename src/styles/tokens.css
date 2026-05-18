@@ -11,11 +11,16 @@
   --color-heritage-red: #d92c28;
 
   --color-fog: #d2d2d2;
-  --color-bg-base: #13100f;
-  --color-bg-elevated: #1b1715;
-  --color-bg-raised: #27211f;
-  --color-border: #3b312d;
-  --color-border-bright: #5d4d45;
+  --color-bg-base: #1b1613;
+  --color-bg-elevated: #261f1c;
+  --color-bg-raised: #322926;
+  --color-border: #4d3f37;
+  --color-border-bright: #6c5a50;
+  --color-overlay-soft: rgba(33, 27, 24, 0.74);
+  --color-overlay-strong: rgba(31, 25, 23, 0.84);
+  --color-overlay-solid: rgba(34, 28, 25, 0.95);
+  --color-surface-tint: rgba(255, 255, 255, 0.06);
+  --color-surface-tint-strong: rgba(255, 255, 255, 0.1);
 
   --color-ink-strong: #f6f2ee;
   --color-ink-muted: #c6bbb0;
@@ -63,8 +68,8 @@
   --border-thin: 1px;
   --border-thick: 2px;
 
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.28);
-  --shadow-lift: 0 18px 44px rgba(0, 0, 0, 0.44);
+  --shadow-soft: 0 10px 30px rgba(12, 8, 7, 0.26);
+  --shadow-lift: 0 18px 44px rgba(12, 8, 7, 0.36);
   --shadow-focus: 0 0 0 0.2rem rgba(255, 247, 218, 0.26);
 
   --motion-duration-fast: 140ms;
@@ -77,11 +82,12 @@
 
   --size-hero-min-height: min(84vh, 44rem);
   --surface-hero-home-overlay:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.9) 76%),
-    radial-gradient(circle at 22% 16%, rgba(217, 44, 40, 0.2), transparent 46%);
+    linear-gradient(180deg, rgba(23, 19, 17, 0.42), rgba(25, 20, 18, 0.76) 76%),
+    radial-gradient(circle at 22% 16%, rgba(242, 90, 31, 0.26), transparent 46%),
+    radial-gradient(circle at 78% 12%, rgba(28, 224, 207, 0.16), transparent 44%);
   --surface-cta-keyart-overlay:
-    linear-gradient(120deg, rgba(19, 13, 11, 0.84), rgba(127, 27, 0, 0.56)),
-    radial-gradient(circle at 55% 42%, rgba(217, 44, 40, 0.44), rgba(14, 11, 10, 0.9) 65%);
+    linear-gradient(120deg, rgba(33, 24, 21, 0.78), rgba(127, 27, 0, 0.5)),
+    radial-gradient(circle at 55% 42%, rgba(217, 44, 40, 0.4), rgba(26, 20, 18, 0.72) 65%);
   --media-keyart-heritage-wide: url('/assets/heritage/key/Horizontal_NoLogo_1920x1080.png');
 }
 

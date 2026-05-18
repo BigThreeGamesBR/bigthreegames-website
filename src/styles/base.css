@@ -19,9 +19,9 @@ body {
   color: var(--color-ink-strong);
   background-color: var(--color-bg-base);
   background-image:
-    radial-gradient(circle at 16% 14%, rgba(242, 90, 31, 0.2), transparent 46%),
-    radial-gradient(circle at 86% 0%, rgba(28, 224, 207, 0.16), transparent 42%),
-    linear-gradient(180deg, #12100f 0%, #110f0e 42%, #0c0b0a 100%);
+    radial-gradient(circle at 16% 14%, rgba(242, 90, 31, 0.24), transparent 46%),
+    radial-gradient(circle at 86% 0%, rgba(161, 20, 20, 0.2), transparent 42%),
+    linear-gradient(180deg, #1b1613 0%, #181310 42%, #14110f 100%);
 }
 
 body::before {
@@ -40,8 +40,8 @@ body::before {
     ),
     repeating-linear-gradient(
       -45deg,
-      rgba(0, 0, 0, 0.25) 0,
-      rgba(0, 0, 0, 0.25) 1px,
+      rgba(13, 10, 9, 0.2) 0,
+      rgba(13, 10, 9, 0.2) 1px,
       transparent 1px,
       transparent 5px
     );
