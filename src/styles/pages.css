@@ -17,10 +17,10 @@
 
 .page-home .hero__media iframe {
   top: 26%;
-  width: calc(100vw + 8px);
-  height: calc(56.25vw + 8px);
-  min-width: calc(177.78vh + 8px);
-  min-height: calc(100vh + 8px);
+  width: calc(100vw + 24px);
+  height: calc(56.25vw + 24px);
+  min-width: calc(177.78vh + 24px);
+  min-height: calc(100vh + 24px);
   transform: translate(-50%, -26%) scale(1.18);
   opacity: 0.84;
 }

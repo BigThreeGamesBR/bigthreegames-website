@@ -199,12 +199,25 @@
   min-width: 10.4rem;
   font-size: calc(var(--font-size-small) + 2px);
   letter-spacing: 0.08em;
-  border-color: rgba(255, 255, 255, 0.42);
+  border-color: transparent;
   background:
-    var(--surface-cta-keyart-overlay),
-    var(--media-keyart-heritage-wide);
-  background-position: center;
-  background-size: cover;
+    linear-gradient(118deg, rgba(242, 90, 31, 0.95), rgba(189, 40, 0, 0.88)) border-box,
+    var(--surface-cta-keyart-overlay) padding-box,
+    var(--media-keyart-heritage-wide) padding-box;
+  background-position: center, center, center;
+  background-size: 100% 100%, cover, cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 24px rgba(189, 40, 0, 0.4);
+}
+
+.site-header .button--wishlist-heritage:hover {
+  border-color: transparent;
+  background:
+    linear-gradient(118deg, rgba(244, 162, 126, 0.95), rgba(242, 90, 31, 0.92)) border-box,
+    var(--surface-cta-keyart-overlay) padding-box,
+    var(--media-keyart-heritage-wide) padding-box;
+  background-position: center, center, center;
+  background-size: 100% 100%, cover, cover;
   background-repeat: no-repeat;
 }
 
@@ -231,12 +244,12 @@
   min-height: var(--size-hero-min-height);
   display: grid;
   align-items: end;
-  border-bottom: var(--border-thin) solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
 .hero__media {
   position: absolute;
-  inset: 0;
+  inset: -2px;
   transform-origin: center top;
   will-change: transform;
   overflow: hidden;
@@ -277,7 +290,7 @@
 
 .hero__veil {
   position: absolute;
-  inset: 0;
+  inset: -2px;
   background:
     linear-gradient(180deg, rgba(13, 11, 11, 0.18), rgba(14, 11, 10, 0.86) 72%),
     radial-gradient(circle at 24% 12%, rgba(242, 90, 31, 0.2), transparent 42%);
