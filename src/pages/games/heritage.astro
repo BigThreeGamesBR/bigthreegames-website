@@ -83,7 +83,7 @@ const useTrailerEmbed = isYoutubeEmbed(heritage.media.trailerMp4);
           </figure>
 
           {
-            heritage.media.screenshots.map((shot, index) => (
+            heritage.media.screenshots.map((shot) => (
               <figure class="gallery__slide" hidden>
                 <div class="gallery__media-frame">
                   <img src={shot.image} alt={shot.alt} loading="lazy" />

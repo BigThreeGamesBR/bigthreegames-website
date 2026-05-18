@@ -16,24 +16,5 @@
     "body": "For press requests, creator collaborations, or community messages, contact us directly by email.",
     "emailLabel": "Email:",
     "servicesNote": "We usually respond within two business days."
-  },
-  "socialCta": {
-    "kicker": "Follow",
-    "title": "Join Big Three Games on Social Media",
-    "body": "Follow us for development updates, clips, and community highlights from Heritage.",
-    "actions": [
-      {
-        "label": "Instagram",
-        "href": "https://www.instagram.com/bigthreegames",
-        "variant": "ghost",
-        "external": true
-      },
-      {
-        "label": "Twitter",
-        "href": "https://x.com/bigthreegames",
-        "variant": "soft",
-        "external": true
-      }
-    ]
   }
 }

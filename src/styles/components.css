@@ -199,32 +199,13 @@
   min-width: 10.4rem;
   font-size: calc(var(--font-size-small) + 2px);
   letter-spacing: 0.08em;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
   border-color: rgba(255, 255, 255, 0.42);
-  background: linear-gradient(122deg, rgba(21, 16, 14, 0.78), rgba(127, 27, 0, 0.78));
-}
-
-.site-header .button--wishlist-heritage::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: var(--media-keyart-heritage-wide);
-  background-size: 90%;
+  background:
+    var(--surface-cta-keyart-overlay),
+    var(--media-keyart-heritage-wide);
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  transform: scale(0.82);
-  opacity: 0.42;
-  transition:
-    opacity var(--motion-duration-fast) var(--motion-ease-standard),
-    transform var(--motion-duration-fast) var(--motion-ease-standard);
-}
-
-.site-header .button--wishlist-heritage:hover::before {
-  opacity: 0.56;
-  transform: scale(0.87);
 }
 
 .chip-list {

@@ -37,5 +37,24 @@
       "image": "/assets/studio/members/guilherme.jpg",
       "imageAlt": "Guilherme from Big Three Games"
     }
-  ]
+  ],
+  "socialCta": {
+    "kicker": "Follow",
+    "title": "Join Big Three Games on Social Media",
+    "body": "Follow us for development updates, clips, and community highlights from Heritage.",
+    "actions": [
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/bigthreegames",
+        "variant": "ghost",
+        "external": true
+      },
+      {
+        "label": "Twitter",
+        "href": "https://x.com/bigthreegames",
+        "variant": "soft",
+        "external": true
+      }
+    ]
+  }
 }

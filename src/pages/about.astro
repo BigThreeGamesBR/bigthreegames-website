@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteContent } from '../lib/content';
+import type { ButtonVariant } from '../types/content';
 
 const { about } = getSiteContent();
+const buttonClass = (variant: ButtonVariant) => `button button--${variant}`;
 ---
 
 <BaseLayout
@@ -49,6 +51,33 @@ const { about } = getSiteContent();
             </article>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band cta-band--keyart" aria-labelledby="about-social-title">
+    <div class="container">
+      <div class="cta-band__inner reveal split split--equal">
+        <div class="stack">
+          <p class="section__kicker">{about.socialCta.kicker}</p>
+          <h2 class="cta-band__title" id="about-social-title">{about.socialCta.title}</h2>
+          <p>{about.socialCta.body}</p>
+        </div>
+
+        <div class="cluster">
+          {
+            about.socialCta.actions.map((action) => (
+              <a
+                class={buttonClass(action.variant)}
+                href={action.href}
+                target={action.external ? '_blank' : undefined}
+                rel={action.external ? 'noopener noreferrer' : undefined}
+              >
+                {action.label}
+              </a>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>

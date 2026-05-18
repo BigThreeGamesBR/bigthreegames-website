@@ -40,31 +40,4 @@ const { contact, global } = getSiteContent();
       </article>
     </div>
   </section>
-
-  <section class="cta-band" aria-labelledby="contact-social-title">
-    <div class="container">
-      <div class="cta-band__inner reveal split split--equal">
-        <div class="stack">
-          <p class="section__kicker">{contact.socialCta.kicker}</p>
-          <h2 class="cta-band__title" id="contact-social-title">{contact.socialCta.title}</h2>
-          <p>{contact.socialCta.body}</p>
-        </div>
-
-        <div class="cluster">
-          {
-            contact.socialCta.actions.map((action) => (
-              <a
-                class={`button button--${action.variant}`}
-                href={action.href}
-                target={action.external ? '_blank' : undefined}
-                rel={action.external ? 'noopener noreferrer' : undefined}
-              >
-                {action.label}
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

@@ -99,6 +99,12 @@ export interface AboutContent {
   };
   memberCardAriaLabelPrefix: string;
   members: Array<{ name: string; role: string; bio: string; image: string; imageAlt: string }>;
+  socialCta: {
+    kicker: string;
+    title: string;
+    body: string;
+    actions: Array<LinkItem & { variant: ButtonVariant }>;
+  };
 }
 
 export interface ContactContent {
@@ -119,12 +125,6 @@ export interface ContactContent {
     body: string;
     emailLabel: string;
     servicesNote: string;
-  };
-  socialCta: {
-    kicker: string;
-    title: string;
-    body: string;
-    actions: Array<LinkItem & { variant: ButtonVariant }>;
   };
 }
 
