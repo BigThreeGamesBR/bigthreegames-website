@@ -1,0 +1,45 @@
+name: Production Smoke Check
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-production:
+    name: Verify live routes after main deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PRODUCTION_BASE_URL: ${{ vars.PRODUCTION_BASE_URL }}
+      SMOKE_MAX_ATTEMPTS: '20'
+      SMOKE_DELAY_MS: '15000'
+      SMOKE_REQUEST_TIMEOUT_MS: '12000'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify required repository variable
+        run: |
+          if [ -z "${PRODUCTION_BASE_URL}" ]; then
+            echo "PRODUCTION_BASE_URL is not set. Configure it in repository Variables."
+            echo "Example: https://bigthreegames.com"
+            exit 1
+          fi
+
+      - name: Run production smoke checks
+        run: node ./scripts/smoke-production.mjs

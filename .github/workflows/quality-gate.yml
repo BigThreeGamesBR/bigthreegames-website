@@ -1,0 +1,64 @@
+name: CI Quality Gate
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-build-and-content:
+    name: Build, Content, and dist Smoke Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Blocklisted dependency check
+        shell: pwsh
+        run: ./scripts/check-blocklist.ps1
+
+      - name: Validate content contract
+        run: pnpm run ci:validate:content
+
+      - name: Astro checks
+        run: pnpm run check
+
+      - name: Build production output
+        run: pnpm run build
+
+      - name: Smoke check dist output
+        run: pnpm run ci:smoke:dist
+
+      - name: Upload dist artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-site
+          path: dist
+          if-no-files-found: error
