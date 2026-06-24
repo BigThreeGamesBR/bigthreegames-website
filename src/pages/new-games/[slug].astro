@@ -32,15 +32,7 @@ const sortedSections = [...game.sections].sort(
   (a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id)
 );
 
-const docLinks = sortedSections.flatMap((section) =>
-  section.links.map((link) => ({
-    ...link,
-    sectionId: section.id,
-    sectionTitle: section.title
-  }))
-);
-
-const docCount = docLinks.length;
+const docCount = sortedSections.reduce((total, section) => total + section.links.length, 0);
 ---
 
 <BaseLayout
@@ -66,29 +58,6 @@ const docCount = docLinks.length;
               ))
             }
           </ul>
-        </div>
-
-        <div class="wiki-sidebar__block">
-          <p class="wiki-sidebar__label">Direct docs</p>
-          {docLinks.length > 0 ? (
-            <ul class="wiki-nav-list wiki-nav-list--compact">
-              {
-                docLinks.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      target={link.external || isExternal(link.href) ? '_blank' : undefined}
-                      rel={link.external || isExternal(link.href) ? 'noopener noreferrer' : undefined}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          ) : (
-            <p class="doc-section__empty">No direct documents linked.</p>
-          )}
         </div>
       </aside>
 

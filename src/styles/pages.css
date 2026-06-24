@@ -699,7 +699,6 @@
   font-size: var(--font-size-small);
 }
 
-.wiki-shortcut-list,
 .doc-link-list {
   list-style: none;
   margin: 0;
@@ -764,6 +763,10 @@
   color: var(--color-ink-muted);
   text-decoration: none;
   font-size: var(--font-size-small);
+}
+
+.wiki-sidebar > .doc-back-link {
+  margin-bottom: var(--space-sm);
 }
 
 .doc-back-link:hover,
