@@ -178,6 +178,8 @@ export type NewGameDocSectionId =
 export interface NewGameDocLink extends LinkItem {
   description?: string;
   status?: string;
+  icon?: string;
+  iconLabel?: string;
 }
 
 export interface NewGameDocSection {
@@ -195,6 +197,8 @@ export interface NewGameEntry {
   status: string;
   genre?: string;
   platform?: string;
+  icon?: string;
+  iconAlt?: string;
   coverImage?: string;
   coverImageAlt?: string;
   sections: NewGameDocSection[];

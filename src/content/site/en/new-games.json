@@ -21,6 +21,84 @@
   "sectionsAriaLabel": "Documentation sections",
   "games": [
     {
+      "slug": "heritage",
+      "name": "Heritage",
+      "pitch": "An evolving roguelike duel where heritages, skills, and gear reshape every run.",
+      "status": "Pre-Launch",
+      "genre": "Roguelike",
+      "platform": "PC",
+      "icon": "/assets/heritage/icon/game_icon.png",
+      "iconAlt": "Heritage game icon",
+      "coverImage": "/assets/heritage/key/Horizontal_NoLogo_1920x1080.png",
+      "coverImageAlt": "Heritage key art",
+      "sections": [
+        {
+          "id": "links",
+          "title": "Links",
+          "summary": "Production boards, docs, and source references.",
+          "emptyText": "No external links added yet.",
+          "links": [
+            {
+              "label": "GitLab",
+              "href": "https://gitlab.com/MatheusAssis/heritage",
+              "description": "Main Heritage source repository.",
+              "external": true,
+              "icon": "/assets/platform/gitlab.svg"
+            },
+            {
+              "label": "Miro",
+              "href": "https://miro.com/app/board/uXjVJDBCaow=/",
+              "description": "Shared planning and systems board.",
+              "external": true,
+              "icon": "/assets/platform/miro.svg"
+            },
+            {
+              "label": "Game Variables",
+              "href": "https://docs.google.com/spreadsheets/d/1LPN7TsRQvoM0Mh-9E-gePDFO3waXL_MUFxT5dk7ghAM/edit?gid=1135002737#gid=1135002737",
+              "description": "Balancing and combat variables sheet.",
+              "external": true,
+              "icon": "/assets/platform/google-sheets.svg"
+            },
+            {
+              "label": "Localization",
+              "href": "https://docs.google.com/spreadsheets/d/1IO8LpdIHrpHH5JoGhzmKOMWidQs9Q1nJKaXC8iAd6WM/edit?gid=737607305#gid=737607305",
+              "description": "Localized text references.",
+              "external": true,
+              "icon": "/assets/platform/google-sheets.svg"
+            }
+          ]
+        },
+        {
+          "id": "sketches",
+          "title": "Sketches",
+          "summary": "Concept art and early visual exploration.",
+          "emptyText": "No sketches uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "screenshots",
+          "title": "Screenshots",
+          "summary": "Captures from prototypes and builds.",
+          "emptyText": "No screenshots uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "opdd",
+          "title": "One Page Design Document",
+          "summary": "The single-page concept overview for Heritage.",
+          "emptyText": "No one page design document linked yet.",
+          "links": []
+        },
+        {
+          "id": "gdd",
+          "title": "Game Design Document",
+          "summary": "The detailed systems and design reference.",
+          "emptyText": "No game design document linked yet.",
+          "links": []
+        }
+      ]
+    },
+    {
       "slug": "vinculum",
       "name": "Vinculum",
       "pitch": "A strategic world bound by connections, where every link reshapes the board.",
@@ -30,6 +108,49 @@
       "coverImage": "/assets/studio/logo/b3g_official_logo.png",
       "coverImageAlt": "Vinculum placeholder cover",
       "sections": [
+        {
+          "id": "links",
+          "title": "Links",
+          "summary": "Source repositories and shared spreadsheets.",
+          "emptyText": "No external links added yet.",
+          "links": [
+            {
+              "label": "GitLab",
+              "href": "https://gitlab.com/MatheusAssis/vinculum",
+              "description": "Main Vinculum source repository.",
+              "external": true,
+              "icon": "/assets/platform/gitlab.svg"
+            },
+            {
+              "label": "Game Variables",
+              "href": "https://docs.google.com/spreadsheets/d/1EdxqJ-iX1Bfh-CjRrj3vVjNL9CbZg91cSrUIiZo0gXA/edit?gid=0#gid=0",
+              "description": "Balancing and combat variables sheet.",
+              "external": true,
+              "icon": "/assets/platform/google-sheets.svg"
+            },
+            {
+              "label": "Localization",
+              "href": "https://docs.google.com/spreadsheets/d/1uPX9OxHPR_zi84XQIPriZEGFOAEKtS-khAB_LsNynYc/edit?gid=1187540765#gid=1187540765",
+              "description": "Localized text references.",
+              "external": true,
+              "icon": "/assets/platform/google-sheets.svg"
+            }
+          ]
+        },
+        {
+          "id": "sketches",
+          "title": "Sketches",
+          "summary": "Concept art and early visual exploration.",
+          "emptyText": "No sketches uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "screenshots",
+          "title": "Screenshots",
+          "summary": "Captures from prototypes and builds.",
+          "emptyText": "No screenshots uploaded yet.",
+          "links": []
+        },
         {
           "id": "opdd",
           "title": "One Page Design Document",
@@ -49,27 +170,6 @@
           "title": "Game Design Document",
           "summary": "The detailed systems and design reference.",
           "emptyText": "No game design document linked yet.",
-          "links": []
-        },
-        {
-          "id": "sketches",
-          "title": "Sketches",
-          "summary": "Concept art and early visual exploration.",
-          "emptyText": "No sketches uploaded yet.",
-          "links": []
-        },
-        {
-          "id": "screenshots",
-          "title": "Screenshots",
-          "summary": "Captures from prototypes and builds.",
-          "emptyText": "No screenshots uploaded yet.",
-          "links": []
-        },
-        {
-          "id": "links",
-          "title": "Links",
-          "summary": "External references, boards, and resources.",
-          "emptyText": "No external links added yet.",
           "links": []
         }
       ]

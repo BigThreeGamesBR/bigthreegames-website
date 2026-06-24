@@ -5,20 +5,17 @@ import type { NewGameDocSectionId, NewGameEntry } from '../../types/content';
 
 const { newGames } = getSiteContent();
 
-const sectionOrder: NewGameDocSectionId[] = ['opdd', 'gdd', 'sketches', 'screenshots', 'links'];
+const sectionOrder: NewGameDocSectionId[] = ['links', 'sketches', 'screenshots', 'opdd', 'gdd'];
 const sectionShortLabel: Record<NewGameDocSectionId, string> = {
-  opdd: 'OPDD',
-  gdd: 'GDD',
+  links: 'Links',
   sketches: 'Sketches',
   screenshots: 'Shots',
-  links: 'Links'
+  opdd: 'OPDD',
+  gdd: 'GDD'
 };
 
 const gameTrack = (game: NewGameEntry) => [game.genre, game.platform].filter(Boolean).join(' · ');
-const getSectionDocCount = (game: NewGameEntry) =>
-  game.sections.reduce((total, section) => total + section.links.length, 0);
-
-const totalDocs = newGames.games.reduce((total, game) => total + getSectionDocCount(game), 0);
+const fallbackGameIcon = '/assets/studio/icon/game-icon-placeholder.svg';
 ---
 
 <BaseLayout
@@ -52,7 +49,6 @@ const totalDocs = newGames.games.reduce((total, game) => total + getSectionDocCo
 
         <div class="wiki-sidebar__block wiki-sidebar__stats" aria-label="Directory totals">
           <p><strong>{newGames.games.length}</strong> games</p>
-          <p><strong>{totalDocs}</strong> linked documents</p>
         </div>
       </aside>
 
@@ -90,14 +86,27 @@ const totalDocs = newGames.games.reduce((total, game) => total + getSectionDocCo
                   newGames.games.map((game) => (
                     <tr>
                       <th scope="row">
-                        <a
-                          class="wiki-inline-link wiki-inline-link--strong"
-                          href={`/new-games/${game.slug}/`}
-                          aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
-                        >
-                          {game.name}
-                        </a>
-                        <p class="wiki-table-pitch">{game.pitch}</p>
+                        <div class="wiki-game-cell">
+                          <img
+                            class="wiki-game-icon"
+                            src={game.icon ?? fallbackGameIcon}
+                            alt={game.iconAlt ?? `${game.name} icon`}
+                            loading="lazy"
+                            decoding="async"
+                            width="56"
+                            height="56"
+                          />
+                          <div class="wiki-game-cell__body">
+                            <a
+                              class="wiki-inline-link wiki-inline-link--strong"
+                              href={`/new-games/${game.slug}/`}
+                              aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
+                            >
+                              {game.name}
+                            </a>
+                            <p class="wiki-table-pitch">{game.pitch}</p>
+                          </div>
+                        </div>
                       </th>
                       <td><span class="doc-badge">{game.status}</span></td>
                       <td>{gameTrack(game) || 'Not set'}</td>
@@ -113,7 +122,6 @@ const totalDocs = newGames.games.reduce((total, game) => total + getSectionDocCo
                             ))
                           }
                         </ul>
-                        <p class="wiki-row-note">{getSectionDocCount(game)} linked docs</p>
                       </td>
                     </tr>
                   ))

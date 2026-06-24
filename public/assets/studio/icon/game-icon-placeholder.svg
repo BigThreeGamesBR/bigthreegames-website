@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Game Icon Placeholder</title>
+  <desc id="desc">Fallback icon used when no game icon is available.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3a302b"/>
+      <stop offset="100%" stop-color="#2a231f"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="116" height="116" rx="22" fill="url(#bg)" stroke="#6c5a50" stroke-width="2"/>
+  <rect x="26" y="26" width="76" height="76" rx="16" fill="none" stroke="#9f9186" stroke-width="4" stroke-dasharray="9 7"/>
+  <path d="M48 64h32M64 48v32" stroke="#f4a27e" stroke-width="6" stroke-linecap="round"/>
+</svg>
