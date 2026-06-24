@@ -413,3 +413,141 @@ collections:
                     name: external
                     widget: boolean
                     required: false
+      - name: new_games
+        label: New Games (Internal Docs)
+        file: src/content/site/en/new-games.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Eyebrow
+                name: eyebrow
+                widget: string
+              - label: Title
+                name: title
+                widget: string
+              - label: Summary
+                name: summary
+                widget: text
+          - label: Access Note
+            name: accessNote
+            widget: object
+            fields:
+              - label: Label
+                name: label
+                widget: string
+              - label: Body
+                name: body
+                widget: text
+          - label: Index Kicker
+            name: indexKicker
+            widget: string
+          - label: Index Title
+            name: indexTitle
+            widget: string
+          - label: Index Lede
+            name: indexLede
+            widget: text
+          - label: Card Aria Label Prefix
+            name: cardAriaLabelPrefix
+            widget: string
+          - label: Open Document Label
+            name: openDocLabel
+            widget: string
+          - label: Back To Index Label
+            name: backToIndexLabel
+            widget: string
+          - label: Sections Aria Label
+            name: sectionsAriaLabel
+            widget: string
+          - label: Games
+            name: games
+            widget: list
+            fields:
+              - label: Slug (URL)
+                name: slug
+                widget: string
+                hint: Lowercase, hyphenated. Becomes /new-games/<slug>/
+              - label: Name
+                name: name
+                widget: string
+              - label: Pitch
+                name: pitch
+                widget: text
+              - label: Status
+                name: status
+                widget: string
+              - label: Genre
+                name: genre
+                widget: string
+                required: false
+              - label: Platform
+                name: platform
+                widget: string
+                required: false
+              - label: Cover Image
+                name: coverImage
+                widget: string
+                required: false
+              - label: Cover Image Alt
+                name: coverImageAlt
+                widget: string
+                required: false
+              - label: Documentation Sections
+                name: sections
+                widget: list
+                fields:
+                  - label: Section
+                    name: id
+                    widget: select
+                    options:
+                      - opdd
+                      - gdd
+                      - sketches
+                      - screenshots
+                      - links
+                  - label: Title
+                    name: title
+                    widget: string
+                  - label: Summary
+                    name: summary
+                    widget: text
+                    required: false
+                  - label: Empty State Text
+                    name: emptyText
+                    widget: string
+                  - label: Links
+                    name: links
+                    widget: list
+                    required: false
+                    fields:
+                      - label: Label
+                        name: label
+                        widget: string
+                      - label: Href
+                        name: href
+                        widget: string
+                      - label: Description
+                        name: description
+                        widget: string
+                        required: false
+                      - label: Status
+                        name: status
+                        widget: string
+                        required: false
+                      - label: External Link
+                        name: external
+                        widget: boolean
+                        required: false

@@ -1,0 +1,125 @@
+{
+  "seo": {
+    "title": "New Games (Internal) | Big Three Games",
+    "description": "Internal documentation space for upcoming Big Three Games titles. Access restricted to project members."
+  },
+  "hero": {
+    "eyebrow": "Internal Workspace",
+    "title": "New Games Documentation",
+    "summary": "A private space for design documents, sketches, screenshots, and reference links for games in development."
+  },
+  "accessNote": {
+    "label": "Restricted access",
+    "body": "This area is limited to Big Three Games members through GitHub sign-in. Do not share these links publicly."
+  },
+  "indexKicker": "In Development",
+  "indexTitle": "Project Documents",
+  "indexLede": "Open a game to review its design documentation and supporting material.",
+  "cardAriaLabelPrefix": "New game",
+  "openDocLabel": "Open document",
+  "backToIndexLabel": "Back to all games",
+  "sectionsAriaLabel": "Documentation sections",
+  "games": [
+    {
+      "slug": "vinculum",
+      "name": "Vinculum",
+      "pitch": "A strategic world bound by connections, where every link reshapes the board.",
+      "status": "Concept",
+      "genre": "Strategy",
+      "platform": "PC",
+      "coverImage": "/assets/studio/logo/b3g_official_logo.png",
+      "coverImageAlt": "Vinculum placeholder cover",
+      "sections": [
+        {
+          "id": "opdd",
+          "title": "One Page Design Document",
+          "summary": "The single-page concept overview for Vinculum.",
+          "emptyText": "No one page design document linked yet.",
+          "links": [
+            {
+              "label": "Vinculum One Page Design Document",
+              "href": "/new-games/vinculum/opdd/",
+              "description": "Full one page design document (HTML).",
+              "status": "Draft"
+            }
+          ]
+        },
+        {
+          "id": "gdd",
+          "title": "Game Design Document",
+          "summary": "The detailed systems and design reference.",
+          "emptyText": "No game design document linked yet.",
+          "links": []
+        },
+        {
+          "id": "sketches",
+          "title": "Sketches",
+          "summary": "Concept art and early visual exploration.",
+          "emptyText": "No sketches uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "screenshots",
+          "title": "Screenshots",
+          "summary": "Captures from prototypes and builds.",
+          "emptyText": "No screenshots uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "links",
+          "title": "Links",
+          "summary": "External references, boards, and resources.",
+          "emptyText": "No external links added yet.",
+          "links": []
+        }
+      ]
+    },
+    {
+      "slug": "capture-it",
+      "name": "Capture It!",
+      "pitch": "A fast, tactical capture game built around quick reads and bold plays.",
+      "status": "Concept",
+      "genre": "Action Strategy",
+      "platform": "PC",
+      "coverImage": "/assets/studio/logo/b3g_official_logo.png",
+      "coverImageAlt": "Capture It placeholder cover",
+      "sections": [
+        {
+          "id": "opdd",
+          "title": "One Page Design Document",
+          "summary": "The single-page concept overview for Capture It!.",
+          "emptyText": "No one page design document linked yet.",
+          "links": []
+        },
+        {
+          "id": "gdd",
+          "title": "Game Design Document",
+          "summary": "The detailed systems and design reference.",
+          "emptyText": "No game design document linked yet.",
+          "links": []
+        },
+        {
+          "id": "sketches",
+          "title": "Sketches",
+          "summary": "Concept art and early visual exploration.",
+          "emptyText": "No sketches uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "screenshots",
+          "title": "Screenshots",
+          "summary": "Captures from prototypes and builds.",
+          "emptyText": "No screenshots uploaded yet.",
+          "links": []
+        },
+        {
+          "id": "links",
+          "title": "Links",
+          "summary": "External references, boards, and resources.",
+          "emptyText": "No external links added yet.",
+          "links": []
+        }
+      ]
+    }
+  ]
+}

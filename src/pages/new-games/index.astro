@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteContent } from '../../lib/content';
+
+const { newGames } = getSiteContent();
+---
+
+<BaseLayout
+  title={newGames.seo.title}
+  description={newGames.seo.description}
+  pageClass="page-new-games"
+  activePage="new-games"
+>
+  <section class="section section--tight new-games-hero" aria-labelledby="new-games-hero-title">
+    <div class="container stack">
+      <div class="reveal stack">
+        <p class="hero__eyebrow">{newGames.hero.eyebrow}</p>
+        <h1 class="hero__title" id="new-games-hero-title">{newGames.hero.title}</h1>
+        <p class="section__lede">{newGames.hero.summary}</p>
+      </div>
+
+      <aside class="access-note surface reveal" role="note">
+        <p class="access-note__label">{newGames.accessNote.label}</p>
+        <p>{newGames.accessNote.body}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="projects" aria-labelledby="new-games-index-title">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="section__kicker">{newGames.indexKicker}</p>
+        <h2 class="section__title" id="new-games-index-title">{newGames.indexTitle}</h2>
+        <p class="section__lede">{newGames.indexLede}</p>
+      </header>
+
+      <div class="doc-game-grid">
+        {
+          newGames.games.map((game) => (
+            <a
+              class="doc-game-card surface reveal"
+              href={`/new-games/${game.slug}/`}
+              aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
+            >
+              {game.coverImage && (
+                <figure class="doc-game-card__media">
+                  <img src={game.coverImage} alt={game.coverImageAlt ?? ''} loading="lazy" />
+                </figure>
+              )}
+              <div class="doc-game-card__body stack">
+                <div class="doc-game-card__head">
+                  <h3>{game.name}</h3>
+                  <span class="doc-badge">{game.status}</span>
+                </div>
+                <p>{game.pitch}</p>
+                {(game.genre || game.platform) && (
+                  <p class="doc-game-card__meta">
+                    {[game.genre, game.platform].filter(Boolean).join(' · ')}
+                  </p>
+                )}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

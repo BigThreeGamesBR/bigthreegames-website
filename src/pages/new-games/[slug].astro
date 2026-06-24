@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteContent } from '../../lib/content';
+import type { NewGameEntry } from '../../types/content';
+
+export function getStaticPaths() {
+  const { newGames } = getSiteContent();
+  return newGames.games.map((game) => ({
+    params: { slug: game.slug },
+    props: { game }
+  }));
+}
+
+interface Props {
+  game: NewGameEntry;
+}
+
+const { game } = Astro.props;
+const { newGames } = getSiteContent();
+const isExternal = (href: string) => /^https?:\/\//i.test(href);
+---
+
+<BaseLayout
+  title={`${game.name} | New Games | Big Three Games`}
+  description={`Internal documentation for ${game.name}. ${game.pitch}`}
+  pageClass="page-new-game"
+  activePage="new-games"
+>
+  <section class="section section--tight new-game-hero" aria-labelledby="new-game-title">
+    <div class="container stack">
+      <a class="doc-back-link reveal" href="/new-games/">&#8592; {newGames.backToIndexLabel}</a>
+
+      <div class="reveal stack">
+        <div class="doc-game-card__head">
+          <h1 class="hero__title" id="new-game-title">{game.name}</h1>
+          <span class="doc-badge">{game.status}</span>
+        </div>
+        <p class="section__lede">{game.pitch}</p>
+        {(game.genre || game.platform) && (
+          <p class="doc-game-card__meta">
+            {[game.genre, game.platform].filter(Boolean).join(' · ')}
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-label={newGames.sectionsAriaLabel}>
+    <div class="container stack doc-sections">
+      {
+        game.sections.map((section) => (
+          <article class="doc-section surface reveal stack" aria-labelledby={`doc-${section.id}`}>
+            <header class="stack">
+              <h2 class="section__title" id={`doc-${section.id}`}>{section.title}</h2>
+              {section.summary && <p>{section.summary}</p>}
+            </header>
+
+            {section.links.length > 0 ? (
+              <ul class="doc-link-list">
+                {section.links.map((link) => (
+                  <li class="doc-link">
+                    <a
+                      class="doc-link__anchor"
+                      href={link.href}
+                      target={link.external || isExternal(link.href) ? '_blank' : undefined}
+                      rel={link.external || isExternal(link.href) ? 'noopener noreferrer' : undefined}
+                    >
+                      <span class="doc-link__title">{link.label}</span>
+                      {link.description && <span class="doc-link__desc">{link.description}</span>}
+                    </a>
+                    {link.status && <span class="doc-badge doc-badge--soft">{link.status}</span>}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="doc-section__empty">{section.emptyText}</p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,6 +1,6 @@
 export type Locale = 'en';
 
-export type NavId = 'home' | 'heritage' | 'about' | 'contact';
+export type NavId = 'home' | 'heritage' | 'about' | 'contact' | 'new-games';
 
 export type ButtonVariant = 'primary' | 'ghost' | 'soft';
 
@@ -168,10 +168,67 @@ export interface HeritageContent {
   };
 }
 
+export type NewGameDocSectionId =
+  | 'opdd'
+  | 'gdd'
+  | 'sketches'
+  | 'screenshots'
+  | 'links';
+
+export interface NewGameDocLink extends LinkItem {
+  description?: string;
+  status?: string;
+}
+
+export interface NewGameDocSection {
+  id: NewGameDocSectionId;
+  title: string;
+  summary?: string;
+  emptyText: string;
+  links: NewGameDocLink[];
+}
+
+export interface NewGameEntry {
+  slug: string;
+  name: string;
+  pitch: string;
+  status: string;
+  genre?: string;
+  platform?: string;
+  coverImage?: string;
+  coverImageAlt?: string;
+  sections: NewGameDocSection[];
+}
+
+export interface NewGamesContent {
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+  };
+  accessNote: {
+    label: string;
+    body: string;
+  };
+  indexKicker: string;
+  indexTitle: string;
+  indexLede: string;
+  cardAriaLabelPrefix: string;
+  openDocLabel: string;
+  backToIndexLabel: string;
+  sectionsAriaLabel: string;
+  games: NewGameEntry[];
+}
+
 export interface SiteContentBundle {
   global: GlobalContent;
   home: HomeContent;
   about: AboutContent;
   contact: ContactContent;
   heritage: HeritageContent;
+  newGames: NewGamesContent;
 }
