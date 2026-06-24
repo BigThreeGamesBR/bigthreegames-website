@@ -4,17 +4,17 @@
     "description": "Internal documentation space for upcoming Big Three Games titles. Access restricted to project members."
   },
   "hero": {
-    "eyebrow": "Internal Workspace",
-    "title": "New Games Documentation",
-    "summary": "A private space for design documents, sketches, screenshots, and reference links for games in development."
+    "eyebrow": "Internal Wiki",
+    "title": "New Games Wiki",
+    "summary": "Member-only documentation hub for game design docs, assets, links, and references across all projects."
   },
   "accessNote": {
     "label": "Restricted access",
     "body": "This area is limited to Big Three Games members through GitHub sign-in. Do not share these links publicly."
   },
-  "indexKicker": "In Development",
-  "indexTitle": "Project Documents",
-  "indexLede": "Open a game to review its design documentation and supporting material.",
+  "indexKicker": "Documentation Directory",
+  "indexTitle": "Game Directory",
+  "indexLede": "Open a game hub or jump directly to its documentation sections and published files.",
   "cardAriaLabelPrefix": "New game",
   "openDocLabel": "Open document",
   "backToIndexLabel": "Back to all games",

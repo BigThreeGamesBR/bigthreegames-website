@@ -1,8 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteContent } from '../../lib/content';
+import type { NewGameDocSectionId, NewGameEntry } from '../../types/content';
 
 const { newGames } = getSiteContent();
+
+const sectionOrder: NewGameDocSectionId[] = ['opdd', 'gdd', 'sketches', 'screenshots', 'links'];
+const sectionShortLabel: Record<NewGameDocSectionId, string> = {
+  opdd: 'OPDD',
+  gdd: 'GDD',
+  sketches: 'Sketches',
+  screenshots: 'Shots',
+  links: 'Links'
+};
+
+const gameTrack = (game: NewGameEntry) => [game.genre, game.platform].filter(Boolean).join(' · ');
+const getSectionDocCount = (game: NewGameEntry) =>
+  game.sections.reduce((total, section) => total + section.links.length, 0);
+
+const directLinks = newGames.games.flatMap((game) =>
+  game.sections.flatMap((section) =>
+    section.links.map((link) => ({
+      ...link,
+      gameName: game.name,
+      gameSlug: game.slug,
+      sectionTitle: section.title
+    }))
+  )
+);
+
+const totalDocs = directLinks.length;
 ---
 
 <BaseLayout
@@ -11,57 +38,129 @@ const { newGames } = getSiteContent();
   pageClass="page-new-games"
   activePage="new-games"
 >
-  <section class="section section--tight new-games-hero" aria-labelledby="new-games-hero-title">
-    <div class="container stack">
-      <div class="reveal stack">
-        <p class="hero__eyebrow">{newGames.hero.eyebrow}</p>
-        <h1 class="hero__title" id="new-games-hero-title">{newGames.hero.title}</h1>
-        <p class="section__lede">{newGames.hero.summary}</p>
-      </div>
+  <section class="section section--tight new-games-wiki" aria-labelledby="new-games-hero-title">
+    <div class="container wiki-shell wiki-shell--index">
+      <aside class="wiki-sidebar surface reveal" aria-label="New Games wiki navigation">
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">Wiki navigation</p>
+          <ul class="wiki-nav-list">
+            <li><a href="#games-directory">Games directory</a></li>
+            <li><a href="#doc-shortcuts">Document shortcuts</a></li>
+          </ul>
+        </div>
 
-      <aside class="access-note surface reveal" role="note">
-        <p class="access-note__label">{newGames.accessNote.label}</p>
-        <p>{newGames.accessNote.body}</p>
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">Game hubs</p>
+          <ul class="wiki-nav-list wiki-nav-list--compact">
+            {
+              newGames.games.map((game) => (
+                <li>
+                  <a href={`/new-games/${game.slug}/`}>{game.name}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="wiki-sidebar__block wiki-sidebar__stats" aria-label="Directory totals">
+          <p><strong>{newGames.games.length}</strong> games</p>
+          <p><strong>{totalDocs}</strong> linked documents</p>
+        </div>
       </aside>
-    </div>
-  </section>
 
-  <section class="section section--tight" id="projects" aria-labelledby="new-games-index-title">
-    <div class="container">
-      <header class="section__head reveal">
-        <p class="section__kicker">{newGames.indexKicker}</p>
-        <h2 class="section__title" id="new-games-index-title">{newGames.indexTitle}</h2>
-        <p class="section__lede">{newGames.indexLede}</p>
-      </header>
+      <div class="wiki-main stack">
+        <header class="wiki-page-header surface reveal">
+          <p class="hero__eyebrow">{newGames.hero.eyebrow}</p>
+          <h1 class="hero__title" id="new-games-hero-title">{newGames.hero.title}</h1>
+          <p class="section__lede">{newGames.hero.summary}</p>
+          <aside class="access-note" role="note">
+            <p class="access-note__label">{newGames.accessNote.label}</p>
+            <p>{newGames.accessNote.body}</p>
+          </aside>
+        </header>
 
-      <div class="doc-game-grid">
-        {
-          newGames.games.map((game) => (
-            <a
-              class="doc-game-card surface reveal"
-              href={`/new-games/${game.slug}/`}
-              aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
-            >
-              {game.coverImage && (
-                <figure class="doc-game-card__media">
-                  <img src={game.coverImage} alt={game.coverImageAlt ?? ''} loading="lazy" />
-                </figure>
-              )}
-              <div class="doc-game-card__body stack">
-                <div class="doc-game-card__head">
-                  <h3>{game.name}</h3>
-                  <span class="doc-badge">{game.status}</span>
-                </div>
-                <p>{game.pitch}</p>
-                {(game.genre || game.platform) && (
-                  <p class="doc-game-card__meta">
-                    {[game.genre, game.platform].filter(Boolean).join(' · ')}
-                  </p>
-                )}
-              </div>
-            </a>
-          ))
-        }
+        <section class="wiki-panel surface reveal" id="games-directory" aria-labelledby="new-games-index-title">
+          <header class="wiki-panel__head">
+            <p class="section__kicker">{newGames.indexKicker}</p>
+            <h2 class="section__title" id="new-games-index-title">{newGames.indexTitle}</h2>
+            <p>{newGames.indexLede}</p>
+          </header>
+
+          <div class="wiki-table-wrap">
+            <table class="wiki-directory-table">
+              <caption class="sr-only">New Games internal directory</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Game</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Track</th>
+                  <th scope="col">Quick links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  newGames.games.map((game) => (
+                    <tr>
+                      <th scope="row">
+                        <a
+                          class="wiki-inline-link wiki-inline-link--strong"
+                          href={`/new-games/${game.slug}/`}
+                          aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
+                        >
+                          {game.name}
+                        </a>
+                        <p class="wiki-table-pitch">{game.pitch}</p>
+                      </th>
+                      <td><span class="doc-badge">{game.status}</span></td>
+                      <td>{gameTrack(game) || 'Not set'}</td>
+                      <td>
+                        <ul class="wiki-mini-links" aria-label={`${game.name} documentation links`}>
+                          {
+                            sectionOrder.map((sectionId) => (
+                              <li>
+                                <a href={`/new-games/${game.slug}/#doc-${sectionId}`}>
+                                  {sectionShortLabel[sectionId]}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                        <p class="wiki-row-note">{getSectionDocCount(game)} linked docs</p>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="wiki-panel surface reveal" id="doc-shortcuts" aria-labelledby="doc-shortcuts-title">
+          <header class="wiki-panel__head">
+            <h2 class="section__title" id="doc-shortcuts-title">Document shortcuts</h2>
+            <p>Direct links to currently published internal documents.</p>
+          </header>
+
+          {directLinks.length > 0 ? (
+            <ul class="wiki-shortcut-list">
+              {
+                directLinks.map((link) => (
+                  <li class="doc-link">
+                    <a class="doc-link__anchor" href={link.href}>
+                      <span class="doc-link__title">{link.label}</span>
+                      <span class="doc-link__desc">
+                        {link.gameName} · {link.sectionTitle}
+                      </span>
+                    </a>
+                    {link.status && <span class="doc-badge doc-badge--soft">{link.status}</span>}
+                  </li>
+                ))
+              }
+            </ul>
+          ) : (
+            <p class="doc-section__empty">No direct documents are linked yet.</p>
+          )}
+        </section>
       </div>
     </div>
   </section>
