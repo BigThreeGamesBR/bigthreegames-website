@@ -5,11 +5,11 @@ import type { NewGameDocSectionId, NewGameEntry } from '../../types/content';
 
 const { newGames } = getSiteContent();
 
-const sectionOrder: NewGameDocSectionId[] = ['links', 'sketches', 'screenshots', 'opdd', 'gdd'];
-const sectionShortLabel: Record<NewGameDocSectionId, string> = {
+type VisibleNewGameDocSectionId = Extract<NewGameDocSectionId, 'links' | 'opdd' | 'gdd'>;
+
+const sectionOrder: VisibleNewGameDocSectionId[] = ['links', 'opdd', 'gdd'];
+const sectionShortLabel: Record<VisibleNewGameDocSectionId, string> = {
   links: 'Links',
-  sketches: 'Sketches',
-  screenshots: 'Shots',
   opdd: 'OPDD',
   gdd: 'GDD'
 };

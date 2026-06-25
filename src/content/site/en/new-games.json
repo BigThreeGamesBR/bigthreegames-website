@@ -53,6 +53,13 @@
               "icon": "/assets/platform/miro.svg"
             },
             {
+              "label": "Google Drive",
+              "href": "https://drive.google.com/drive/u/0/folders/1KnvJd5AVCVbDCi22C5y50shrHHc3Jy15",
+              "description": "Shared Heritage files and references.",
+              "external": true,
+              "icon": "/assets/platform/google-drive.svg"
+            },
+            {
               "label": "Game Variables",
               "href": "https://docs.google.com/spreadsheets/d/1LPN7TsRQvoM0Mh-9E-gePDFO3waXL_MUFxT5dk7ghAM/edit?gid=1135002737#gid=1135002737",
               "description": "Balancing and combat variables sheet.",
@@ -67,20 +74,6 @@
               "icon": "/assets/platform/google-sheets.svg"
             }
           ]
-        },
-        {
-          "id": "sketches",
-          "title": "Sketches",
-          "summary": "Concept art and early visual exploration.",
-          "emptyText": "No sketches uploaded yet.",
-          "links": []
-        },
-        {
-          "id": "screenshots",
-          "title": "Screenshots",
-          "summary": "Captures from prototypes and builds.",
-          "emptyText": "No screenshots uploaded yet.",
-          "links": []
         },
         {
           "id": "opdd",
@@ -129,6 +122,13 @@
               "icon": "/assets/platform/google-sheets.svg"
             },
             {
+              "label": "Google Drive",
+              "href": "https://drive.google.com/drive/u/0/folders/10nw2HjSoOEo4K5zv_wBP4sDrUGCuRFvB",
+              "description": "Shared Vinculum files and references.",
+              "external": true,
+              "icon": "/assets/platform/google-drive.svg"
+            },
+            {
               "label": "Localization",
               "href": "https://docs.google.com/spreadsheets/d/1uPX9OxHPR_zi84XQIPriZEGFOAEKtS-khAB_LsNynYc/edit?gid=1187540765#gid=1187540765",
               "description": "Localized text references.",
@@ -136,20 +136,6 @@
               "icon": "/assets/platform/google-sheets.svg"
             }
           ]
-        },
-        {
-          "id": "sketches",
-          "title": "Sketches",
-          "summary": "Concept art and early visual exploration.",
-          "emptyText": "No sketches uploaded yet.",
-          "links": []
-        },
-        {
-          "id": "screenshots",
-          "title": "Screenshots",
-          "summary": "Captures from prototypes and builds.",
-          "emptyText": "No screenshots uploaded yet.",
-          "links": []
         },
         {
           "id": "opdd",
@@ -196,20 +182,6 @@
           "title": "Game Design Document",
           "summary": "The detailed systems and design reference.",
           "emptyText": "No game design document linked yet.",
-          "links": []
-        },
-        {
-          "id": "sketches",
-          "title": "Sketches",
-          "summary": "Concept art and early visual exploration.",
-          "emptyText": "No sketches uploaded yet.",
-          "links": []
-        },
-        {
-          "id": "screenshots",
-          "title": "Screenshots",
-          "summary": "Captures from prototypes and builds.",
-          "emptyText": "No screenshots uploaded yet.",
           "links": []
         },
         {

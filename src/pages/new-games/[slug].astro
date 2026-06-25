@@ -11,28 +11,29 @@ export function getStaticPaths() {
   }));
 }
 
-interface Props {
-  game: NewGameEntry;
-}
-
 const { game } = Astro.props;
 const { newGames } = getSiteContent();
 const isExternal = (href: string) => /^https?:\/\//i.test(href);
 
-const sectionOrder: NewGameDocSectionId[] = ['links', 'sketches', 'screenshots', 'opdd', 'gdd'];
-const sectionShortLabel: Record<NewGameDocSectionId, string> = {
+type VisibleNewGameDocSectionId = Extract<NewGameDocSectionId, 'links' | 'opdd' | 'gdd'>;
+
+const sectionOrder: VisibleNewGameDocSectionId[] = ['links', 'opdd', 'gdd'];
+const sectionShortLabel: Record<VisibleNewGameDocSectionId, string> = {
   links: 'Links',
-  sketches: 'Sketches',
-  screenshots: 'Shots',
   opdd: 'OPDD',
   gdd: 'GDD'
 };
 
+const isVisibleSection = (
+  section: NewGameEntry['sections'][number]
+): section is NewGameEntry['sections'][number] & { id: VisibleNewGameDocSectionId } =>
+  sectionOrder.includes(section.id as VisibleNewGameDocSectionId);
+
 const fallbackGameIcon = '/assets/studio/icon/game-icon-placeholder.svg';
 
-const sortedSections = [...game.sections].sort(
-  (a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id)
-);
+const sortedSections = game.sections
+  .filter(isVisibleSection)
+  .sort((a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id));
 ---
 
 <BaseLayout
