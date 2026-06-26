@@ -39,6 +39,13 @@
           "emptyText": "No external links added yet.",
           "links": [
             {
+              "label": "Google Drive",
+              "href": "https://drive.google.com/drive/u/0/folders/1KnvJd5AVCVbDCi22C5y50shrHHc3Jy15",
+              "description": "Shared Heritage files and references.",
+              "external": true,
+              "icon": "/assets/platform/google-drive.svg"
+            },
+            {
               "label": "GitLab",
               "href": "https://gitlab.com/MatheusAssis/heritage",
               "description": "Main Heritage source repository.",
@@ -51,13 +58,6 @@
               "description": "Shared planning and systems board.",
               "external": true,
               "icon": "/assets/platform/miro.svg"
-            },
-            {
-              "label": "Google Drive",
-              "href": "https://drive.google.com/drive/u/0/folders/1KnvJd5AVCVbDCi22C5y50shrHHc3Jy15",
-              "description": "Shared Heritage files and references.",
-              "external": true,
-              "icon": "/assets/platform/google-drive.svg"
             },
             {
               "label": "Game Variables",
@@ -108,6 +108,13 @@
           "emptyText": "No external links added yet.",
           "links": [
             {
+              "label": "Google Drive",
+              "href": "https://drive.google.com/drive/u/0/folders/10nw2HjSoOEo4K5zv_wBP4sDrUGCuRFvB",
+              "description": "Shared Vinculum files and references.",
+              "external": true,
+              "icon": "/assets/platform/google-drive.svg"
+            },
+            {
               "label": "GitLab",
               "href": "https://gitlab.com/MatheusAssis/vinculum",
               "description": "Main Vinculum source repository.",
@@ -120,13 +127,6 @@
               "description": "Balancing and combat variables sheet.",
               "external": true,
               "icon": "/assets/platform/google-sheets.svg"
-            },
-            {
-              "label": "Google Drive",
-              "href": "https://drive.google.com/drive/u/0/folders/10nw2HjSoOEo4K5zv_wBP4sDrUGCuRFvB",
-              "description": "Shared Vinculum files and references.",
-              "external": true,
-              "icon": "/assets/platform/google-drive.svg"
             },
             {
               "label": "Localization",
