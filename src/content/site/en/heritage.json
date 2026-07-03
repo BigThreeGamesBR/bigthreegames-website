@@ -36,6 +36,14 @@
       "value": "Steam"
     }
   ],
+  "demo": {
+    "sectionKicker": "Play Demo",
+    "sectionTitle": "Try Heritage Demo in your Browser",
+    "sectionBody": "Jump into our universe directly from this page, in partnership with Spawnd",
+    "embedUrl": "https://www.spawnd.gg/-/games/embed/60?description=true",
+    "embedTitle": "Heritage embedded demo player",
+    "frameAriaLabel": "Playable Heritage demo"
+  },
   "media": {
     "trailerMp4": "/assets/heritage/trailer/hls/master.m3u8",
     "sectionKicker": "Media",

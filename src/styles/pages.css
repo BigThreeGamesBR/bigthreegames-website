@@ -198,6 +198,38 @@
   display: block;
 }
 
+.heritage-demo__layout {
+  display: grid;
+  gap: var(--space-md);
+  max-width: min(100%, 64rem);
+  margin-inline: auto;
+}
+
+.heritage-demo__layout .section__head {
+  margin-bottom: 0;
+}
+
+.heritage-demo__player {
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-overlay-soft);
+}
+
+.heritage-demo__player iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 20rem;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 40rem) {
+  .heritage-demo__player iframe {
+    min-height: 14rem;
+  }
+}
+
 .heritage-media-layout {
   display: grid;
   gap: var(--space-lg);

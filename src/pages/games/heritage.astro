@@ -45,15 +45,38 @@ const useTrailerHls = isHlsStream(heritage.media.trailerMp4);
     </div>
   </section>
 
-  <section class="section" id="media" aria-labelledby="heritage-media-title">
-    <div class="container heritage-media-layout">
+  <section class="section heritage-demo" id="demo" aria-labelledby="heritage-demo-title">
+    <div class="container heritage-demo__layout reveal">
       <img
-        class="heritage-main-logo reveal"
+        class="heritage-main-logo"
         src={heritage.hero.logo}
         alt={heritage.hero.logoAlt}
         loading="eager"
       />
 
+      <header class="section__head">
+        <p class="section__kicker">{heritage.demo.sectionKicker}</p>
+        <h2 class="section__title" id="heritage-demo-title">{heritage.demo.sectionTitle}</h2>
+        <p>{heritage.demo.sectionBody}</p>
+      </header>
+
+      <div class="heritage-demo__player" aria-label={heritage.demo.frameAriaLabel}>
+        <iframe
+          src={heritage.demo.embedUrl}
+          title={heritage.demo.embedTitle}
+          width="640"
+          height="360"
+          loading="lazy"
+          allow="autoplay; encrypted-media; clipboard-write; clipboard-read; web-share; cross-origin-isolated"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="media" aria-labelledby="heritage-media-title">
+    <div class="container heritage-media-layout">
       <header class="section__head reveal">
         <p class="section__kicker">{heritage.media.sectionKicker}</p>
         <h2 class="section__title" id="heritage-media-title">{heritage.media.sectionTitle}</h2>

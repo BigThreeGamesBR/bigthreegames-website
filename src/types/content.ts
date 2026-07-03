@@ -145,6 +145,14 @@ export interface HeritageContent {
     panelStatLabels: string[];
   };
   stats: Array<{ label: string; value: string }>;
+  demo: {
+    sectionKicker: string;
+    sectionTitle: string;
+    sectionBody: string;
+    embedUrl: string;
+    embedTitle: string;
+    frameAriaLabel: string;
+  };
   media: {
     trailerMp4: string;
     sectionKicker: string;
