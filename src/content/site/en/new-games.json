@@ -199,7 +199,7 @@
   ],
   "assets": [
     {
-      "name": "Our Company Spreadsheet",
+      "name": "Company Spreadsheet",
       "status": "Launched",
       "track": "Operations",
       "quickLinks": [
@@ -211,7 +211,7 @@
       ]
     },
     {
-      "name": "Our Unity Development Kit",
+      "name": "Unity Development Kit",
       "status": "In Progress",
       "track": "Development",
       "quickLinks": [
@@ -223,7 +223,7 @@
       ]
     },
     {
-      "name": "Our Reminder Bot",
+      "name": "Reminder Spreadsheet",
       "status": "Launched",
       "track": "Automation",
       "quickLinks": [

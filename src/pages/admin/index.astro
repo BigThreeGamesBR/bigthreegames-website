@@ -16,6 +16,7 @@ const sectionShortLabel: Record<VisibleNewGameDocSectionId, string> = {
 
 const gameTrack = (game: NewGameEntry) => [game.genre, game.platform].filter(Boolean).join(' · ');
 const fallbackGameIcon = '/assets/studio/icon/game-icon-placeholder.svg';
+const toAnchorId = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const assetLinksLabel = (asset: CompanyAssetEntry) => {
   if (asset.quickLinks.length === 1) {
@@ -38,8 +39,21 @@ const assetLinksLabel = (asset: CompanyAssetEntry) => {
         <div class="wiki-sidebar__block">
           <p class="wiki-sidebar__label">Wiki navigation</p>
           <ul class="wiki-nav-list">
-            <li><a href="#games-directory">Games directory</a></li>
             <li><a href="#assets-directory">Asset directory</a></li>
+            <li><a href="#games-directory">Games directory</a></li>
+          </ul>
+        </div>
+
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">Asset hub</p>
+          <ul class="wiki-nav-list wiki-nav-list--compact">
+            {
+              newGames.assets.map((asset) => (
+                <li>
+                  <a href={`#asset-${toAnchorId(asset.name)}`}>{asset.name}</a>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
@@ -72,6 +86,61 @@ const assetLinksLabel = (asset: CompanyAssetEntry) => {
             <p>{newGames.accessNote.body}</p>
           </aside>
         </header>
+
+        <section class="wiki-panel surface reveal" id="assets-directory" aria-labelledby="assets-index-title">
+          <header class="wiki-panel__head">
+            <p class="section__kicker">{newGames.assetIndexKicker}</p>
+            <h2 class="section__title" id="assets-index-title">{newGames.assetIndexTitle}</h2>
+            <p>{newGames.assetIndexLede}</p>
+          </header>
+
+          <div class="wiki-table-wrap">
+            <table class="wiki-directory-table">
+              <caption class="sr-only">Company asset directory</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Asset</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Track</th>
+                  <th scope="col">Quick links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  newGames.assets.map((asset) => (
+                    <tr id={`asset-${toAnchorId(asset.name)}`}>
+                      <th scope="row">
+                        <a
+                          class="wiki-inline-link wiki-inline-link--strong"
+                          href={asset.quickLinks[0]?.href ?? '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {asset.name}
+                        </a>
+                      </th>
+                      <td><span class="doc-badge">{asset.status}</span></td>
+                      <td>{asset.track}</td>
+                      <td>
+                        <ul class="wiki-mini-links" aria-label={`${asset.name} quick links`}>
+                          {
+                            asset.quickLinks.map((link) => (
+                              <li>
+                                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                                  {asset.quickLinks.length > 1 ? link.label : assetLinksLabel(asset)}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <section class="wiki-panel surface reveal" id="games-directory" aria-labelledby="new-games-index-title">
           <header class="wiki-panel__head">
@@ -127,61 +196,6 @@ const assetLinksLabel = (asset: CompanyAssetEntry) => {
                               <li>
                                 <a href={`/admin/${game.slug}/#doc-${sectionId}`}>
                                   {sectionShortLabel[sectionId]}
-                                </a>
-                              </li>
-                            ))
-                          }
-                        </ul>
-                      </td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="wiki-panel surface reveal" id="assets-directory" aria-labelledby="assets-index-title">
-          <header class="wiki-panel__head">
-            <p class="section__kicker">{newGames.assetIndexKicker}</p>
-            <h2 class="section__title" id="assets-index-title">{newGames.assetIndexTitle}</h2>
-            <p>{newGames.assetIndexLede}</p>
-          </header>
-
-          <div class="wiki-table-wrap">
-            <table class="wiki-directory-table">
-              <caption class="sr-only">Company asset directory</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Asset</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Track</th>
-                  <th scope="col">Quick links</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  newGames.assets.map((asset) => (
-                    <tr>
-                      <th scope="row">
-                        <a
-                          class="wiki-inline-link wiki-inline-link--strong"
-                          href={asset.quickLinks[0]?.href ?? '#'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {asset.name}
-                        </a>
-                      </th>
-                      <td><span class="doc-badge">{asset.status}</span></td>
-                      <td>{asset.track}</td>
-                      <td>
-                        <ul class="wiki-mini-links" aria-label={`${asset.name} quick links`}>
-                          {
-                            asset.quickLinks.map((link) => (
-                              <li>
-                                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                                  {asset.quickLinks.length > 1 ? link.label : assetLinksLabel(asset)}
                                 </a>
                               </li>
                             ))
