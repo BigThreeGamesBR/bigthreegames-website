@@ -1,12 +1,12 @@
 {
   "seo": {
-    "title": "New Games (Internal) | Big Three Games",
-    "description": "Internal documentation space for upcoming Big Three Games titles. Access restricted to project members."
+    "title": "Big Three Games Wiki (Internal) | Big Three Games",
+    "description": "Internal documentation space for Big Three Games titles and shared company resources. Access restricted to project members."
   },
   "hero": {
     "eyebrow": "Internal Wiki",
-    "title": "New Games Wiki",
-    "summary": "Member-only documentation hub for game design docs, assets, links, and references across all projects."
+    "title": "Big Three Games Wiki",
+    "summary": "Member-only documentation hub for game design docs, production links, and core company resources."
   },
   "accessNote": {
     "label": "Restricted access",
@@ -15,6 +15,9 @@
   "indexKicker": "Documentation Directory",
   "indexTitle": "Game Directory",
   "indexLede": "Open a game hub or jump directly to its documentation sections and published files.",
+  "assetIndexKicker": "Company Resource Hub",
+  "assetIndexTitle": "Asset Directory",
+  "assetIndexLede": "Access core company assets, studio tooling, and automation resources from one place.",
   "cardAriaLabelPrefix": "New game",
   "openDocLabel": "Open document",
   "backToIndexLabel": "Back to all games",
@@ -190,6 +193,44 @@
           "summary": "External references, boards, and resources.",
           "emptyText": "No external links added yet.",
           "links": []
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "name": "Our Company Spreadsheet",
+      "status": "Launched",
+      "track": "Operations",
+      "quickLinks": [
+        {
+          "label": "Spreadsheet",
+          "href": "https://docs.google.com/spreadsheets/d/1HJFv_Y_vV_FT3ZWq4aspYObfPGIrlRkqu4YOqqHH9gU/edit?gid=1135800493#gid=1135800493",
+          "external": true
+        }
+      ]
+    },
+    {
+      "name": "Our Unity Development Kit",
+      "status": "In Progress",
+      "track": "Development",
+      "quickLinks": [
+        {
+          "label": "Repository",
+          "href": "https://gitlab.com/MatheusAssis/b3g-kit",
+          "external": true
+        }
+      ]
+    },
+    {
+      "name": "Our Reminder Bot",
+      "status": "Launched",
+      "track": "Automation",
+      "quickLinks": [
+        {
+          "label": "Spreadsheet",
+          "href": "https://docs.google.com/spreadsheets/d/1GimYpZVAw09bBPSN1MscUhgklyOxBEkloVtIT4FPcvY/edit?gid=577205945#gid=577205945",
+          "external": true
         }
       ]
     }

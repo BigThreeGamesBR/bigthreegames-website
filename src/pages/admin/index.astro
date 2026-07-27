@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteContent } from '../../lib/content';
+import type { CompanyAssetEntry, NewGameDocSectionId, NewGameEntry } from '../../types/content';
+
+const { newGames } = getSiteContent();
+
+type VisibleNewGameDocSectionId = Extract<NewGameDocSectionId, 'links' | 'opdd' | 'gdd'>;
+
+const sectionOrder: VisibleNewGameDocSectionId[] = ['links', 'opdd', 'gdd'];
+const sectionShortLabel: Record<VisibleNewGameDocSectionId, string> = {
+  links: 'Links',
+  opdd: 'OPDD',
+  gdd: 'GDD'
+};
+
+const gameTrack = (game: NewGameEntry) => [game.genre, game.platform].filter(Boolean).join(' · ');
+const fallbackGameIcon = '/assets/studio/icon/game-icon-placeholder.svg';
+
+const assetLinksLabel = (asset: CompanyAssetEntry) => {
+  if (asset.quickLinks.length === 1) {
+    return asset.quickLinks[0].label;
+  }
+
+  return 'Links';
+};
+---
+
+<BaseLayout
+  title={newGames.seo.title}
+  description={newGames.seo.description}
+  pageClass="page-new-games"
+  activePage="new-games"
+>
+  <section class="section section--tight new-games-wiki" aria-labelledby="new-games-hero-title">
+    <div class="container wiki-shell wiki-shell--index">
+      <aside class="wiki-sidebar surface reveal" aria-label="Big Three Games wiki navigation">
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">Wiki navigation</p>
+          <ul class="wiki-nav-list">
+            <li><a href="#games-directory">Games directory</a></li>
+            <li><a href="#assets-directory">Asset directory</a></li>
+          </ul>
+        </div>
+
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">Game hubs</p>
+          <ul class="wiki-nav-list wiki-nav-list--compact">
+            {
+              newGames.games.map((game) => (
+                <li>
+                  <a href={`/admin/${game.slug}/`}>{game.name}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="wiki-sidebar__block wiki-sidebar__stats" aria-label="Directory totals">
+          <p><strong>{newGames.games.length}</strong> games</p>
+          <p><strong>{newGames.assets.length}</strong> assets</p>
+        </div>
+      </aside>
+
+      <div class="wiki-main stack">
+        <header class="wiki-page-header surface reveal">
+          <p class="hero__eyebrow">{newGames.hero.eyebrow}</p>
+          <h1 class="hero__title" id="new-games-hero-title">{newGames.hero.title}</h1>
+          <p class="section__lede">{newGames.hero.summary}</p>
+          <aside class="access-note" role="note">
+            <p class="access-note__label">{newGames.accessNote.label}</p>
+            <p>{newGames.accessNote.body}</p>
+          </aside>
+        </header>
+
+        <section class="wiki-panel surface reveal" id="games-directory" aria-labelledby="new-games-index-title">
+          <header class="wiki-panel__head">
+            <p class="section__kicker">{newGames.indexKicker}</p>
+            <h2 class="section__title" id="new-games-index-title">{newGames.indexTitle}</h2>
+            <p>{newGames.indexLede}</p>
+          </header>
+
+          <div class="wiki-table-wrap">
+            <table class="wiki-directory-table">
+              <caption class="sr-only">New Games internal directory</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Game</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Track</th>
+                  <th scope="col">Quick links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  newGames.games.map((game) => (
+                    <tr>
+                      <th scope="row">
+                        <div class="wiki-game-cell">
+                          <img
+                            class="wiki-game-icon"
+                            src={game.icon ?? fallbackGameIcon}
+                            alt={game.iconAlt ?? `${game.name} icon`}
+                            loading="lazy"
+                            decoding="async"
+                            width="56"
+                            height="56"
+                          />
+                          <div class="wiki-game-cell__body">
+                            <a
+                              class="wiki-inline-link wiki-inline-link--strong"
+                              href={`/admin/${game.slug}/`}
+                              aria-label={`${newGames.cardAriaLabelPrefix} ${game.name}`}
+                            >
+                              {game.name}
+                            </a>
+                            <p class="wiki-table-pitch">{game.pitch}</p>
+                          </div>
+                        </div>
+                      </th>
+                      <td><span class="doc-badge">{game.status}</span></td>
+                      <td>{gameTrack(game) || 'Not set'}</td>
+                      <td>
+                        <ul class="wiki-mini-links" aria-label={`${game.name} documentation links`}>
+                          {
+                            sectionOrder.map((sectionId) => (
+                              <li>
+                                <a href={`/admin/${game.slug}/#doc-${sectionId}`}>
+                                  {sectionShortLabel[sectionId]}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="wiki-panel surface reveal" id="assets-directory" aria-labelledby="assets-index-title">
+          <header class="wiki-panel__head">
+            <p class="section__kicker">{newGames.assetIndexKicker}</p>
+            <h2 class="section__title" id="assets-index-title">{newGames.assetIndexTitle}</h2>
+            <p>{newGames.assetIndexLede}</p>
+          </header>
+
+          <div class="wiki-table-wrap">
+            <table class="wiki-directory-table">
+              <caption class="sr-only">Company asset directory</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Asset</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Track</th>
+                  <th scope="col">Quick links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  newGames.assets.map((asset) => (
+                    <tr>
+                      <th scope="row">
+                        <a
+                          class="wiki-inline-link wiki-inline-link--strong"
+                          href={asset.quickLinks[0]?.href ?? '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {asset.name}
+                        </a>
+                      </th>
+                      <td><span class="doc-badge">{asset.status}</span></td>
+                      <td>{asset.track}</td>
+                      <td>
+                        <ul class="wiki-mini-links" aria-label={`${asset.name} quick links`}>
+                          {
+                            asset.quickLinks.map((link) => (
+                              <li>
+                                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                                  {asset.quickLinks.length > 1 ? link.label : assetLinksLabel(asset)}
+                                </a>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

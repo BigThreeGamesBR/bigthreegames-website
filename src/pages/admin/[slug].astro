@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteContent } from '../../lib/content';
+import type { NewGameDocSectionId, NewGameEntry } from '../../types/content';
+
+export function getStaticPaths() {
+  const { newGames } = getSiteContent();
+  return newGames.games.map((game) => ({
+    params: { slug: game.slug },
+    props: { game }
+  }));
+}
+
+const { game } = Astro.props;
+const { newGames } = getSiteContent();
+const isExternal = (href: string) => /^https?:\/\//i.test(href);
+
+type VisibleNewGameDocSectionId = Extract<NewGameDocSectionId, 'links' | 'opdd' | 'gdd'>;
+
+const sectionOrder: VisibleNewGameDocSectionId[] = ['links', 'opdd', 'gdd'];
+const sectionShortLabel: Record<VisibleNewGameDocSectionId, string> = {
+  links: 'Links',
+  opdd: 'OPDD',
+  gdd: 'GDD'
+};
+
+const isVisibleSection = (
+  section: NewGameEntry['sections'][number]
+): section is NewGameEntry['sections'][number] & { id: VisibleNewGameDocSectionId } =>
+  sectionOrder.includes(section.id as VisibleNewGameDocSectionId);
+
+const fallbackGameIcon = '/assets/studio/icon/game-icon-placeholder.svg';
+
+const sortedSections = game.sections
+  .filter(isVisibleSection)
+  .sort((a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id));
+---
+
+<BaseLayout
+  title={`${game.name} | Big Three Games Wiki`}
+  description={`Internal documentation for ${game.name}. ${game.pitch}`}
+  pageClass="page-new-game"
+  activePage="new-games"
+>
+  <section class="section section--tight new-games-wiki" aria-labelledby="new-game-title">
+    <div class="container wiki-shell wiki-shell--game">
+      <aside class="wiki-sidebar surface reveal" aria-label={`${game.name} wiki navigation`}>
+        <a class="doc-back-link" href="/admin/">&#8592; {newGames.backToIndexLabel}</a>
+
+        <div class="wiki-sidebar__block">
+          <p class="wiki-sidebar__label">On this page</p>
+          <ul class="wiki-nav-list wiki-nav-list--compact">
+            <li><a href="#doc-index">Documentation index</a></li>
+            {
+              sortedSections.map((section) => (
+                <li>
+                  <a href={`#doc-${section.id}`}>{section.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+
+      <div class="wiki-main stack" aria-label={newGames.sectionsAriaLabel}>
+        <header class="wiki-page-header surface reveal">
+          <div class="doc-game-card__head">
+            <h1 class="hero__title doc-game-title" id="new-game-title">
+              <img
+                class="wiki-game-icon wiki-game-icon--title"
+                src={game.icon ?? fallbackGameIcon}
+                alt={game.iconAlt ?? `${game.name} icon`}
+                loading="lazy"
+                decoding="async"
+                width="56"
+                height="56"
+              />
+              <span>{game.name}</span>
+            </h1>
+            <span class="doc-badge">{game.status}</span>
+          </div>
+          <p class="section__lede">{game.pitch}</p>
+          {(game.genre || game.platform) && (
+            <p class="doc-game-card__meta">
+              {[game.genre, game.platform].filter(Boolean).join(' · ')}
+            </p>
+          )}
+        </header>
+
+        <section class="wiki-panel surface reveal" id="doc-index" aria-labelledby="doc-index-title">
+          <header class="wiki-panel__head">
+            <h2 class="section__title" id="doc-index-title">Documentation index</h2>
+            <p>Use this table to jump to each documentation section quickly.</p>
+          </header>
+
+          <div class="wiki-table-wrap">
+            <table class="wiki-section-table">
+              <caption class="sr-only">Documentation index for {game.name}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Section</th>
+                  <th scope="col">Summary</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  sortedSections.map((section) => (
+                    <tr>
+                      <th scope="row">
+                        <a class="wiki-inline-link" href={`#doc-${section.id}`}>
+                          {sectionShortLabel[section.id]} · {section.title}
+                        </a>
+                      </th>
+                      <td>{section.summary ?? 'No summary added yet.'}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {
+          sortedSections.map((section) => (
+            <article class="doc-section wiki-doc-panel surface reveal stack" aria-labelledby={`doc-${section.id}`}>
+              <header class="stack">
+                <h2 class="section__title" id={`doc-${section.id}`}>{section.title}</h2>
+                {section.summary && <p>{section.summary}</p>}
+              </header>
+
+              {section.links.length > 0 ? (
+                <ul class="doc-link-list">
+                  {section.links.map((link) => (
+                    <li class="doc-link">
+                      <a
+                        class="doc-link__anchor"
+                        href={link.href}
+                        target={link.external || isExternal(link.href) ? '_blank' : undefined}
+                        rel={link.external || isExternal(link.href) ? 'noopener noreferrer' : undefined}
+                      >
+                        <span class="doc-link__title">
+                          {section.id === 'links' && link.icon && (
+                            <img
+                              class="doc-link__platform-logo"
+                              src={link.icon}
+                              alt=""
+                              aria-hidden="true"
+                              width="18"
+                              height="18"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          )}
+                          {section.id === 'links' && !link.icon && link.iconLabel && (
+                            <span class="doc-link__platform-icon" aria-hidden="true">{link.iconLabel}</span>
+                          )}
+                          <span>{link.label}</span>
+                        </span>
+                        {link.description && <span class="doc-link__desc">{link.description}</span>}
+                      </a>
+                      {link.status && <span class="doc-badge doc-badge--soft">{link.status}</span>}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="doc-section__empty">{section.emptyText}</p>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

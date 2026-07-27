@@ -212,6 +212,13 @@ export interface NewGameEntry {
   sections: NewGameDocSection[];
 }
 
+export interface CompanyAssetEntry {
+  name: string;
+  status: string;
+  track: string;
+  quickLinks: LinkItem[];
+}
+
 export interface NewGamesContent {
   seo: {
     title: string;
@@ -229,11 +236,15 @@ export interface NewGamesContent {
   indexKicker: string;
   indexTitle: string;
   indexLede: string;
+  assetIndexKicker: string;
+  assetIndexTitle: string;
+  assetIndexLede: string;
   cardAriaLabelPrefix: string;
   openDocLabel: string;
   backToIndexLabel: string;
   sectionsAriaLabel: string;
   games: NewGameEntry[];
+  assets: CompanyAssetEntry[];
 }
 
 export interface SiteContentBundle {
