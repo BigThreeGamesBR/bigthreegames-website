@@ -199,7 +199,31 @@
   ],
   "assets": [
     {
-      "name": "Company Spreadsheet",
+      "name": "Big Three Forge for Unity",
+      "status": "Launched",
+      "track": "Development",
+      "quickLinks": [
+        {
+          "label": "Repository",
+          "href": "https://gitlab.com/MatheusAssis/b3g-kit",
+          "external": true
+        }
+      ]
+    },
+    {
+      "name": "Big Three Atlas",
+      "status": "Launched",
+      "track": "Documentation",
+      "quickLinks": [
+        {
+          "label": "Repository",
+          "href": "https://gitlab.com/MatheusAssis/b3g-docs",
+          "external": true
+        }
+      ]
+    },
+    {
+      "name": "Master Table",
       "status": "Launched",
       "track": "Operations",
       "quickLinks": [
@@ -211,19 +235,7 @@
       ]
     },
     {
-      "name": "Unity Development Kit",
-      "status": "In Progress",
-      "track": "Development",
-      "quickLinks": [
-        {
-          "label": "Repository",
-          "href": "https://gitlab.com/MatheusAssis/b3g-kit",
-          "external": true
-        }
-      ]
-    },
-    {
-      "name": "Reminder Spreadsheet",
+      "name": "Reminders Table",
       "status": "Launched",
       "track": "Automation",
       "quickLinks": [
