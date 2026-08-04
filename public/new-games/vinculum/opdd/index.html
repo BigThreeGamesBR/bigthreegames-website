@@ -412,21 +412,21 @@
           <div class="card pillar">
             <div class="pillar__head">
               <span class="hex" aria-hidden="true">2</span>
-              <h3>The player always knows why a number on their own cards is what it is</h3>
+              <h3>The player can always account for every point of their own cards&rsquo; numbers</h3>
             </div>
             <div class="pillar__out">
               <b>Rules out</b>
               <ul>
-                <li>Hidden modifiers on your own cards</li>
-                <li>Any effect that moves one of your numbers without appearing in its breakdown</li>
-                <li><b>Not</b> opponent concealment &mdash; that is deliberate</li>
+                <li>Any effect that moves one of your numbers without its own line in the breakdown</li>
+                <li>A Vinculum, Dungeon or Monster whose effect is not readable <b>before you commit</b></li>
+                <li>The opponent&rsquo;s interference going unexplained after the reveal</li>
               </ul>
             </div>
           </div>
           <div class="card pillar">
             <div class="pillar__head">
               <span class="hex" aria-hidden="true">3</span>
-              <h3>Every opponent is a real player&rsquo;s deck and plan, met asynchronously</h3>
+              <h3>Every <em>circuit</em> opponent is a real player&rsquo;s deck and plan, met asynchronously</h3>
             </div>
             <div class="pillar__out">
               <b>Rules out</b>
@@ -434,6 +434,22 @@
                 <li>Bots that cheat or scale by stats</li>
                 <li>Randomly generated opponent decks</li>
                 <li>Real-time PvP, and waiting on another human to move</li>
+                <li>Local 1v1 is the one exception &mdash; a friendly match, outside the circuit, paying nothing</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card pillar">
+            <div class="pillar__head">
+              <span class="hex" aria-hidden="true">4</span>
+              <h3>What you <em>collect</em> is expression and record. New <em>power</em> is only ever unlocked by playing</h3>
+            </div>
+            <div class="pillar__out">
+              <b>Rules out</b>
+              <ul>
+                <li>Selling or randomising power &mdash; Classes, numbers, anything that wins games</li>
+                <li>Customisation that changes a value</li>
+                <li>Card rarity</li>
+                <li>Progress that never becomes visible anywhere</li>
               </ul>
             </div>
           </div>
@@ -577,52 +593,61 @@
       </div>
       <div class="row__body row__body--wide">
         <h2>What is being built</h2>
+        <p class="quiet small note">Thirty-three mechanics, grouped. Each becomes one file in <code>design/mechanics/</code>.</p>
         <div class="grid">
           <div class="card">
-            <h3>Deck-as-hand</h3>
-            <p>The 9-card deck is also the hand; any card is playable, each only once per Single.</p>
+            <h3>The deck</h3>
+            <p>Deck-as-hand, the Vinculum bonds, the Pennant, and the Side Deck that answers what you just saw.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
-            <h3>Vinculum</h3>
-            <p>Class thresholds granting tiered <span class="tier">&#9733;&#9733;&#9733;</span>
-              Bronze / Silver / Gold effects to cards of that class.</p>
+            <h3>The table</h3>
+            <p>Monsters, the Dungeon, and how a Single and a Match are each decided.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
-            <h3>Pennant</h3>
-            <p>Deck-level class and Special Tokens.</p>
+            <h3>The opponent</h3>
+            <p>Bot behaviour and playstyle modelling, Hardcore, and the player-data capture that supplies them.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
-            <h3>Monsters</h3>
-            <p>Three per Single, one live per turn, each nerfing specific classes; the third is
-              revealed up front.</p>
+            <h3>Building</h3>
+            <p>The deck builder, and the tool that simulates how each card is hit turn by turn.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
-            <h3>Dungeon</h3>
-            <p>One per Single, setting a condition for the whole Single.</p>
-            <span class="chip">Not specified</span>
-          </div>
-          <div class="card">
-            <h3>Single resolution</h3>
-            <p>Three turns, won by taking two; draws fall to a tiebreak ladder.</p>
-            <span class="chip">Not specified</span>
-          </div>
-          <div class="card">
-            <h3>Side deck</h3>
-            <p>Between Singles only, never during one.</p>
+            <h3>A tournament</h3>
+            <p>Its format and bracket, the Pro rotation, and the Street gimmicks.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
             <h3>The circuit</h3>
-            <p>Leagues, tournament formats and gimmicks, ranks, Class unlocks and the Class Pick.</p>
+            <p>Ranks, the Amateur, Street and Pro Leagues, and the World Championships.</p>
+            <span class="chip">Not specified</span>
+          </div>
+          <div class="card">
+            <h3>The profile</h3>
+            <p>Levels, Class unlocks, the Class Pick, achievements and statistics.</p>
             <span class="chip">Not specified</span>
           </div>
           <div class="card">
             <h3>The hub</h3>
-            <p>Garage, Shops, Tournaments, and the trophies on display.</p>
+            <p>The Garage, the Shops, and the Tournaments.</p>
+            <span class="chip">Not specified</span>
+          </div>
+          <div class="card">
+            <h3>Customisation</h3>
+            <p>Cards, decks and profiles, the templates that replicate them, and the packs that supply the parts.</p>
+            <span class="chip">Not specified</span>
+          </div>
+          <div class="card">
+            <h3>Onboarding</h3>
+            <p>The tutorial Match, and the Friend who runs it.</p>
+            <span class="chip">Not specified</span>
+          </div>
+          <div class="card">
+            <h3>Multiplayer</h3>
+            <p>Local 1v1, on one machine.</p>
             <span class="chip">Not specified</span>
           </div>
         </div>
@@ -787,7 +812,7 @@
         <p class="label-note">The right column is the one that stops scope arguments.</p>
       </div>
       <div class="row__body row__body--wide">
-        <h2>Deliberately not being built</h2>
+        <h2>What is in, what is out, what is undecided</h2>
         <div class="split">
           <div class="card">
             <h3>In scope</h3>
@@ -795,6 +820,7 @@
               <li>Street and Pro Leagues, with the Amateur League as the on-ramp</li>
               <li>Bot opponents modelled on real players&rsquo; decks</li>
               <li>Ranks, both World Championships, Hardcore</li>
+              <li>Leaderboards</li>
               <li>Profile levels, Class unlocks, Class Pick</li>
               <li>A small hub world &mdash; Garage, Shops, Tournaments</li>
               <li>A light story and voiced characters</li>
@@ -811,8 +837,16 @@
               <li>Packs or gacha <b>for cards</b></li>
               <li>Replays and spectating</li>
               <li>Seasons and battle passes</li>
-              <li>Live events &mdash; a maybe, not now</li>
-              <li><b>Custom multiplayer tournaments</b> &mdash; a maybe, and one we intend to attempt at least once</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Maybe</h3>
+            <p class="small quiet">Undecided, and not promised.</p>
+            <ul class="ticks ticks--out">
+              <li><b>Custom multiplayer tournaments</b> &mdash; intended to be attempted at least once</li>
+              <li><b>Public profiles</b>, shown to other players</li>
+              <li>Live events</li>
+              <li>Deck templates</li>
             </ul>
           </div>
         </div>
@@ -918,11 +952,17 @@
     <div class="row">
       <div class="row__label">
         <p class="eyebrow">Open questions</p>
-        <p class="label-note">One honest gap beats none.</p>
+        <p class="label-note">Two honest gaps beat none.</p>
       </div>
       <div class="row__body">
         <h2>Known, and not yet answered</h2>
         <div class="qa">
+          <div>
+            <h3>What data do leaderboards, bot behaviour and public profiles each need?</h3>
+            <p>No clarity yet. Bots want play stripped of identity; leaderboards and profiles
+              want a named one &mdash; and both imply a connected service the scope boundary
+              does not mention.</p>
+          </div>
           <div>
             <h3>How long does one tournament take?</h3>
             <p>Unknown. It sizes the rewards, and it decides whether the circuit loop must
