@@ -479,7 +479,7 @@ collections:
               - label: Slug (URL)
                 name: slug
                 widget: string
-                hint: Lowercase, hyphenated. Becomes /new-games/<slug>/
+                hint: Lowercase, hyphenated. Becomes /admin/<slug>/
               - label: Name
                 name: name
                 widget: string

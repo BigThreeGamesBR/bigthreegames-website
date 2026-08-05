@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 const rootDir = process.cwd();
@@ -42,6 +42,16 @@ function normalizeText(value) {
   return String(value).replace(/\s+/g, ' ').trim();
 }
 
+function hasGeneratedFiles(directory) {
+  if (!existsSync(directory)) {
+    return false;
+  }
+
+  return readdirSync(directory, { withFileTypes: true }).some((entry) =>
+    entry.isFile() || (entry.isDirectory() && hasGeneratedFiles(path.join(directory, entry.name)))
+  );
+}
+
 function extractTitle(html) {
   const match = html.match(/<title>([^<]*)<\/title>/i);
   if (!match) {
@@ -77,6 +87,10 @@ function validateDist() {
   if (!existsSync(distDir)) {
     addError('dist directory not found. Run the build before smoke-dist.');
     return;
+  }
+
+  if (hasGeneratedFiles(path.join(distDir, 'new-games'))) {
+    addError('Deprecated public route /new-games must not generate files.');
   }
 
   const global = readJsonFile('global.json');

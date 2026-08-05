@@ -43,9 +43,9 @@ After deployment:
 2. Verify the direct contact email link opens your email client correctly.
 3. Confirm all primary routes render without 404s.
 
-## 7. Protect the Internal New Games Area (Cloudflare Access + GitHub)
+## 7. Protect the Internal Admin Area (Cloudflare Access + GitHub)
 
-The `/new-games` section is internal documentation and must only be reachable by
+The `/admin` section is internal documentation and must only be reachable by
 Big Three Games members. The public marketing site stays open. Access is enforced
 at the edge with Cloudflare Zero Trust, so no application code handles auth.
 
@@ -68,11 +68,11 @@ at the edge with Cloudflare Zero Trust, so no application code handles auth.
 ### 7.3 Create the Access Application
 
 1. Go to **Access → Applications → Add an application → Self-hosted**.
-2. Application name: `Big Three Games – New Games Docs`.
+2. Application name: `Big Three Games – Internal Admin`.
 3. Application domain: add a path-scoped entry so only the internal area is gated:
    - Domain: your production domain (and Pages preview domain if you want previews gated).
-   - Path: `new-games` (this protects `/new-games` and everything beneath it,
-     including `/new-games/vinculum/opdd/` and all static assets under that path).
+   - Path: `admin` (this protects `/admin` and everything beneath it,
+     including `/admin/vinculum/opdd/` and all static assets under that path).
 4. Identity providers: select **GitHub** only.
 
 ### 7.4 Add the Authorization Policy
@@ -98,12 +98,12 @@ Choose the rule that matches how access is granted today.
 
 After the policy is live, test with two accounts:
 
-1. A member account: visiting `/new-games` shows the Cloudflare login, then the
+1. A member account: visiting `/admin` shows the Cloudflare login, then the
    page loads after GitHub sign-in.
 2. A non-member account (or incognito with a different GitHub user): the request
    is blocked and never reaches the page.
 3. Direct asset check: open
-   `/new-games/vinculum/opdd/index.html` unauthenticated and confirm it is also
+   `/admin/vinculum/opdd/index.html` unauthenticated and confirm it is also
    blocked. The path policy protects HTML and assets equally.
 
 ### 7.6 Membership Maintenance
