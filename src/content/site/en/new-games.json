@@ -142,14 +142,20 @@
         },
         {
           "id": "opdd",
-          "title": "One Page Design Document",
-          "summary": "The single-page concept overview for Vinculum.",
-          "emptyText": "No one page design document linked yet.",
+          "title": "Design Documents",
+          "summary": "Design references for Vinculum.",
+          "emptyText": "No design documents linked yet.",
           "links": [
             {
-              "label": "Vinculum One Page Design Document",
-              "href": "/new-games/vinculum/opdd/index.html",
-              "description": "Full one page design document (HTML).",
+              "label": "OPDD",
+              "href": "/admin/vinculum/opdd/index.html",
+              "description": "One page design document (HTML).",
+              "status": "Draft"
+            },
+            {
+              "label": "Content",
+              "href": "/admin/vinculum/opdd/content.html",
+              "description": "Content register (HTML).",
               "status": "Draft"
             }
           ]

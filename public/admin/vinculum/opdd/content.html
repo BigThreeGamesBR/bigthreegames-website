@@ -1,0 +1,1278 @@
+<!doctype html>
+<!--
+  Content register — Vinculum
+
+  Standalone. Opens from file:// with the network off: no CDN, no external font,
+  no remote image, no fetch. Rendered from game_documents/vinculum/CONTENT.md,
+  which is the authority for these numbers. Nothing on this page is a new claim.
+
+  Shares deck/index.html's token set and element vocabulary on purpose — the two
+  are one document system. One accent: heraldic crimson. Gold appears only where
+  it encodes a tier value, which here is the Gold column.
+
+  LAYOUT: every section is <section class="band"><div class="wrap">…</div></section>.
+  Vertical rhythm belongs to .band, horizontal width to .wrap. They must never both
+  set padding on the same element.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vinculum — Content Register</title>
+<style>
+  /* ---- tokens ------------------------------------------------------------
+     Taken verbatim from deck/index.html so the two documents are one system.
+     One accent: heraldic crimson. Gold appears only where it encodes a tier
+     value — here, the Gold column. Class Type and effect kind are told apart
+     by word and position, not by colour, which is what keeps the accent from
+     being spent 100 times on one page.                                       */
+  :root {
+    --bg: #f6f4f3;
+    --surface: #ffffff;
+    --sunk: #efeae8;
+    --text: #1b1517;
+    --muted: #6b605f;
+    --border: #e2dbd9;
+    --rule: #cfc5c3;
+    --accent: #9c1b2e;
+    --accent-soft: #f8e9eb;
+    --gold: #866420;
+    --shadow: 0 1px 2px rgba(60,20,25,.04), 0 12px 30px -22px rgba(60,20,25,.3);
+
+    --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+
+    --gap: 20px;
+
+    /* ---- data colours ---------------------------------------------------
+       The register is a table you check numbers in, so category gets colour.
+       Every hue is warm-leaning and desaturated to sit beside the crimson
+       rather than compete with it. Carry IS the accent — vinculum_types.png
+       settles Carry as red — so the type row costs no new hue at all.       */
+    --carry: #9c1b2e;
+    --sup: #6b3f96;
+    --flex: #14706e;
+
+    --bronze: #9a6430;
+    --silver: #6f7480;
+
+    --ok: #2f6b43;
+    --hold: #8a6413;
+    --none: #85797a;
+
+    --k-turn: #2f6b43;
+    --k-cont: #a13455;
+    --k-cond: #8a6413;
+    --k-reveal: #2a5f8f;
+    --k-start: #6b3f96;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141011; --surface: #1d1719; --sunk: #221a1c;
+      --text: #f2edec; --muted: #a79c9b; --border: #342b2d; --rule: #46393c;
+      --accent: #e8536b; --accent-soft: #2e1418; --gold: #d0a548;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 12px 30px -22px rgba(0,0,0,.9);
+      --carry: #e8536b; --sup: #b294e8; --flex: #4fb5ae;
+      --bronze: #c2894e; --silver: #a8adb8;
+      --ok: #63b784; --hold: #d0a548; --none: #8d8081;
+      --k-turn: #63b784; --k-cont: #e87f95; --k-cond: #d0a548;
+      --k-reveal: #79aede; --k-start: #b294e8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141011; --surface: #1d1719; --sunk: #221a1c;
+    --text: #f2edec; --muted: #a79c9b; --border: #342b2d; --rule: #46393c;
+    --accent: #e8536b; --accent-soft: #2e1418; --gold: #d0a548;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 12px 30px -22px rgba(0,0,0,.9);
+    --carry: #e8536b; --sup: #b294e8; --flex: #4fb5ae;
+    --bronze: #c2894e; --silver: #a8adb8;
+    --ok: #63b784; --hold: #d0a548; --none: #8d8081;
+    --k-turn: #63b784; --k-cont: #e87f95; --k-cond: #d0a548;
+    --k-reveal: #79aede; --k-start: #b294e8;
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f4f3; --surface: #ffffff; --sunk: #efeae8;
+    --text: #1b1517; --muted: #6b605f; --border: #e2dbd9; --rule: #cfc5c3;
+    --accent: #9c1b2e; --accent-soft: #f8e9eb; --gold: #866420;
+    --shadow: 0 1px 2px rgba(60,20,25,.04), 0 12px 30px -22px rgba(60,20,25,.3);
+    --carry: #9c1b2e; --sup: #6b3f96; --flex: #14706e;
+    --bronze: #9a6430; --silver: #6f7480;
+    --ok: #2f6b43; --hold: #8a6413; --none: #85797a;
+    --k-turn: #2f6b43; --k-cont: #a13455; --k-cond: #8a6413;
+    --k-reveal: #2a5f8f; --k-start: #6b3f96;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 400 16.5px/1.65 var(--body);
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+  p { margin: 0; max-width: 64ch; }
+  ul { margin: 0; }
+  em { font-style: italic; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  /* ---- skeleton: .band owns vertical rhythm, .wrap owns width ------------ */
+  .band { padding: 68px 0; border-top: 1px solid var(--border); }
+  .band--sunk { background: var(--sunk); }
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding-inline: 30px; }
+  /* The register is the one thing on the page wider than prose. It opts out of
+     the 1080 measure the same way .row__body--wide opts out of the prose one. */
+  .wrap--register { max-width: 1420px; }
+
+  .row { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 26px 48px; align-items: start; }
+  @media (max-width: 900px) { .row { grid-template-columns: 1fr; gap: 18px; } }
+  .row__label { display: grid; gap: 12px; }
+  @media (min-width: 901px) { .row__label { position: sticky; top: 28px; } }
+  .row__body { display: grid; gap: 26px; min-width: 0; max-width: 74ch; }
+  .row__body--wide { max-width: none; }
+  .row__body p { max-width: none; }
+
+  .eyebrow {
+    font: 600 11px/1.3 var(--mono); letter-spacing: .16em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .label-note { font-size: 13px; line-height: 1.5; color: var(--muted); max-width: 22ch; }
+  h2 { font-family: var(--display); font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 600; letter-spacing: -.012em; }
+  .lede { font-size: clamp(1.02rem, 1.9vw, 1.14rem); }
+  .quiet { color: var(--muted); }
+  .small { font-size: 14.5px; }
+
+  /* ---- masthead ---------------------------------------------------------- */
+  .masthead {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; flex-wrap: wrap; padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule); margin-bottom: clamp(44px, 6vw, 66px);
+  }
+  .brand { display: flex; align-items: center; gap: 13px; }
+  .brand .name {
+    font: 600 12px/1.35 var(--mono); letter-spacing: .15em;
+    text-transform: uppercase; color: var(--text);
+  }
+  .brand .name small { display: block; font-weight: 400; letter-spacing: .1em; color: var(--muted); }
+  .classified {
+    font: 700 10.5px/1 var(--mono); letter-spacing: .19em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--accent);
+    border-radius: 3px; padding: 8px 12px; white-space: nowrap;
+  }
+
+  .hero { padding: clamp(40px, 6vw, 64px) 0 clamp(52px, 7vw, 76px); border-top: 0; }
+  .hero__body { gap: 0; }
+  .hero h1 {
+    font-family: var(--display); font-size: clamp(2.5rem, 7.4vw, 4rem);
+    font-weight: 600; letter-spacing: -.028em;
+  }
+  .hook {
+    font-family: var(--display); font-style: italic; font-weight: 500;
+    font-size: clamp(1.14rem, 2.3vw, 1.4rem); line-height: 1.4;
+    color: var(--accent); max-width: 38ch; margin-top: 18px;
+  }
+  .facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px 30px; margin-top: clamp(34px, 4.5vw, 48px);
+    padding-top: 22px; border-top: 1px solid var(--rule);
+  }
+  .facts div { display: grid; gap: 4px; }
+  .facts .k { font: 600 10.5px/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .facts .v { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ---- cards, chips, hexes ----------------------------------------------- */
+  .grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  /* The three "how to read it" cards are one thought in three parts, so they
+     stay on one line until there is genuinely no room. */
+  .grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 860px) { .grid--three { grid-template-columns: 1fr; } }
+  .card {
+    display: grid; gap: 12px; align-content: start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 24px; box-shadow: var(--shadow);
+  }
+  .band--sunk .card { box-shadow: none; }
+  .card h3 { font-size: 1.04rem; font-weight: 650; letter-spacing: -.005em; }
+  .card p { font-size: 14.5px; color: var(--muted); max-width: none; }
+
+  .chip {
+    justify-self: start;
+    font: 600 10.5px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase;
+    padding: 6px 9px; border-radius: 3px;
+    border: 1px solid var(--border); color: var(--muted); background: var(--sunk);
+    white-space: nowrap;
+  }
+  .band--sunk .chip { background: var(--surface); }
+  .tier { color: var(--gold); letter-spacing: .16em; }
+
+  /* Toned chips: colour is the category, so it belongs on the chip itself. */
+  .chip[data-tone] {
+    color: var(--c);
+    border-color: color-mix(in srgb, var(--c) 42%, transparent);
+    background: color-mix(in srgb, var(--c) 11%, transparent);
+  }
+  .band--sunk .chip[data-tone] { background: color-mix(in srgb, var(--c) 11%, transparent); }
+  .chip[data-tone="CARRY"] { --c: var(--carry); }
+  .chip[data-tone="SUP"]   { --c: var(--sup); }
+  .chip[data-tone="FLEX"]  { --c: var(--flex); }
+  .chip[data-tone="enabled"] { --c: var(--ok); }
+  .chip[data-tone="hold"]    { --c: var(--hold); }
+  .chip[data-tone="cut"]     { --c: var(--accent); }
+  .chip[data-tone="empty"]   { --c: var(--none); }
+  .chip + .chip { margin-left: 5px; }
+
+  /* Jump nav under the hero facts. */
+  .jump { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 22px; }
+  .jump a {
+    font: 600 10.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none; padding: 7px 11px; border-radius: 3px;
+    border: 1px solid var(--border); color: var(--muted); background: var(--surface);
+  }
+  .jump a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Board tables — narrower than the Class register, so no frozen columns. */
+  .board table { min-width: 880px; }
+  .board td.eff { width: auto; min-width: 300px; border-left: none; }
+  .board td.turns { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: center; white-space: nowrap; }
+  .board .scroller { max-height: min(66vh, 700px); }
+  .unnamed { color: var(--accent); font-style: italic; font-weight: 500; }
+
+  /* ---- the effect-kind key, as a table ----------------------------------- */
+  .minitable { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--surface); }
+  .band--sunk .minitable { background: var(--surface); }
+  .minitable table { min-width: 0; font-size: 14px; }
+  .minitable thead th { padding: 11px 18px; }
+  .minitable tbody td { padding: 12px 18px; }
+  .minitable tbody td:first-child { width: 1%; white-space: nowrap; }
+  .minitable tbody td.when { color: var(--muted); }
+
+  .ticks { list-style: none; padding: 0; display: grid; gap: 11px; font-size: 14.5px; }
+  .ticks li { position: relative; padding-left: 20px; }
+  .ticks li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 7px; height: 8px; background: var(--accent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .ticks--out li::before { background: var(--rule); }
+  .ticks--out { color: var(--muted); }
+
+  .qa { display: grid; gap: 22px; }
+  .qa > div { display: grid; gap: 6px; padding-left: 20px; border-left: 2px solid var(--accent-soft); }
+  .qa h3 { font-size: .98rem; font-weight: 650; }
+  .qa p { font-size: 14.5px; color: var(--muted); }
+
+  /* ---- filters: chips that press ----------------------------------------- */
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 18px 30px; align-items: flex-end;
+    padding: 20px 22px; margin-bottom: var(--gap);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .band--sunk .filters { box-shadow: none; }
+  .fset { display: grid; gap: 9px; }
+  .fset > .k { font: 600 10.5px/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .fset > .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  button.chip { cursor: pointer; font-family: var(--mono); }
+  button.chip:hover { color: var(--text); border-color: var(--rule); }
+  button.chip[aria-pressed="true"] {
+    color: var(--accent); border-color: var(--accent); background: var(--accent-soft);
+  }
+  input[type="search"] {
+    font: 400 13.5px/1 var(--body); padding: 9px 11px; min-width: 240px;
+    color: var(--text); background: var(--sunk);
+    border: 1px solid var(--border); border-radius: 3px;
+  }
+  .band--sunk input[type="search"] { background: var(--surface); }
+  .tally { margin-left: auto; font: 500 12.5px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; padding-bottom: 10px; }
+
+  /* ---- the register ------------------------------------------------------ */
+  .tablewrap { border: 1px solid var(--border); border-radius: 6px; background: var(--surface); overflow: hidden; }
+  .band--sunk .tablewrap { background: var(--surface); }
+  /* The register is capped to a viewport-sized box, so the horizontal bar is
+     always on screen instead of sitting below a very tall table. */
+  .scroller {
+    overflow: auto; -webkit-overflow-scrolling: touch;
+    max-height: min(74vh, 780px); overscroll-behavior: contain;
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 1140px; font-size: 13.5px; }
+
+  thead th {
+    font: 600 10px/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase;
+    color: var(--muted); text-align: left; background: var(--sunk);
+    padding: 9px 14px; border-bottom: 1px solid var(--border); white-space: nowrap;
+    position: sticky; z-index: 2;
+  }
+  thead tr.groups th {
+    text-align: center; padding: 9px 14px 6px; top: 0;
+    border-bottom: 1px solid var(--border); color: var(--rule);
+  }
+  .minitable thead th { position: static; }
+  thead tr.groups th.g-eff { color: var(--muted); }
+  thead th.mid { text-align: center; }
+  thead th.is-bronze { color: var(--bronze); }
+  thead th.is-silver { color: var(--silver); }
+  thead th.is-gold   { color: var(--gold); }
+
+  /* Status paints the whole row, not just its left edge — a cut Class should
+     read as cut from anywhere on the register, including scrolled right. The
+     tint is carried on --rowbg so the frozen columns inherit it too. */
+  tbody tr { --rowbg: var(--surface); }
+  tbody tr[data-status="hold"]  { --rowbg: color-mix(in srgb, var(--hold) 10%, var(--surface)); }
+  tbody tr[data-status="cut"]   { --rowbg: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+  tbody tr[data-status="empty"] { --rowbg: color-mix(in srgb, var(--none) 11%, var(--surface)); }
+  tbody td { padding: 10px 14px; vertical-align: top; line-height: 1.5; background: var(--rowbg); }
+  tbody tr + tr td { border-top: 1px solid var(--border); }
+  tbody tr:hover td { background: color-mix(in srgb, var(--rowbg) 93%, var(--text)); }
+
+  td.id {
+    font: 500 12.5px/1.6 var(--mono); color: var(--muted);
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+    border-left: 3px solid transparent;
+  }
+  tr[data-status="hold"]  td.id { border-left-color: var(--hold); }
+  tr[data-status="cut"]   td.id { border-left-color: var(--accent); }
+  tr[data-status="empty"] td.id { border-left-color: var(--none); }
+
+  /* ---- frozen Definition columns ----------------------------------------
+     The six Definition columns stay put while the thresholds and the three
+     effect columns scroll under them, so a Gold effect never appears without
+     the Class it belongs to. Offsets are measured in JS rather than hard-coded,
+     because the table is auto-layout and filtering changes column widths.
+     Backgrounds must be opaque here or scrolled content shows through.       */
+  .pin { position: sticky; z-index: 1; background: var(--rowbg, var(--surface)); }
+  thead th.pin { background: var(--sunk); z-index: 4; }
+  .pin--edge { border-right: 1px solid var(--rule); }
+  .is-frozen .pin--edge { box-shadow: 6px 0 8px -8px rgba(0,0,0,.45); }
+
+  td.name { min-width: 150px; }
+  .en { font-weight: 650; display: block; letter-spacing: -.005em; }
+  .pt { font-size: 12px; color: var(--muted); font-style: italic; }
+
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: center; }
+  td.thresh { font-weight: 650; font-family: var(--mono); font-size: 13px; }
+  td.thresh.is-bronze { color: var(--bronze); }
+  td.thresh.is-silver { color: var(--silver); }
+  td.thresh.is-gold   { color: var(--gold); }
+  td.zero { color: var(--rule) !important; font-weight: 400; }
+
+  td.eff { width: 22%; min-width: 265px; border-left: 1px solid var(--border); font-size: 13px; }
+  .fx { display: block; }
+  .fx + .fx { margin-top: 6px; }
+  .kind {
+    display: block;
+    font: 600 9.5px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+    color: var(--kc, var(--muted)); margin-bottom: 1px;
+  }
+  .kind::before {
+    content: ""; display: inline-block; vertical-align: 1px;
+    width: 6px; height: 7px; margin-right: 7px;
+    background: var(--kc, var(--rule));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .kind[data-k="On Turn"]      { --kc: var(--k-turn); }
+  .kind[data-k="Continuous"]   { --kc: var(--k-cont); }
+  .kind[data-k="On Condition"] { --kc: var(--k-cond); }
+  .kind[data-k="On Reveal"]    { --kc: var(--k-reveal); }
+  .kind[data-k="On Start"]     { --kc: var(--k-start); }
+  .na { font: 400 12px/1 var(--mono); color: var(--rule); }
+  .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 650; font-size: 12.5px; }
+
+  tr[data-status="cut"] .en { text-decoration: line-through; text-decoration-thickness: 1px; }
+  tr[data-status="cut"] .en,
+  tr[data-status="cut"] td.eff,
+  tr[data-status="empty"] td.eff { color: var(--muted); }
+
+  .why { display: block; margin-top: 8px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .flag {
+    display: block; margin-top: 8px; padding-left: 12px;
+    border-left: 2px solid var(--accent-soft);
+    font-size: 12px; line-height: 1.5; color: var(--muted);
+  }
+  .flag b { color: var(--text); font-weight: 650; }
+
+  .none { padding: 48px 20px; text-align: center; color: var(--muted); font-size: 14.5px; }
+
+  footer { padding: 40px 0 68px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13.5px; }
+  footer .wrap { display: grid; gap: 12px; }
+  footer p { max-width: 74ch; }
+  footer b { color: var(--text); font-weight: 650; }
+  code { font: 400 .9em/1 var(--mono); }
+
+  .themer {
+    position: fixed; top: 14px; right: 14px; z-index: 10;
+    background: var(--surface); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 3px;
+    padding: 8px 12px; font: 500 11.5px/1 var(--mono); cursor: pointer;
+  }
+  .themer:hover { color: var(--text); }
+
+  @media print {
+    .classified { color: #8a1728; border-color: #8a1728; }
+    :root, :root[data-theme="dark"] {
+      --bg: #fff; --surface: #fff; --sunk: #f3f1f0; --text: #000; --muted: #444;
+      --border: #ccc; --rule: #bbb; --accent: #8a1728; --accent-soft: #f2ecee;
+      --gold: #6d5218; --shadow: none;
+    }
+    .themer, .filters { display: none; }
+    body { font-size: 10pt; }
+    .band { padding: 24px 0; break-inside: avoid; }
+    .row__label { position: static; }
+    .card, tr, .qa > div { break-inside: avoid; }
+    .scroller { overflow: visible; max-height: none; }
+    table { min-width: 0; }
+    thead th { position: static; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<button class="themer" id="themer" type="button">Theme: auto</button>
+
+<!-- ===================== HERO ===================== -->
+<header class="band hero">
+  <div class="wrap">
+    <div class="masthead">
+      <div class="brand">
+        <span class="name">Big Three Games<small>Design documentation</small></span>
+      </div>
+      <span class="classified">Company only &mdash; not for distribution</span>
+    </div>
+    <div class="row">
+      <div class="row__label">
+        <p class="eyebrow">Content register</p>
+        <p class="label-note">Every Class, Dungeon and Monster authored, and which of them the
+          game is building.</p>
+      </div>
+      <div class="row__body row__body--wide hero__body">
+        <h1>Content</h1>
+        <p class="hook">Seventy-seven pieces of content were written. Forty-eight can be built
+          without asking a question first.</p>
+        <div class="facts">
+          <div><span class="k">Classes</span><span class="v">26 &mdash; 21 enabled</span></div>
+          <div><span class="k">Dungeons</span><span class="v">19 &mdash; 6 enabled</span></div>
+          <div><span class="k">Monsters</span><span class="v">32 &mdash; 21 enabled</span></div>
+          <div><span class="k">Updated</span><span class="v">2026-08-05</span></div>
+        </div>
+        <nav class="jump">
+          <a href="#classes">Classes</a>
+          <a href="#dungeons">Dungeons</a>
+          <a href="#monsters">Monsters</a>
+          <a href="#open">Not settled</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HOW TO READ IT ===================== -->
+<section class="band">
+  <div class="wrap">
+    <div class="row">
+      <div class="row__label">
+        <p class="eyebrow">How to read it</p>
+        <p class="label-note">The numbers are the point. Everything else is there to let you
+          check them.</p>
+      </div>
+      <div class="row__body row__body--wide">
+        <h2>What each column is claiming</h2>
+        <p class="lede quiet">Effects were authored in prototype wording and are restated here in
+          the words the game now uses. Cut Classes keep their original wording, because there is
+          nothing to restate.</p>
+
+        <div class="minitable">
+          <table>
+            <thead>
+              <tr><th>Term</th><th>What it means here</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>Power</b></td><td class="when">A card&rsquo;s current number, after every active effect. What the corner of the card shows. Never <em>attack</em>.</td></tr>
+              <tr><td><b>Base Power</b></td><td class="when">A card&rsquo;s Power before any effect. A property of the Class, not of the Board &mdash; the <em>Base Power</em> column above.</td></tr>
+              <tr><td><b>Total Power</b></td><td class="when">Three cards&rsquo; Power summed. What decides a Turn.</td></tr>
+              <tr><td><b>Gain</b></td><td class="when">Any effect that <b>raises</b> a card&rsquo;s Power. Direction only &mdash; it does not mean <em>good</em>: under an Inverted Dungeon a Gain works against you.</td></tr>
+              <tr><td><b>Drain</b></td><td class="when">Any effect that <b>lowers</b> a card&rsquo;s Power. Direction only &mdash; it does not mean <em>bad</em>.</td></tr>
+              <tr><td><b>Class</b></td><td class="when">One character, and the thing a Vinculum is formed from. Unlocked once by playing, then held in unlimited copies.</td></tr>
+              <tr><td><b>Vinculum</b></td><td class="when">The bond formed by holding enough cards of one Class in a Deck. It has a Tier, and it grants that Class&rsquo;s effects.</td></tr>
+              <tr><td><b>Tier</b></td><td class="when">A Vinculum&rsquo;s strength band &mdash; <span class="tier">Bronze</span>, <span class="tier">Silver</span> or <span class="tier">Gold</span>. Each Class states how many copies reach each one.</td></tr>
+              <tr><td><b>Single</b></td><td class="when">Three Turns. Won by taking two of them. The prototype called this a <em>match</em>.</td></tr>
+              <tr><td><b>Turn</b></td><td class="when">One commitment of three cards into three Slots, and the reveal that resolves it.</td></tr>
+              <tr><td><b>Slot</b></td><td class="when">One of three positions a card is committed to. Slots pair one-to-one with the opponent&rsquo;s, and some effects act across that pairing.</td></tr>
+              <tr><td><b>Hand</b></td><td class="when">The cards still unplayed in this Single. <b>Not a drawn subset</b> &mdash; there is no draw, and every card is playable at any point.</td></tr>
+              <tr><td><b>Other Classes</b></td><td class="when">Every card that is <b>not</b> of the Class naming the effect. What a Support Class acts on. Turn-scope is said explicitly instead &mdash; <em>played this Turn</em>.</td></tr>
+              <tr><td><b>Dungeon</b></td><td class="when">One condition applied to a whole Single, announced before the player commits anything.</td></tr>
+              <tr><td><b>Monster</b></td><td class="when">A per-Turn condition taxing specific Classes. Three per Single, one live each Turn.</td></tr>
+              <tr><td><b>Beside</b></td><td class="when">In the same Turn, in another Slot. The scope word for the other cards you committed this Turn.</td></tr>
+              <tr><td><b>Facing card</b></td><td class="when">The opponent&rsquo;s card in the Slot paired with this one. Slots pair one-to-one, and <em>facing</em> is always the opponent&rsquo;s.</td></tr>
+              <tr><td><b>Pennant</b></td><td class="when">The banner belonging to a Deck, carrying its Class icon and Special Tokens. Hidden from the opponent &mdash; unless a Vinculum effect opens it.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid--three">
+          <div class="card">
+            <span class="chip">Threshold</span>
+            <h3>How many copies buy a tier</h3>
+            <p>A Deck of nine has to spend slots to reach Bronze, Silver or Gold. A
+              <b>0</b> means that tier grants nothing &mdash; Monk and Rogue sit outside the
+              usual bands on purpose.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Effect</span>
+            <h3>When it fires, then what it does</h3>
+            <p>Each effect opens with its kind. <b>(a/b/c)</b> is per Turn &mdash; Turn 1,
+              Turn 2, Turn 3 &mdash; and the values do not accumulate. <b>Other Classes</b>
+              means every card not of that Class. Turn-scope says so explicitly &mdash;
+              <em>played this Turn</em>.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Status</span>
+            <h3>Whether it is being built</h3>
+            <p><b>Enabled</b> means a developer could build it without asking a design
+              question. <b>On hold</b> is wanted, with a named question in the way. <b>Cut</b>
+              cannot exist without changing a pillar or a settled decision. <b>Never written</b>
+              has numbers but no effect.</p>
+          </div>
+        </div>
+
+        <div class="minitable">
+          <table>
+            <thead>
+              <tr><th>Effect kind</th><th>When it fires</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="kind" data-k="On Start">On Start</span></td>
+                <td class="when">Once, at the start of a Single, after the Board is shown</td>
+              </tr>
+              <tr>
+                <td><span class="kind" data-k="On Turn">On Turn</span></td>
+                <td class="when">At the start of each Turn</td>
+              </tr>
+              <tr>
+                <td><span class="kind" data-k="Continuous">Continuous</span></td>
+                <td class="when">Always, while the Vinculum is active</td>
+              </tr>
+              <tr>
+                <td><span class="kind" data-k="On Condition">On Condition</span></td>
+                <td class="when">Only when its condition is met</td>
+              </tr>
+              <tr>
+                <td><span class="kind" data-k="On Reveal">On Reveal</span></td>
+                <td class="when">Only when the Reveal is what makes it knowable. An effect that could be computed the moment cards are committed is <em>On Condition</em> instead</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE REGISTER ===================== -->
+<section class="band band--sunk">
+  <div class="wrap wrap--register">
+    <div class="row" style="grid-template-columns: 1fr; gap: 26px;">
+      <div class="row__label" style="position: static;">
+        <p class="eyebrow" id="classes">Classes</p>
+      </div>
+      <div class="row__body row__body--wide">
+
+        <div class="filters">
+          <div class="fset">
+            <span class="k">Status</span>
+            <div class="opts" id="f-status">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="enabled" aria-pressed="false">Enabled</button>
+              <button class="chip" type="button" data-v="hold" aria-pressed="false">On hold</button>
+              <button class="chip" type="button" data-v="cut" aria-pressed="false">Cut</button>
+              <button class="chip" type="button" data-v="empty" aria-pressed="false">Never written</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Type</span>
+            <div class="opts" id="f-type">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="CARRY" aria-pressed="false">Carry</button>
+              <button class="chip" type="button" data-v="SUP" aria-pressed="false">Support</button>
+              <button class="chip" type="button" data-v="FLEX" aria-pressed="false">Flex</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Collection</span>
+            <div class="opts" id="f-coll">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="1" aria-pressed="false">1</button>
+              <button class="chip" type="button" data-v="2" aria-pressed="false">2</button>
+              <button class="chip" type="button" data-v="3" aria-pressed="false">3</button>
+              <button class="chip" type="button" data-v="4" aria-pressed="false">4</button>
+              <button class="chip" type="button" data-v="5" aria-pressed="false">5</button>
+              <button class="chip" type="button" data-v="6" aria-pressed="false">6</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Search</span>
+            <input type="search" id="q" placeholder="Class name or effect text&hellip;" autocomplete="off">
+          </div>
+          <span class="tally" id="tally"></span>
+        </div>
+
+        <div class="tablewrap">
+          <div class="scroller">
+            <table>
+              <thead>
+                <tr class="groups">
+                  <th colspan="6">Definition</th>
+                  <th colspan="3">Vinculum threshold &mdash; copies needed</th>
+                  <th colspan="3" class="g-eff">Vinculum effect</th>
+                </tr>
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th class="mid">Coll.</th>
+                  <th class="mid">Base Power</th>
+                  <th class="mid is-bronze">Bronze</th>
+                  <th class="mid is-silver">Silver</th>
+                  <th class="mid is-gold">Gold</th>
+                  <th class="is-bronze">Bronze</th>
+                  <th class="is-silver">Silver</th>
+                  <th class="is-gold">Gold</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <div class="none" id="none" hidden>No Class matches those filters.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DUNGEONS ===================== -->
+<section class="band">
+  <div class="wrap wrap--register">
+    <div class="row" style="grid-template-columns: 1fr; gap: 26px;">
+      <div class="row__label" style="position: static;">
+        <p class="eyebrow" id="dungeons">Dungeons</p>
+      </div>
+      <div class="row__body row__body--wide">
+        <h2>One Dungeon per Single</h2>
+        <p class="quiet">One condition applied to a whole Single, announced before the player
+          commits anything. Nineteen authored &mdash; <b>6 enabled, 12 on hold, 1 cut</b>.
+          <b>Type</b> is what the Dungeon acts on.</p>
+<div id="dpanel">
+        <div class="filters">
+          <div class="fset">
+            <span class="k">Status</span>
+            <div class="opts" data-f="status">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="enabled" aria-pressed="false">Enabled</button>
+              <button class="chip" type="button" data-v="hold" aria-pressed="false">On hold</button>
+              <button class="chip" type="button" data-v="cut" aria-pressed="false">Cut</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Acts on</span>
+            <div class="opts" data-f="type">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="VINCULUM" aria-pressed="false">Vinculum</button>
+              <button class="chip" type="button" data-v="POWER" aria-pressed="false">Power</button>
+              <button class="chip" type="button" data-v="HAND" aria-pressed="false">Hand</button>
+              <button class="chip" type="button" data-v="RULE" aria-pressed="false">Rule</button>
+              <button class="chip" type="button" data-v="REWARD" aria-pressed="false">Reward</button>
+              <button class="chip" type="button" data-v="NONE" aria-pressed="false">None</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Search</span>
+            <input type="search" id="dq" placeholder="Dungeon name or effect&hellip;" autocomplete="off">
+          </div>
+          <span class="tally" id="dtally"></span>
+        </div>
+        <div class="tablewrap board">
+          <div class="scroller">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th><th>Type</th><th>Name</th><th>Status</th><th>Effect</th>
+                </tr>
+              </thead>
+              <tbody id="drows"></tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MONSTERS ===================== -->
+<section class="band band--sunk">
+  <div class="wrap wrap--register">
+    <div class="row" style="grid-template-columns: 1fr; gap: 26px;">
+      <div class="row__label" style="position: static;">
+        <p class="eyebrow" id="monsters">Monsters</p>
+      </div>
+      <div class="row__body row__body--wide">
+        <h2>Three Monsters per Single, one live each Turn</h2>
+        <p class="quiet">The third is revealed in advance. Thirty-two authored &mdash;
+          <b>21 enabled, 11 on hold</b>. <b>Type</b> is what the Monster acts on;
+          <b>Turns</b> is eligibility &mdash; a Monster paying out on a <em>following</em> Turn
+          cannot occupy Turn 3, because there is none.</p>
+<div id="mpanel">
+        <div class="filters">
+          <div class="fset">
+            <span class="k">Status</span>
+            <div class="opts" data-f="status">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="enabled" aria-pressed="false">Enabled</button>
+              <button class="chip" type="button" data-v="hold" aria-pressed="false">On hold</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Acts on</span>
+            <div class="opts" data-f="type">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="CLASS" aria-pressed="false">Class</button>
+              <button class="chip" type="button" data-v="TYPE" aria-pressed="false">Class Type</button>
+              <button class="chip" type="button" data-v="ALL" aria-pressed="false">Every Class</button>
+              <button class="chip" type="button" data-v="PLAY" aria-pressed="false">Play</button>
+              <button class="chip" type="button" data-v="POWER" aria-pressed="false">Power</button>
+              <button class="chip" type="button" data-v="TURN" aria-pressed="false">Turn</button>
+              <button class="chip" type="button" data-v="NONE" aria-pressed="false">None</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Turns</span>
+            <div class="opts" data-f="turns">
+              <button class="chip" type="button" data-v="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-v="any" aria-pressed="false">Any Turn</button>
+              <button class="chip" type="button" data-v="12" aria-pressed="false">Turns 1&ndash;2</button>
+            </div>
+          </div>
+          <div class="fset">
+            <span class="k">Search</span>
+            <input type="search" id="mq" placeholder="Monster name or effect&hellip;" autocomplete="off">
+          </div>
+          <span class="tally" id="mtally"></span>
+        </div>
+        <div class="tablewrap board">
+          <div class="scroller">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th><th>Type</th><th>Name</th><th>Status</th><th class="mid">Turns</th><th>Effect</th>
+                </tr>
+              </thead>
+              <tbody id="mrows"></tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT IS NOT SETTLED ===================== -->
+<section class="band">
+  <div class="wrap">
+    <div class="row">
+      <div class="row__label">
+        <p class="eyebrow" id="open">Not settled</p>
+        <p class="label-note">Named here rather than left to whoever builds it first.</p>
+      </div>
+      <div class="row__body">
+        <h2>Four things this table cannot answer</h2>
+        <div class="qa">
+          <div>
+            <h3>The order several Vinculums resolve in</h3>
+            <p>A Cleric buffs <em>Other Classes</em> and a Warlock drains them. Which lands first
+              changes the number on the card &mdash; and the design promises the player can
+              account for every point of it. No order is written down.</p>
+          </div>
+          <div>
+            <h3>What Carry and Support actually mean</h3>
+            <p>Across all 26 entries, every Support acts on <em>Other Classes</em> and every Carry
+              acts on its own Class. That is an observation over the data, not a definition
+              anybody has settled.</p>
+          </div>
+          <div>
+            <h3>Three Musketeers&rsquo; shape</h3>
+            <p>One Class carrying three different Base Powers, where Base Power is defined as a
+              property of the Class. Its threshold of three also means <em>one of each</em>
+              rather than <em>any three</em>, which no other Class does.</p>
+          </div>
+          <div>
+            <h3>Whether Blood Hunter should exist</h3>
+            <p>Its Type, Base Power and thresholds were authored. All three effect columns were
+              left blank. It is listed so the gap is visible rather than mistaken for an
+              oversight.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Source.</b> <code>game_documents/vinculum/CLASSES.md</code>, which is the authority for
+      these numbers. The prototype&rsquo;s <code>ClassBaseAttackDict</code> disagrees on Fighter,
+      Barbarian and Rogue and is stale.</p>
+    <p><b>Status of this page.</b> A content register, not a specification. How a Vinculum works
+      is specified in <code>design/mechanics/vinculum-tiers.md</code>, which does not exist yet.
+      Nothing here is a new claim.</p>
+  </div>
+</footer>
+
+<script>
+  const CLASSES = [
+    { id:"001", type:"CARRY", en:"Wizard", pt:"Mago", coll:1, bp:"10", th:[3,4,5], st:"enabled",
+      fx:[ [["On Turn","Wizards Gain <span class='v'>(0/1/2)</span> on each Turn."]],
+           [["On Turn","Wizards Gain <span class='v'>(0/3/6)</span> on each Turn."]],
+           [["On Turn","Wizards Gain <span class='v'>(0/5/10)</span> on each Turn."]] ] },
+
+    { id:"002", type:"CARRY", en:"Fighter", pt:"Guerreiro", coll:1, bp:"12", th:[3,4,5], st:"enabled",
+      fx:[ [["On Turn","Fighters Gain <span class='v'>(2/1/0)</span> on each Turn."]],
+           [["On Turn","Fighters Gain <span class='v'>(5/2/0)</span> on each Turn."]],
+           [["On Turn","Fighters Gain <span class='v'>(8/3/0)</span> on each Turn."]] ] },
+
+    { id:"003", type:"CARRY", en:"Barbarian", pt:"B&aacute;rbaro", coll:1, bp:"14", th:[3,4,5], st:"enabled",
+      fx:[ [["Continuous","Barbarians Gain <span class='v'>1</span>."]],
+           [["Continuous","Barbarians Gain <span class='v'>2</span>."]],
+           [["Continuous","Barbarians Gain <span class='v'>3</span>."]] ] },
+
+    { id:"004", type:"SUP", en:"Cleric", pt:"Cl&eacute;rigo", coll:1, bp:"5", th:[2,3,4], st:"enabled",
+      fx:[ [["Continuous","Other Classes Gain <span class='v'>2</span>."]],
+           [["Continuous","Other Classes Gain <span class='v'>3</span>."]],
+           [["Continuous","Other Classes Gain <span class='v'>4</span>."]] ] },
+
+    { id:"005", type:"SUP", en:"Bard", pt:"Bardo", coll:1, bp:"5", th:[2,3,4], st:"enabled",
+      fx:[ [["Continuous","Other Classes Gain <span class='v'>1</span>."],
+            ["On Condition","After losing a Turn, Other Classes Gain <span class='v'>2</span> next Turn."]],
+           [["Continuous","Other Classes Gain <span class='v'>2</span>."],
+            ["On Condition","After losing a Turn, Other Classes Gain <span class='v'>3</span> next Turn."]],
+           [["Continuous","Other Classes Gain <span class='v'>3</span>."],
+            ["On Condition","After losing a Turn, Other Classes Gain <span class='v'>4</span> next Turn."]] ] },
+
+    { id:"006", type:"CARRY", en:"Warlock", pt:"Bruxo", coll:2, bp:"0", th:[3,4,5], st:"enabled",
+      flag:"<b>The decay is intended.</b> Hand means the cards still unplayed, so Warlock&rsquo;s Gain falls as Classes leave it. Warlock is deliberately strongest on the early Turns and fades &mdash; the mirror of Wizard, worthless on Turn 1 and peaking on Turn 3.",
+      fx:[ [["Continuous","Warlocks Gain <span class='v'>2</span> for each distinct Class in Hand. Drain <span class='v'>3</span> from Other Classes."]],
+           [["Continuous","Warlocks Gain <span class='v'>3</span> for each distinct Class in Hand. Drain <span class='v'>4</span> from Other Classes."]],
+           [["Continuous","Warlocks Gain <span class='v'>6</span> for each distinct Class in Hand. Drain <span class='v'>7</span> from Other Classes."]] ] },
+
+    { id:"007", type:"CARRY", en:"Sorcerer", pt:"Feiticeiro", coll:2, bp:"11", th:[3,4,5], st:"enabled",
+      fx:[ [["On Turn","Sorcerers Gain <span class='v'>(1/2/0)</span> on each Turn."]],
+           [["On Turn","Sorcerers Gain <span class='v'>(3/6/0)</span> on each Turn."]],
+           [["On Turn","Sorcerers Gain <span class='v'>(5/10/0)</span> on each Turn."]] ] },
+
+    { id:"008", type:"FLEX", en:"Monk", pt:"Monge", coll:2, bp:"12", th:[0,1,2], st:"enabled",
+      flag:"<b>Vinculums only.</b> A Monster&rsquo;s Drain lands on a Monk, and so does any Dungeon effect acting on something other than a Vinculum.",
+      fx:[ null,
+           [["Continuous","Monks take no Gain or Drain from Vinculums."]],
+           [["Continuous","Monks take Gains from Vinculums, never Drains."]] ] },
+
+    { id:"009", type:"FLEX", en:"Rogue", pt:"Ladino", coll:2, bp:"4", th:[0,0,1], st:"enabled",
+      fx:[ null, null,
+           [["On Reveal","Remove Gains from the facing card."]] ] },
+
+    { id:"010", type:"CARRY", en:"Craftsman", pt:"Art&iacute;fice", coll:3, bp:"12", th:[3,4,5], st:"cut",
+      why:"Cut. Its first clause paid out per four upgrades on the card&rsquo;s Equipment, and Party Equipment no longer exists. The flat Gain would have survived alone &mdash; but that is Barbarian with a different Base Power.",
+      fx:[ [["On Start","Gain <span class='v'>+1</span> for each 4 upgrades on Craftsman card <b>Equipment</b>."],
+            ["Continuous","Craftsman cards Gain <span class='v'>1</span>."]],
+           [["On Start","Gain <span class='v'>+2</span> for each 4 upgrades on Craftsman card <b>Equipment</b>."],
+            ["Continuous","Craftsman cards Gain <span class='v'>2</span>."]],
+           [["On Start","Gain <span class='v'>+3</span> for each 4 upgrades on Craftsman card <b>Equipment</b>."],
+            ["Continuous","Craftsman cards Gain <span class='v'>3</span>."]] ] },
+
+    { id:"011", type:"SUP", en:"Arcanist", pt:"Arcanista", coll:3, bp:"6", th:[2,3,4], st:"enabled",
+      fx:[ [["On Condition","Cards beside an Arcanist Gain <span class='v'>2</span>."]],
+           [["On Condition","Cards beside an Arcanist Gain <span class='v'>3</span>."]],
+           [["On Condition","Cards beside an Arcanist Gain <span class='v'>5</span>."]] ] },
+
+    { id:"012", type:"FLEX", en:"Necromancer", pt:"Necromancer", coll:3, bp:"5", th:[0,0,1], st:"enabled",
+      flag:"<b>Intended.</b> Removing Base Power leaves the card&rsquo;s Gains and Drains intact, so a heavily buffed card survives on its bonuses alone. The result floors at zero &mdash; there is no negative Power anywhere in the game.",
+      fx:[ null, null,
+           [["On Reveal","Remove Base Power from the facing card."]] ] },
+
+    { id:"013", type:"FLEX", en:"Paladin", pt:"Paladino", coll:3, bp:"10", th:[0,0,2], st:"enabled",
+      flag:"<b>Resolved by wording.</b> The source read &ldquo;other player cards&rdquo;, which meant either the player&rsquo;s other cards or the other player&rsquo;s cards &mdash; opposite effects. Other Classes says the first unambiguously.",
+      fx:[ null, null,
+           [["On Turn","Remove Monster effects from Other Classes."]] ] },
+
+    { id:"014", type:"CARRY", en:"Knight", pt:"Cavaleiro", coll:4, bp:"12", th:[3,4,5], st:"enabled",
+      fx:[ [["On Condition","Knights Gain <span class='v'>3</span> for each distinct Class beside them."]],
+           [["On Condition","Knights Gain <span class='v'>5</span> for each distinct Class beside them."]],
+           [["On Condition","Knights Gain <span class='v'>8</span> for each distinct Class beside them."]] ] },
+
+    { id:"015", type:"CARRY", en:"Druid", pt:"Druida", coll:4, bp:"0", th:[3,4,5], st:"enabled",
+      flag:"<b>The form order is random</b>, drawn once at the start of the Single. The player is not shown the order &mdash; but each Turn&rsquo;s form is revealed <em>before</em> they commit that Turn&rsquo;s cards. Forms never repeat, so the third is deducible from the first two.",
+      fx:[ [["On Turn","Druids take one of three forms &mdash; Rat, Bear or Elephant &mdash; at Base Power <span class='v'>3</span>, <span class='v'>9</span> or <span class='v'>15</span>. Each form comes once per Single."]],
+           [["On Turn","Druids take one of three forms &mdash; Rat, Bear or Elephant &mdash; at Base Power <span class='v'>5</span>, <span class='v'>12</span> or <span class='v'>19</span>. Each form comes once per Single."]],
+           [["On Turn","Druids take one of three forms &mdash; Rat, Bear or Elephant &mdash; at Base Power <span class='v'>8</span>, <span class='v'>16</span> or <span class='v'>24</span>. Each form comes once per Single."]] ] },
+
+    { id:"016", type:"CARRY", en:"Battlemaster", pt:"Mestre de Batalha", coll:4, bp:"11", th:[3,4,5], st:"enabled",
+      fx:[ [["On Condition","After a Battlemaster is played, Battlemasters Gain <span class='v'>4</span> next Turn."]],
+           [["On Condition","After a Battlemaster is played, Battlemasters Gain <span class='v'>6</span> next Turn."]],
+           [["On Condition","After a Battlemaster is played, Battlemasters Gain <span class='v'>8</span> next Turn."]] ] },
+
+    { id:"017", type:"FLEX", en:"War&rsquo;s Champion", pt:"Campe&atilde;o de Guerra", coll:4, bp:"8", th:[0,3,4], st:"enabled",
+      flag:"The only Class reading the opponent&rsquo;s board rather than its own, so its Gain is unknowable before the reveal &mdash; which is allowed: opponent contributions are itemised after the reveal, not predicted before it.",
+      fx:[ null,
+           [["On Reveal","War&rsquo;s Champions Gain <span class='v'>4</span> for each repeated Class the opponent played that Turn."]],
+           [["On Reveal","War&rsquo;s Champions Gain <span class='v'>8</span> for each repeated Class the opponent played that Turn."]] ] },
+
+    { id:"018", type:"CARRY", en:"Occultist", pt:"Ocultista", coll:5, bp:"10", th:[3,4,5], st:"enabled",
+      flag:"<b>Adds a card to Hand.</b> A Single always spends nine plays, so the Demon is a tenth card the player may never get to play &mdash; and it is only worth a play once Occultists have fed it.",
+      fx:[ [["On Start","Create a Demon in Hand at Base Power <span class='v'>0</span>."],
+            ["On Condition","The Demon Gains <span class='v'>5</span> for each Occultist played during the Single."]],
+           [["On Start","Create a Demon in Hand at Base Power <span class='v'>0</span>."],
+            ["On Condition","The Demon Gains <span class='v'>7</span> for each Occultist played during the Single."]],
+           [["On Start","Create a Demon in Hand at Base Power <span class='v'>0</span>."],
+            ["On Condition","The Demon Gains <span class='v'>10</span> for each Occultist played during the Single."]] ] },
+
+    { id:"019", type:"FLEX", en:"Ranger", pt:"Patrulheiro", coll:5, bp:"9", th:[0,0,2], st:"enabled",
+      flag:"The Pennant is otherwise hidden from the opponent. Ranger is the one effect that opens it &mdash; the glossary now carries that exception.",
+      fx:[ null, null,
+           [["On Start","Reveal the opponent&rsquo;s Pennant at the start of the Single."]] ] },
+
+    { id:"020", type:"CARRY", en:"Drunk Master", pt:"Mestre B&ecirc;bado", coll:5, bp:"10", th:[4,5,6], st:"cut",
+      why:"Cut. Two blockers, neither survivable. Its condition needs a Leader carrying a Booze Equipment &mdash; both gone &mdash; and its Continuous clause grants a random Gain the player cannot compute before committing.",
+      fx:[ [["On Condition","Drunk Master cards Gain <span class='v'>+4</span> if the <b>Leader</b> has a Drunk Master Booze <b>Equipment</b>."],
+            ["Continuous","Drunk Master cards receive a <b>random</b> bonus between <span class='v'>&minus;2</span> and <span class='v'>+2</span>."]],
+           [["On Condition","Drunk Master cards Gain <span class='v'>+7</span> if the <b>Leader</b> has a Drunk Master Booze <b>Equipment</b>."],
+            ["Continuous","Drunk Master cards receive a <b>random</b> bonus between <span class='v'>&minus;4</span> and <span class='v'>+4</span>."]],
+           [["On Condition","Drunk Master cards Gain <span class='v'>+10</span> if the <b>Leader</b> has a Drunk Master Booze <b>Equipment</b>."],
+            ["Continuous","Drunk Master cards receive a <b>random</b> bonus between <span class='v'>&minus;6</span> and <span class='v'>+6</span>."]] ] },
+
+    { id:"021", type:"SUP", en:"Cook", pt:"Cozinheiro", coll:5, bp:"6", th:[0,0,4], st:"cut",
+      why:"Cut. Its single effect is nothing but a reference to Leader, Equipment and Ingredient &mdash; all gone. &ldquo;May receive&rdquo; is also not a testable rule, so it would have failed the bar even if the equipment existed.",
+      fx:[ null, null,
+           [["On Start","Other cards <b>may</b> receive a bonus based on the active <b>Leader Equipment Cook Ingredient</b>."]] ] },
+
+    { id:"022", type:"SUP", en:"Summoner", pt:"Invocador", coll:6, bp:"4", th:[3,4,5], st:"enabled",
+      flag:"<b>The sharpest use of the fixed nine plays.</b> The Angel is the strongest single card available <em>and</em> buffs everything else only while it goes unplayed. Holding it forever is a legal line.",
+      fx:[ [["On Start","Create an Angel in Hand at Base Power <span class='v'>12</span>."],
+            ["On Condition","Other Classes Gain <span class='v'>3</span> while the Angel is in Hand."]],
+           [["On Start","Create an Angel in Hand at Base Power <span class='v'>16</span>."],
+            ["On Condition","Other Classes Gain <span class='v'>4</span> while the Angel is in Hand."]],
+           [["On Start","Create an Angel in Hand at Base Power <span class='v'>20</span>."],
+            ["On Condition","Other Classes Gain <span class='v'>5</span> while the Angel is in Hand."]] ] },
+
+    { id:"023", type:"CARRY", en:"Three Musketeers", pt:"Tr&ecirc;s Mosqueteiros", coll:6, bp:"8 / 10 / 12", th:[0,0,3], st:"hold",
+      why:"On hold. One Class with three different Base Powers, where Base Power is defined as a property of the Class. Its threshold of 3 also means one of each rather than any three, which no other Class does. The shape is not settled.",
+      fx:[ null, null,
+           [["On Condition","Three Musketeers receive their Vinculum effect only if the Deck holds one copy of each Musketeer."],
+            ["Continuous","Three Musketeers Gain <span class='v'>10</span>."]] ] },
+
+    { id:"024", type:"FLEX", en:"Flagellant", pt:"Flagelante", coll:6, bp:"5", th:[0,0,2], st:"enabled",
+      flag:"<b>Its only route upward is being attacked.</b> A Cleric cannot help a Flagellant; a Gargoyle can. Under an Inverted Dungeon, where the lower Total Power wins, that climb works against its owner &mdash; deliberately.",
+      fx:[ null, null,
+           [["Continuous","Flagellants turn Drains into Gains, and take no Gains."]] ] },
+
+    { id:"025", type:"FLEX", en:"Blood Hunter", pt:"Ca&ccedil;ador de Sangue", coll:6, bp:"10", th:[3,4,5], st:"empty",
+      why:"Never written. Type, Base Power and thresholds were authored. All three effect columns were left blank &mdash; recorded so the gap is visible rather than mistaken for an oversight.",
+      fx:[ null, null, null ] },
+
+    { id:"026", type:"SUP", en:"Martyr", pt:"M&aacute;rtir", coll:6, bp:"0", th:[0,0,1], st:"enabled",
+      flag:"<b>Both settled.</b> A loss on Turn 3 returns a card with no Turn left to play it in, and that is accepted &mdash; Martyr is deliberately weak on the last Turn. Where Martyr and Bard both fire on the same lost Turn, they stack.",
+      fx:[ null, null,
+           [["On Condition","After losing a Turn with a Martyr in it, the card with the greatest Power that Turn returns to Hand."],
+            ["On Condition","The returned card Gains <span class='v'>5</span> next Turn."]] ] }
+  ];
+
+  const DUNGEONS = [
+    ["D01", "NONE", "Basic Dungeon", "enabled", "No effect.", ""],
+    ["D02", "REWARD", "Gold Dungeon", "hold", "Doubles the Coins the Match pays.", "Nothing in the design pays Coins for a Match &mdash; a <b>Tournament</b> pays XP, Coins and Rank. This Dungeon needs a payout that does not exist yet, and it would let a drawn Board move the economy."],
+    ["D03", "RULE", "Inverted Dungeon", "hold", "The lower Total Power takes each Turn.", "Nothing about it is ambiguous &mdash; it is held because it <b>inverts the win condition</b> rather than moving a number, which is a different kind of Dungeon from the scalers. Note it has the most downstream references of anything held: the glossary's <em>a Gain works against you</em>, decision 0011's floor-at-zero reasoning, and Flagellant's whole point."],
+    ["D04", "VINCULUM", "Double Dungeon", "enabled", "Vinculum effects are doubled.", ""],
+    ["D05", "VINCULUM", "Treble Dungeon", "enabled", "Vinculum effects are tripled.", ""],
+    ["D06", "VINCULUM", "Desert Dungeon", "enabled", "Vinculum effects are halved.", ""],
+    ["D07", "VINCULUM", "Stone Dungeon", "enabled", "Vinculums have no effect.", "Reduces every Class to its Base Power, which is a legitimate format rather than a problem. Monk and Flagellant become inert, correctly."],
+    ["D08", "POWER", "Buff Dungeon", "hold", "The card in the right-hand Slot has its Power doubled.", "Two unanswered questions, either of which changes the number: <b>right from whose side</b> &mdash; Slots pair one-to-one, so the player's right is the opponent's left &mdash; and whether it doubles <b>Base Power or final Power</b>. A multiplier on final Power also needs its own line in the hover box."],
+    ["D09", "HAND", "Swap Dungeon", "hold", "On Turn 1, one card from each player is swapped with the other's before Total Power is compared.", "Who picks the card is unstated, and a swap the player does not control happens <em>after</em> they commit &mdash; pillar 2 says their own numbers are readable before that. Worse: a swapped card's Class sits in the receiving player's Slots, and nothing says whether it counts toward their Vinculums."],
+    ["D10", "HAND", "Minions Dungeon", "hold", "Each player gains one Minion card for the Single.", "The extra card is fine &mdash; decision 0010 lets Hand grow while plays stay at nine. What blocks it is that a <b>Minion is defined nowhere</b>: no Class, no Base Power, and no answer to whether it counts toward a Vinculum."],
+    ["D11", "HAND", "Final Trade Dungeon", "hold", "On Turn 3, the players swap Hands.", "Readable &mdash; the swap happens before Turn 3 is committed. But the player is now holding the opponent's Classes, and nothing says whether Vinculums are recomputed from the new Hand or stay with the Deck that formed them. The two readings are different games."],
+    ["D12", "RULE", "Singles Dungeon", "hold", "Players commit one card per Turn instead of three.", "<b>Contradicts decision 0010</b>, which fixes a Single at three Turns of three Slots and nine plays. This spends three. Every Slot-facing effect &mdash; Rogue, Necromancer, D08, M21 &mdash; also has only one Slot to act on. Needs 0010 amended before it can be built."],
+    ["D13", "VINCULUM", "Fog Dungeon", "hold", "Vinculums are not shown during the Single.", "<b>It is either a no-op or a pillar breach, with nothing in between.</b> The opponent's Vinculums are already hidden &mdash; the Pennant is concealed &mdash; so hiding those changes nothing. Hiding the player's own breaks pillar 2, which promises they can account for every point of their own numbers."],
+    ["D14", "HAND", "Trap Dungeon", "hold", "One card in Hand becomes a Monster card at Base Power 0 for the Single.", "A <b>Monster card</b> is not a thing this design has &mdash; Monsters are conditions on a Turn, not cards in a Hand. Needs either a new object or a different effect. Whose card, and chosen how, is also unstated."],
+    ["D15", "HAND", "Rescue Dungeon", "hold", "Winning a Turn adds one card to Hand, of a Class already in it.", "Chosen or random is unstated. It also rewards the player who is already ahead, which compounds a lead rather than answering it."],
+    ["D16", "HAND", "Loot Dungeon", "hold", "Both players gain one extra card, of a Class already in their Hand.", "Chosen or random is unstated. Symmetric, so unlike D15 it does not compound a lead."],
+    ["D17", "HAND", "Trade Dungeon", "hold", "Swaps one of your cards with one of the opponent's.", "Same two questions as D09 and D11 &mdash; who picks, and whose Vinculums the traded card answers to."],
+    ["D18", "HAND", "Random Cards Dungeon", "cut", "Randomises both Hands at the start of the Single.", "<b>This is a draft, in a game whose thesis is that there is no draft.</b> Decision 0001 says the player brings nine cards they chose; pillar 1 says what changes between Singles is the format, not the player's luck. Replacing the chosen nine with random cards contradicts both at the root, and there is no smaller version of it that does not."],
+    ["D19", "POWER", "Random Power Dungeon", "hold", "Shuffles the Power values among the cards in Hand.", "Readable &mdash; it happens at the start of the Single and the result is visible before anything is committed. What it breaks is the glossary: <b>Base Power is defined as a property of the Class</b>, and this makes it a property of the card. Needs that definition amended or the effect reframed as a Gain and a Drain."]
+  ];
+
+  const MONSTERS = [
+    ["M01", "NONE", "Dummy", "enabled", "any", "No effect.", ""],
+    ["M02", "CLASS", "Gelatinous Cube", "enabled", "any", "Drain <span class='v'>2</span> from Fighters.", ""],
+    ["M03", "CLASS", "Gargoyle", "enabled", "any", "Drain <span class='v'>2</span> from Wizards.", ""],
+    ["M04", "CLASS", "Nightmare", "enabled", "any", "Drain <span class='v'>1</span> from Clerics.", ""],
+    ["M05", "CLASS", "Wraith", "enabled", "any", "Drain <span class='v'>3</span> from Barbarians.", ""],
+    ["M06", "CLASS", "Golem", "enabled", "any", "Drain <span class='v'>1</span> from Rogues.", ""],
+    ["M07", "CLASS", "Witch", "enabled", "any", "Drain <span class='v'>5</span> from Warlocks.", ""],
+    ["M08", "CLASS", "Sirens", "enabled", "any", "Drain <span class='v'>1</span> from Bards.", ""],
+    ["M09", "CLASS", "Ogre", "enabled", "any", "Drain <span class='v'>2</span> from Monks.", ""],
+    ["M10", "ALL", "Goblin Army", "enabled", "any", "Drain <span class='v'>2</span> from every Class.", ""],
+    ["M11", "CLASS", "Swarm of Bats", "enabled", "any", "Drain <span class='v'>1</span> from Rangers.", ""],
+    ["M12", "CLASS", "Fire Elemental", "enabled", "any", "Drain <span class='v'>2</span> from Druids.", ""],
+    ["M13", "CLASS", "Banshee", "enabled", "any", "Drain <span class='v'>3</span> from Sorcerers.", ""],
+    ["M14", "CLASS", "Death Knight", "enabled", "any", "Drain <span class='v'>1</span> from Paladins.", ""],
+    ["M15", "PLAY", "", "hold", "any", "One of each player's cards is committed at random this Turn.", "<b>Which Slot it lands in is unstated, and Slot position is load-bearing</b> &mdash; Rogue and Necromancer act across the facing pair, D08 and M21 name a specific Slot. A card placed at random into an unnamed Slot cannot be reasoned about."],
+    ["M16", "PLAY", "", "hold", "any", "One of each player's cards is chosen at random and cannot be played this Turn.", "Nothing blocks it &mdash; the Monster is face-up before the Turn is committed, so the player adapts rather than guesses, and no Slot is involved. Held only because it <b>removes a card from play</b> rather than moving a number."],
+    ["M17", "PLAY", "", "hold", "1&ndash;2", "Each player's highest-Power card cannot be played this Turn.", "Removes a card from play rather than moving a number, and ties are unstated."],
+    ["M18", "PLAY", "", "hold", "1&ndash;2", "Each player's lowest-Power card cannot be played this Turn.", "Removes a card from play rather than moving a number, and ties are unstated."],
+    ["M19", "TURN", "", "hold", "1&ndash;2", "Whoever takes this Turn Gains <span class='v'>3</span> Total Power on the next one.", "<b>A modifier on Total Power has nowhere to live.</b> Every number in the design belongs to a card and is itemised on that card; this one belongs to the side. The hover box has no line for it, and pillar 2 promises the itemisation adds up. Also inferred: the source never says the Gain lands on the <em>next</em> Turn &mdash; that reading is what makes the Turn 1&ndash;2 limit make sense."],
+    ["M20", "TURN", "", "hold", "1&ndash;2", "Whoever takes this Turn takes a Drain of <span class='v'>3</span> Total Power on the next one.", "Same blocker as M19 &mdash; a Total Power modifier that no card owns."],
+    ["M21", "POWER", "", "hold", "any", "The card in the left-hand Slot takes a random Power this Turn.", "Two blockers: <b>left from whose side</b>, the same question D08 asks, and a random Power the player cannot compute before committing, which is what pillar 2 forbids."],
+    ["M22", "TYPE", "", "hold", "any", "Drain <span class='v'>3</span> from every SUP Class.", "One of four Monsters that read <b>Class Type</b>. Membership is settled &mdash; every Class carries a Type &mdash; so the arithmetic is buildable. What Class Type <em>means</em> is not written anywhere, and a Monster the player cannot reason about is not a format they can read."],
+    ["M23", "TYPE", "", "hold", "any", "Drain <span class='v'>3</span> from every CARRY Class.", ""],
+    ["M24", "TYPE", "", "hold", "any", "SUP Vinculums are inactive this Turn.", ""],
+    ["M25", "TYPE", "", "hold", "any", "CARRY Vinculums are inactive this Turn.", ""],
+    ["M26", "POWER", "", "hold", "&mdash;", "Cards with even Power are halved this Turn.", "Two problems, both repairable. <b>Power changes during a Turn</b>, so parity has no stable moment &mdash; reading it off <em>Base Power</em> fixes that. And the author's own note redirects the whole idea: <em>rather than even/odd Power, better tied to Class</em>."],
+    ["M27", "POWER", "", "hold", "&mdash;", "Cards with even Power are increased by half this Turn.", ""],
+    ["M28", "POWER", "", "hold", "&mdash;", "Cards with odd Power are doubled this Turn.", ""],
+    ["M29", "POWER", "", "hold", "&mdash;", "Cards with odd Power are halved this Turn.", ""],
+    ["M30", "TURN", "", "hold", "&mdash;", "Both players take a 10% Total Power reduction for each Class card played this Turn.", "<b>As written it is a constant, not a condition</b> &mdash; every card has a Class, so three cards always means 30%. <em>Each distinct Class</em> is the reading that makes it vary. It is also a percentage of Total Power, which shares M19's problem and needs a rounding rule."],
+    ["M31", "TURN", "", "hold", "&mdash;", "Both players take a 20% Total Power reduction if they play two cards of the same Class this Turn.", "Coherent, unlike M30, but still a Total Power modifier no card owns, and still needs a rounding rule."],
+    ["M32", "TURN", "", "hold", "&mdash;", "Each player's highest-Power card does not count toward Total Power this Turn.", "The cleanest of the deferred set &mdash; no percentage, no persistent modifier, just an exclusion. Needs a tiebreak and a stated moment of evaluation, and then it would be buildable."]
+  ];
+
+  const STATUS_LABEL = {
+    enabled: "Enabled",
+    hold:    "On hold",
+    cut:     "Cut",
+    empty:   "Never written"
+  };
+
+  function renderEffect(cell) {
+    if (!cell) return '<span class="na">&mdash;</span>';
+    return cell.map(([kind, text]) =>
+      `<span class="fx"><span class="kind" data-k="${kind}">${kind}</span>${text}</span>`).join("");
+  }
+
+  function renderRow(c) {
+    const note = c.flag ? `<span class="flag">${c.flag}</span>`
+               : c.why  ? `<span class="why">${c.why}</span>` : "";
+    const TIER = ["is-bronze", "is-silver", "is-gold"];
+    const thresh = c.th.map((n, i) =>
+      `<td class="num thresh ${TIER[i]}${n === 0 ? " zero" : ""}">${n}</td>`).join("");
+
+    return `<tr data-status="${c.st}" data-type="${c.type}" data-coll="${c.coll}">
+      <td class="id">${c.id}</td>
+      <td><span class="chip" data-tone="${c.type}">${c.type}</span></td>
+      <td class="name"><span class="en">${c.en}</span><span class="pt">${c.pt}</span></td>
+      <td><span class="chip" data-tone="${c.st}">${STATUS_LABEL[c.st]}</span></td>
+      <td class="num">${c.coll}</td>
+      <td class="num">${c.bp}</td>
+      ${thresh}
+      <td class="eff">${renderEffect(c.fx[0])}</td>
+      <td class="eff">${renderEffect(c.fx[1])}</td>
+      <td class="eff">${renderEffect(c.fx[2])}${note}</td>
+    </tr>`;
+  }
+
+  /* ---- the two Board registers ---- */
+  function note(t) { return t ? '<span class="flag">' + t + '</span>' : ""; }
+
+  function boardRow(attrs, cells, eff, flag) {
+    return `<tr ${attrs}>${cells}
+      <td class="eff">${eff}${note(flag)}</td>
+    </tr>`;
+  }
+
+  const dRowsEl = document.getElementById("drows");
+  const mRowsEl = document.getElementById("mrows");
+
+  dRowsEl.innerHTML = DUNGEONS.map(([id, ty, name, st, eff, flag]) => boardRow(
+    `data-status="${st}" data-type="${ty}"`,
+    `<td class="id">${id}</td>
+     <td><span class="chip">${ty}</span></td>
+     <td class="name"><span class="en">${name}</span></td>
+     <td><span class="chip" data-tone="${st}">${STATUS_LABEL[st]}</span></td>`,
+    eff, flag)).join("");
+
+  mRowsEl.innerHTML = MONSTERS.map(([id, ty, name, st, turns, eff, flag]) => boardRow(
+    `data-status="${st}" data-type="${ty}" data-turns="${turns === "any" ? "any" : turns.includes("2") ? "12" : "none"}"`,
+    `<td class="id">${id}</td>
+     <td><span class="chip">${ty}</span></td>
+     <td class="name">${name
+        ? `<span class="en">${name}</span>`
+        : `<span class="en unnamed">unnamed</span>`}</td>
+     <td><span class="chip" data-tone="${st}">${STATUS_LABEL[st]}</span></td>
+     <td class="turns">${turns}</td>`,
+    eff, flag)).join("");
+
+  /* Status, Acts-on, Turns and search on the two Board registers — one wiring
+     used by both, driven by data attributes on the rows the renderer emits. */
+  function wireBoard(panelId, tbody, inputId, tallyId, noun, dims) {
+    const panel = document.getElementById(panelId);
+    const input = document.getElementById(inputId);
+    const tally = document.getElementById(tallyId);
+    const rows = [...tbody.rows];
+    const hay = rows.map(r => r.textContent.replace(/\s+/g, " ").toLowerCase());
+    const state = {};
+    dims.forEach(d => { state[d] = "all"; });
+
+    function run() {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach((r, i) => {
+        const ok = dims.every(d => state[d] === "all" || r.dataset[d] === state[d])
+                   && (q === "" || hay[i].includes(q));
+        r.hidden = !ok;
+        if (ok) shown++;
+      });
+      tally.textContent = shown === rows.length
+        ? rows.length + " " + noun
+        : shown + " of " + rows.length + " " + noun;
+    }
+
+    panel.querySelectorAll(".opts").forEach(group => {
+      const dim = group.dataset.f;
+      group.addEventListener("click", e => {
+        const btn = e.target.closest(".chip");
+        if (!btn) return;
+        group.querySelectorAll(".chip").forEach(b =>
+          b.setAttribute("aria-pressed", String(b === btn)));
+        state[dim] = btn.dataset.v;
+        run();
+      });
+    });
+    input.addEventListener("input", run);
+    run();
+  }
+  wireBoard("dpanel", dRowsEl, "dq", "dtally", "Dungeons", ["status", "type"]);
+  wireBoard("mpanel", mRowsEl, "mq", "mtally", "Monsters", ["status", "type", "turns"]);
+
+
+  const tableEl = document.querySelector(".tablewrap table");
+  const scrollEl = document.querySelector(".tablewrap .scroller");
+  const rowsEl  = document.getElementById("rows");
+  const noneEl  = document.getElementById("none");
+  const tallyEl = document.getElementById("tally");
+  const qEl     = document.getElementById("q");
+
+  rowsEl.innerHTML = CLASSES.map(renderRow).join("");
+
+  const filters = { status: "all", type: "all", coll: "all", q: "" };
+
+  const HAYSTACK = new Map(CLASSES.map(c => [c.id, (
+    c.en + " " + c.pt + " " + c.type + " " +
+    c.fx.map(cell => cell ? cell.map(f => f[0] + " " + f[1]).join(" ") : "").join(" ") +
+    " " + (c.flag || "") + " " + (c.why || "")
+  ).replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ").toLowerCase()]));
+
+  function apply() {
+    let shown = 0;
+    for (const tr of rowsEl.children) {
+      const id = tr.querySelector(".id").textContent;
+      const ok =
+        (filters.status === "all" || tr.dataset.status === filters.status) &&
+        (filters.type   === "all" || tr.dataset.type   === filters.type)   &&
+        (filters.coll   === "all" || tr.dataset.coll   === filters.coll)   &&
+        (filters.q === "" || HAYSTACK.get(id).includes(filters.q));
+      tr.hidden = !ok;
+      if (ok) shown++;
+    }
+    noneEl.hidden = shown > 0;
+    tallyEl.textContent = shown === CLASSES.length
+      ? CLASSES.length + " Classes"
+      : shown + " of " + CLASSES.length + " Classes";
+    freezeDefinition();
+  }
+
+  /* ---- freeze the Definition columns -------------------------------------
+     PINNED is the number of leading columns that stay put. Below 1000px the
+     six of them would leave no room for what you scrolled to see, so nothing
+     is frozen and the table behaves like an ordinary one.                    */
+  const PINNED = 6;
+
+  function freezeDefinition() {
+    const headRow = tableEl.tHead.rows[1];
+    const groupRow = tableEl.tHead.rows[0];
+    const groupTh = groupRow.cells[0];
+    const bodyRows = [...rowsEl.rows].filter(r => !r.hidden);
+
+    /* The column headers stick below the group headers, so the second row's
+       offset is whatever the first row currently measures. */
+    const groupH = groupRow.getBoundingClientRect().height;
+    for (const th of headRow.cells) th.style.top = groupH + "px";
+
+    for (const el of tableEl.querySelectorAll(".pin")) {
+      el.classList.remove("pin", "pin--edge");
+      el.style.left = "";
+    }
+    groupTh.classList.remove("pin", "pin--edge");
+    groupTh.style.left = "";
+
+    if (window.innerWidth < 1000) { scrollEl.classList.remove("is-frozen"); return; }
+    scrollEl.classList.add("is-frozen");
+
+    const lefts = [];
+    let x = 0;
+    for (let i = 0; i < PINNED; i++) {
+      lefts.push(x);
+      x += headRow.cells[i].getBoundingClientRect().width;
+    }
+
+    const pin = (cell, i) => {
+      cell.classList.add("pin");
+      if (i === PINNED - 1) cell.classList.add("pin--edge");
+      cell.style.left = lefts[i] + "px";
+    };
+
+    for (let i = 0; i < PINNED; i++) pin(headRow.cells[i], i);
+    for (const r of bodyRows) for (let i = 0; i < PINNED; i++) pin(r.cells[i], i);
+
+    /* The group header spans exactly the pinned columns, so it pins whole. */
+    groupTh.classList.add("pin", "pin--edge");
+    groupTh.style.left = "0px";
+  }
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(freezeDefinition, 120);
+  });
+
+  for (const [key, id] of [["status","f-status"], ["type","f-type"], ["coll","f-coll"]]) {
+    const group = document.getElementById(id);
+    group.addEventListener("click", e => {
+      const btn = e.target.closest(".chip");
+      if (!btn) return;
+      for (const b of group.querySelectorAll(".chip")) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      }
+      filters[key] = btn.dataset.v;
+      apply();
+    });
+  }
+
+  qEl.addEventListener("input", () => {
+    filters.q = qEl.value.trim().toLowerCase();
+    apply();
+  });
+
+  apply();
+
+  /* ---- theme toggle, same three-state control the deck uses ---- */
+  (function () {
+    const btn = document.getElementById("themer");
+    const modes = ["auto", "light", "dark"];
+    let i = 0;
+    btn.addEventListener("click", () => {
+      i = (i + 1) % modes.length;
+      const m = modes[i];
+      if (m === "auto") document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", m);
+      btn.textContent = "Theme: " + m;
+    });
+  })();
+</script>
+
+</body>
+</html>
